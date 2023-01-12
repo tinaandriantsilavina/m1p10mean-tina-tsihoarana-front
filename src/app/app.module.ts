@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ProgressComponent } from './components/progress/progress.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { ProgressComponent } from './components/progress/progress.component';
     LoginComponent,
     FileUploadComponent,
     ProgressComponent
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

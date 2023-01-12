@@ -11,7 +11,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class LoginComponent implements OnInit , AfterViewInit{
 
   submitted=false;
-  formulaire : any;
+  formulaire : FormGroup;
   message="";
   testdata : any;
 
@@ -26,11 +26,9 @@ export class LoginComponent implements OnInit , AfterViewInit{
     public router:Router,
     public authservice:AuthService,
     public formBuilder:FormBuilder) {
-      this.formulaire = new FormGroup({})
+
   }
-  ngOnInit() {
-    this.initForm();
-  }
+
   onSubmit(): void {
     this.submitted = true; // ijerena ftsn we ef nanindry an ilay boutton ve izy
   }
@@ -75,7 +73,9 @@ export class LoginComponent implements OnInit , AfterViewInit{
       );
     })
   }
-
+  ngOnInit(): void {
+    this.initForm();
+  }
   connexionn(){
     console.log(this.formulaire.getRawValue());
   }

@@ -1,0 +1,49 @@
+<!-- <div class="row">
+
+  <div class="col-md-6 offset-md-3 text-center" >
+    <div class="row align-items-center"style="margin-top: 10%" >
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container" style="max-width: 700px">
+  <div class="row">
+    <div class="col-md-6 offset-md-3" >.
+
+      <div class="shadow-lg p-3 mb-5 bg-white rounded" style="  height: 300px">
+        <h4 class="text-center" >Connexion </h4>
+        <p class="text-center" style="color: red; font-weight: bold; " >{{message}}</p>
+        <form [formGroup]="formulaire"  (ngSubmit)="onSubmit()" *ngIf="this.formulaire" >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Users</label>
+            <input formControlName="st1" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div *ngIf="submitted && f.st1.errors">
+              <small *ngIf="f.st1.errors.required" style="color: red" >Champ Obligtoire</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Pass</label>
+            <input formControlName="st2" type="text" class="form-control"  aria-describedby="emailHelp">
+            <div *ngIf="submitted && f.st2.errors">
+              <small *ngIf="f.st2.errors.required" style="color: red" >Champ Obligtoire</small>
+            </div>
+          </div>
+          <div class="text-center">
+            <button (click)="connexion()" type="submit" class="btn btn-primary" >Connexion</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--<div class="w-100">sdfsfsdf</div>-->
+<!--<div class="row no-gutters mt-3">-->
+<!--  <div class="col">Colonne 1</div>-->
+
+<!--</div>-->
+ -->

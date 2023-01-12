@@ -52,7 +52,7 @@ export class AppComponent {
       // console.log(localStorage.getItem('users'))
       this.users=this.authservice.users
     }else{
-      // this.router.navigate(['connexion/loginform'])
+      this.router.navigate(['connexion/loginform'])
     }
     //
   }

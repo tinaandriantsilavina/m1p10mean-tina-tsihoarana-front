@@ -13,37 +13,36 @@ export class AuthService {
     if(localStorage.getItem('users')!=null ){
         // this.users=JSON.parse(localStorage.getItem('users'));
       }
-    console.log("Constructor  Am auth TOKEN "+tok)
+    console.log("COnstructor  Am auth TOKEN "+tok)
   }
   getUsersByToken(token : any) {
     let body={
       "st1":token
     }
-    new Promise((resolve, reject) => {
-      this.http.post(base_url + 'login/verifierToken', body).subscribe(
-        data => {
-          // let d = (data as {[key: string]: any})
-          if(data['status'] ==200){
-            localStorage.setItem('users',JSON.stringify(data['data'][0]))
-            localStorage.setItem('token',data['data'][1])
-            console.log("Verification TOTOTOT")
-            console.log(this.users)
-          }
-          else{
-            console.log("===========>>>> " )
-            console.log(body)
-            localStorage.clear()
-            // reject('Erreur Connexx');
-          }
-        },error => {
-          let message = <any>error;
-          if(message != null){
-            // reject(message);
-            localStorage.clear()
-          }
-        }
-      );
-    })
+    // return new Promise((resolve, reject) => {
+    //   this.http.post(base_url + 'login/verifierToken', body).subscribe(
+    //     data => {
+    //       if(data['status'] ==200){
+    //         localStorage.setItem('users',JSON.stringify(data['data'][0]))
+    //         localStorage.setItem('token',data['data'][1])
+    //         console.log("Verification TOTOTOT")
+    //         console.log(this.users)
+    //       }
+    //       else{
+    //         console.log("===========>>>> " )
+    //         console.log(body)
+    //         localStorage.clear()
+    //         // reject('Erreur Connexx');
+    //       }
+    //     },error => {
+    //       let message = <any>error;
+    //       if(message != null){
+    //         // reject(message);
+    //         localStorage.clear()
+    //       }
+    //     }
+    //   );
+    // })
   }
 
   option (use_authorization = false) {
@@ -69,6 +68,7 @@ export class AuthService {
   verifierToken(){
 
   }
+
 
   connexion(body: any){
     console.log(body);

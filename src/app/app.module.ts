@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    InscriptionComponent,
+    DepotVoitureComponent
   ],
   imports: [
     BrowserModule,

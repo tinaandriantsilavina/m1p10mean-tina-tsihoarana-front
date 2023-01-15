@@ -1,0 +1,28 @@
+html, body, .container-table {
+    height: 100%;
+  }
+  .container-table {
+    width:100vw;
+    height:150px;
+    border:1px solid black;
+  }
+  .vertical-center-row {
+    margin:auto;
+    width:30%;
+    padding:63px;
+    text-align:center;
+  
+  }
+  .center-div {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .shadow{
+    box-shadow: 5px 5px 20px rgba(204, 204, 204, 0.849);
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  

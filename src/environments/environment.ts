@@ -6,12 +6,7 @@ export const environment = {
   production: false
 };
 
-<<<<<<< HEAD
-
-export const base_url = 'http://localhost:8080/';
-=======
 export const base_url = 'http://localhost:8090/';
->>>>>>> dev
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

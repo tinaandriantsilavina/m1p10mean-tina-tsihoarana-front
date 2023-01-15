@@ -6,7 +6,6 @@ export const environment = {
   production: false
 };
 
-// export const base_url = 'http://192.168.123.50:8090/';
 export const base_url = 'http://localhost:8090/';
 /*
  * For easier debugging in development mode, you can import the following file

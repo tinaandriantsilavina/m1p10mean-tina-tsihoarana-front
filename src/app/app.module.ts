@@ -16,7 +16,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     AppComponent,
     LoginComponent,
     FileUploadComponent,
-    ProgressComponent
+    ProgressComponent,
     NotfoundComponent
   ],
   imports: [

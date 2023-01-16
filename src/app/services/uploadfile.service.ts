@@ -6,33 +6,33 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UploadfileService {
 
-  loadFH_Data = new BehaviorSubject(null);
+  loadFH_Data = new BehaviorSubject(false);
   currentLoadFH_Data = this.loadFH_Data.asObservable();
 
 
-  isAnyData = new BehaviorSubject(null);
+  isAnyData = new BehaviorSubject(false);
   currentIsAnyData = this.isAnyData.asObservable();
 
-  numberOfResults = new BehaviorSubject(null);
+  numberOfResults = new BehaviorSubject(false);
   currentNOR = this.numberOfResults.asObservable();
 
 
-  checkedSubscriptions = new BehaviorSubject(null);  ;
+  checkedSubscriptions = new BehaviorSubject(false);  ;
   currentCheckedSub = this.checkedSubscriptions.asObservable();
 
 
-  allFilesUploaded = new BehaviorSubject(null) ;
+  allFilesUploaded = new BehaviorSubject(false) ;
   currentFilesUploaded = this.allFilesUploaded.asObservable();
 
-  goToCreateTicketFH = new BehaviorSubject(null) ;
+  goToCreateTicketFH = new BehaviorSubject(false) ;
   currentGoToCreateTicketFH = this.goToCreateTicketFH.asObservable();
 
-  showSouscriptionList = new BehaviorSubject(null);
+  showSouscriptionList = new BehaviorSubject(false);
   currentSouscriptionList = this.showSouscriptionList.asObservable();
 
 
   // Reponse intermediaire
-  showBtnEnvoieReponseIntermedaire = new BehaviorSubject(null);
+  showBtnEnvoieReponseIntermedaire = new BehaviorSubject(false);
   currentBtnEnvoieReponseIntermedaire = this.showBtnEnvoieReponseIntermedaire.asObservable();
 
   constructor() { }

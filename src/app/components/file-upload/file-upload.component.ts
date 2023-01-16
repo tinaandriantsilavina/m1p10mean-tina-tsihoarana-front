@@ -32,7 +32,7 @@ export class FileUploadComponent {
         // if (this.loadFH_Data) {
         //   this.getAllFHData();
         // }
-        this.files = allFiles;
+        // this.files = allFiles;
       }
 
     })
@@ -42,14 +42,15 @@ export class FileUploadComponent {
     this.subscription.unsubscribe();
   }
 
-  onFileDropped($event) {
+  onFileDropped($event : any) {
     this.prepareFilesList($event);
   }
 
   /**
    * handle file from browsing
    */
-  fileBrowseHandler(files) {
+  fileBrowseHandler(e:any /*?: HTMLInputEvent*/) {
+    let files = e.target.target.files
     this.prepareFilesList(files);
   }
 
@@ -98,7 +99,7 @@ export class FileUploadComponent {
 
     // Update file list
     this.sm_fh.changeAllFileUploaded(this.files);
-    console.log("--------MAC-------->", this.files);
+    console.log(this.files);
   }
 
   /**
@@ -106,7 +107,7 @@ export class FileUploadComponent {
    * @param bytes (File size in bytes)
    * @param decimals (Decimals point)
    */
-  formatBytes(bytes, decimals) {
+  formatBytes(bytes : any, decimals : any) {
     if (bytes === 0) {
       return '0 Bytes';
     }

@@ -49,8 +49,9 @@ export class FileUploadComponent {
   /**
    * handle file from browsing
    */
-  fileBrowseHandler(e:any /*?: HTMLInputEvent*/) {
-    let files = e.target.target.files
+  fileBrowseHandler(e: any) {
+    console.log(e)
+    let files = e.target.files
     this.prepareFilesList(files);
   }
 

@@ -1,66 +1,53 @@
-<aside *ngIf="this.authservice.users!=null">
+lines (63 sloc)  2.43 KB
+
+<aside >
+  <!-- <aside *ngIf="this.authservice.users!=null"></aside> -->
   <div id="sidebar" class="nav-collapse " >
 
     <ul class="sidebar-menu" id="nav-accordion">
-      <p class="centered"><a href="profile.html"><img src="assets/adminstyle/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-      <h5 class="centered">{{users.surname}} {{users.name}} </h5>
+      <p class="centered">
+        <!-- <a href="profile.html"> <img src="assets/adminstyle/img/ui-sam.jpg" class="img-circle" width="80"></a> -->
+      </p>
+      <h5 class="centered"> Tina Andria</h5>
       <li class="mt">
         <a class="active" routerLink="actuel/dashboard">
           <i class="fa fa-dashboard"></i>
-          <span>Situation Actuel</span>
+          <span>Tableau de bord</span>
         </a>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-line-chart"></i>
-          <span>Reporting</span>
+          <span>Statistique</span>
         </a>
         <ul class="sub">
-          <li><a routerLink="reporting-apimf">APIMF</a></li>
+          <li><a routerLink="stat">Temps de réparation moyen</a></li>
+          <li><a routerLink="stat">Chiffre d'affaire</a></li>
+          <li><a routerLink="stat">Bénéfice</a></li>
         </ul>
       </li>
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-money"></i>
-          <span>Epargne</span>
-        </a>
-        <ul class="sub">
-          <li><a href="reporting-apimf">Relever de Compte</a></li>
-        </ul>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-balance-scale"></i>
-          <span>Gestion Financiere</span>
-        </a>
-        <ul class="sub">
-          <li><a routerLink="/sb/create">Creation Budget</a></li>
-          <li><a routerLink="sb/liste">Liste Budget</a></li>
-          <li><a routerLink="sb">SB</a></li>
-          <li><a routerLink="tb/createobjectif">TB Creer Objectif</a></li>
-          <li><a routerLink="tb/rapport">TB Rapport</a></li>
-        </ul>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-dollar"></i>
-          <span>PAR</span>
-        </a>
-        <ul class="sub">
-          <li><a routerLink="par-conso">Consolider</a></li>
-          <li><a routerLink="par-agence">Agence</a></li>
-          <li><a routerLink="par-agentcommercial">Agent Commercial</a></li>
 
-        </ul>
-      </li>
       <li class="sub-menu">
         <a href="javascript:;">
-          <i class="fa fa-users"></i>
-          <span>Ressource Humaine</span>
+          <i class="fa fa-line-chart"></i>
+          <span>Reparation</span>
         </a>
         <ul class="sub">
+          <!-- debut menu client -->
+          <li><a routerLink="depot-voiture">Depot voiture</a></li>
+          <li><a routerLink="stat">Facture </a></li>
+          <li><a routerLink="stat">Recuperation voiture</a></li>
+          <li><a routerLink="stat">Historique de reparation</a></li>
+          <!-- fin menu client -->
+
+          <!-- debut menu responsable atelier -->
+          <li><a routerLink="stat">Receptionner voiture</a></li>
+          <li><a routerLink="stat">Lister reparations</a></li>
+          <li><a routerLink="stat">Bon de sortit</a></li>
+          <!-- debut menu responsable atelier -->
         </ul>
       </li>
+
 
       <li class="sub-menu">
         <a href="javascript:;">
@@ -68,8 +55,9 @@
           <span>Utilisateur</span>
         </a>
         <ul class="sub">
-          <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li>
-          <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li>
+          <li><a routerLink="inscription">Inscription</a></li>
+          <!-- <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li> -->
+          <!-- <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li> -->
         </ul>
       </li>
     </ul>

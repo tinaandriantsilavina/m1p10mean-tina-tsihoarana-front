@@ -47,13 +47,21 @@ export class AppComponent {
   }
   ngOnInit(): void {
     console.log("APP COMPONENT io " +this.authservice.users)
-    if(localStorage.getItem('users')!=null){
-      // console.log("hjhksjdhkfjhk")
-      // console.log(localStorage.getItem('users'))
-      this.users=this.authservice.users
-    }else{
-      this.router.navigate(['connexion/loginform'])
-    }
+    // if(localStorage.getItem('users')!=null){
+    //   // console.log("hjhksjdhkfjhk")
+    //   // console.log(localStorage.getItem('users'))
+    //   // this.users=this.authservice.users
+    //   this.authservice.users  ={
+    //     name :"tsila",
+    //     surname :"hasina",
+    //     user :"tsila",
+    //     pass :"123456"
+    //   }
+    //   localStorage.setItem('users',JSON.stringify(this.authservice.users) )
+    //   localStorage.setItem('token', "123456")
+    // }else{
+    //   this.router.navigate(['connexion/loginform'])
+    // }
     //
   }
 }

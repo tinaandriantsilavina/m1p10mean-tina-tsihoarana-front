@@ -1,3 +1,5 @@
+import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +19,9 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     LoginComponent,
     FileUploadComponent,
     ProgressComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    InscriptionComponent,
+    DepotVoitureComponent
   ],
   imports: [
     BrowserModule,

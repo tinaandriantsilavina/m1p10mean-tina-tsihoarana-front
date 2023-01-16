@@ -1,60 +1,60 @@
-<aside >
-  <!-- <aside *ngIf="this.authservice.users!=null"></aside> -->
+<aside *ngIf="this.authservice.users!=null">
   <div id="sidebar" class="nav-collapse " >
 
     <ul class="sidebar-menu" id="nav-accordion">
-      <p class="centered">
-        <!-- <a href="profile.html"> <img src="assets/adminstyle/img/ui-sam.jpg" class="img-circle" width="80"></a> -->
-      </p>
-      <h5 class="centered"> Tina Andria</h5>
+      <p class="centered"><a href="profile.html"><img src="assets/adminstyle/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+      <h5 class="centered">{{users.surname}} {{users.name}} </h5>
       <li class="mt">
         <a class="active" routerLink="actuel/dashboard">
           <i class="fa fa-dashboard"></i>
-          <span>Tableau de bord</span>
+          <span></span>
         </a>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-line-chart"></i>
-          <span>Statistique</span>
+          <span></span>
         </a>
         <ul class="sub">
-          <li><a routerLink="stat">Temps de réparation moyen</a></li>
-          <li><a routerLink="stat">Chiffre d'affaire</a></li>
-          <li><a routerLink="stat">Bénéfice</a></li>
+          <li><a routerLink="reporting-apimf"></a></li>
         </ul>
       </li>
-
       <li class="sub-menu">
         <a href="javascript:;">
-          <i class="fa fa-line-chart"></i>
-          <span>Reparation</span>
+          <i class="fa fa-money"></i>
+          <span></span>
         </a>
         <ul class="sub">
-          <!-- debut menu client -->
-          <li><a routerLink="stat">Depot voiture</a></li>
-          <li><a routerLink="stat">Facture </a></li>
-          <li><a routerLink="stat">Recuperation voiture</a></li>
-          <li><a routerLink="stat">Historique de reparation</a></li>
-          <!-- fin menu client -->
-
-          <!-- debut menu responsable atelier -->
-          <li><a routerLink="stat">Receptionner voiture</a></li>
-          <li><a routerLink="stat">Lister reparations</a></li>
-          <li><a routerLink="stat">Bon de sortit</a></li>
-          <!-- debut menu responsable atelier -->
+          <li><a href="reporting-apimf">Relever de Compte</a></li>
         </ul>
       </li>
- 
-      
+      <li class="sub-menu">
+        <a href="javascript:;">
+          <i class="fa fa-balance-scale"></i>
+          <span></span>
+        </a>
+        <ul class="sub">
+          <li><a routerLink="/"></a>Menu 1</li>
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a href="javascript:;">
+          <i class="fa fa-dollar"></i>
+          <span>PAR</span>
+        </a>
+        <ul class="sub">
+          <li><a routerLink="par-conso">Menu</a></li>
+
+        </ul>
+      </li>
       <li class="sub-menu">
         <a href="javascript:;">
           <i class="fa fa-user"></i>
           <span>Utilisateur</span>
         </a>
         <ul class="sub">
-          <!-- <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li> -->
-          <!-- <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li> -->
+          <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li>
+          <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li>
         </ul>
       </li>
     </ul>

@@ -1,1 +1,17 @@
-<p>image-upload works!</p>
+<div class="container" appDnd>
+  <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+  <input type="file" #fileDropRef id="fileDropRef" type="file" (change)="selectFile($event)" />
+  <h6>Faites glisser vos fichiers ici</h6>
+  <h6>ou</h6>
+  <label for="fileDropRef">Parcourir le fichier</label>
+</div>
+
+
+<div class="contenu" *ngIf="url">
+  <div class="titre1">
+    <img class="image-content" [src]="url" *ngIf="url">
+  </div>
+  <div class="titre2">
+    <i class="fa fa-trash" aria-hidden="true"  *ngIf="url" (click)="deleteFile()"></i>
+  </div>
+</div>

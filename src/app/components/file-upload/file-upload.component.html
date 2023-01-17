@@ -1,7 +1,7 @@
 <div class="container" appDnd (fileDropped)="onFileDropped($event)">
 	<input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
-	<h3>Faites glisser vos fichiers ici</h3>
-	<h3>ou</h3>
+	<h6>Faites glisser vos fichiers ici</h6>
+	<h6>ou</h6>
 	<label for="fileDropRef">Parcourir le fichier</label>
 </div>
 <div class="files-list">
@@ -29,9 +29,9 @@
 			<h4 class="name">
 				{{ file?.name }}
 			</h4>
-			<!-- <p class="size">
-				{{ formatBytes(file?.size) }}
-			</p> -->
+			<p class="size">
+				{{ file?.size }}
+			</p>
 			<app-progress [progress]="file?.progress"></app-progress>
 		</div>
 

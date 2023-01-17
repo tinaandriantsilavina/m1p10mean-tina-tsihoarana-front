@@ -1,12 +1,13 @@
 .container {
-  width: 450px;
+  width: 100%;
   height: 200px;
   padding: 2rem;
   text-align: center;
   border: dashed 1px #979797;
   position: relative;
-  margin: 1px 21px;
+  // margin: 1px 21px;
   background: white;
+
 }
 .container input {
   opacity: 0;

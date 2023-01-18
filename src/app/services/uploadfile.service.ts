@@ -17,14 +17,14 @@ export class UploadfileService {
   currentNOR = this.numberOfResults.asObservable();
 
 
-  checkedSubscriptions = new BehaviorSubject(false);  ;
+  checkedSubscriptions = new BehaviorSubject(false);;
   currentCheckedSub = this.checkedSubscriptions.asObservable();
 
 
-  allFilesUploaded = new BehaviorSubject(false) ;
+  allFilesUploaded = new BehaviorSubject(false);
   currentFilesUploaded = this.allFilesUploaded.asObservable();
 
-  goToCreateTicketFH = new BehaviorSubject(false) ;
+  goToCreateTicketFH = new BehaviorSubject(false);
   currentGoToCreateTicketFH = this.goToCreateTicketFH.asObservable();
 
   showSouscriptionList = new BehaviorSubject(false);
@@ -35,39 +35,59 @@ export class UploadfileService {
   showBtnEnvoieReponseIntermedaire = new BehaviorSubject(false);
   currentBtnEnvoieReponseIntermedaire = this.showBtnEnvoieReponseIntermedaire.asObservable();
 
-  constructor() { }
+  constructor() {
 
-  // Reponse intermediaire
-  changeShowBtnEnvoieReponseIntermedaire(show : boolean){
-    this.showBtnEnvoieReponseIntermedaire.next(show) ;
   }
 
-  changeshowSouscriptionList(data : any){
+  // Reponse intermediaire
+  changeShowBtnEnvoieReponseIntermedaire(show: boolean) {
+    this.showBtnEnvoieReponseIntermedaire.next(show);
+  }
+
+  changeshowSouscriptionList(data: any) {
     this.showSouscriptionList.next(data);
   }
 
-  changeLoadFH_Data(value : boolean) {
-    this.loadFH_Data.next(value) ;
-    console.log(this.loadFH_Data.getValue()) ;
+  changeLoadFH_Data(value: boolean) {
+    this.loadFH_Data.next(value);
+    console.log(this.loadFH_Data.getValue());
   }
 
-  changeIsAnyData(value : boolean){
-      this.isAnyData.next(value);
+  changeIsAnyData(value: boolean) {
+    this.isAnyData.next(value);
   }
 
-  changeNumberOfResults(val : any){
-      this.numberOfResults.next(val)
+  changeNumberOfResults(val: any) {
+    this.numberOfResults.next(val)
   }
 
-  changeCheckedSub(data : any){
-     this.checkedSubscriptions.next(data);
+  changeCheckedSub(data: any) {
+    this.checkedSubscriptions.next(data);
   }
 
-  changeAllFileUploaded(files : any){
-      this.allFilesUploaded.next(files);
+  changeAllFileUploaded(files: any) {
+    this.allFilesUploaded.next(files);
   }
 
-  changegoToCreateTicketFH(val : any){
+  changegoToCreateTicketFH(val: any) {
     this.goToCreateTicketFH.next(val);
+  }
+  async  encodeFileToBase64(file: any): Promise<string> {
+    const reader = new FileReader();
+    let value: any
+    return new Promise((resolve, reject) => {
+      if(file!=null){
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          value = reader.result;
+          resolve(value);
+        };
+        reader.onerror = function (error) {
+          resolve("");
+        };
+      }else{
+        resolve("");
+      }
+    });
   }
 }

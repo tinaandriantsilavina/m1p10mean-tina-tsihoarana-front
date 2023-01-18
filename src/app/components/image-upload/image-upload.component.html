@@ -10,8 +10,9 @@
 <div class="contenu" *ngIf="url">
   <div class="titre1">
     <img class="image-content" [src]="url" *ngIf="url">
+     {{image.name}} ({{image.size>1 ? image.size/1000 : 0}} ko)
   </div>
   <div class="titre2">
-    <i class="fa fa-trash" aria-hidden="true"  *ngIf="url" (click)="deleteFile()"></i>
+    <i class="fa fa-trash" aria-hidden="true" (click)="deleteFile()"></i>
   </div>
 </div>

@@ -10,22 +10,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./depot-voiture.component.scss']
 })
 export class DepotVoitureComponent implements OnInit {
-  submitted=false;
-  formulaire : FormGroup;
-  message="";
-  testdata : any;
+  submitted = false;
+  formulaire: FormGroup;
+  message = "";
+  testdata: any;
+  maxsize =1;
   @ViewChild(ImageUploadComponent, { static: false }) image: ImageUploadComponent;
   ngAfterViewInit(): void {
   }
 
   constructor(
-    public route:ActivatedRoute ,
-    public router:Router,
-    public formBuilder:FormBuilder,
-    public uploadService:UploadfileService
-    ) {
+    public route: ActivatedRoute,
+    public router: Router,
+    public formBuilder: FormBuilder,
+    public uploadService: UploadfileService
+  ) {
 
-    }
+  }
 
   onSubmit(): void {
     this.submitted = true; // ijerena ftsn we ef nanindry an ilay boutton ve izy
@@ -34,11 +35,12 @@ export class DepotVoitureComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.formulaire.controls;
   }
-  initForm(){
+  initForm() {
     this.formulaire = this.formBuilder.group(
       {
-        st1:["tsila", [Validators.required]],
-        st2:["123456", [Validators.required]]
+        marque_voiture: ["Mercedes-benz", [Validators.required]],
+        model_voiture: ["Sprinter 312", [Validators.required]],
+        date_deposition: ["2022-01-10", [Validators.required]]
       }
     ); //methode retourn objet de type FormGroup
   }
@@ -47,14 +49,20 @@ export class DepotVoitureComponent implements OnInit {
     this.initForm();
   }
 
-  async valider(){
-    if(this.formulaire.valid){
-      this.message =" "
+  async valider() {
+    if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
-      console.log(this.formulaire.getRawValue())
-      const base64 = await this.uploadService.encodeFileToBase64(this.image.image);
-      console.log(base64)
-    }else{
+      if (this.image.image.size > this.maxsize) {
+        this.message = " "
+        let image = await this.uploadService.encodeFileToBase64(this.image.image);
+        let form = {}
+        form = this.formulaire.getRawValue()
+        form['image'] = image
+        console.log(form)
+      }else{
+        this.message = "la taille de l'image ne doit pas dépasser"+this.maxsize/1000+  " ko";
+      }
+    } else {
       this.message = "Veuillez remplir le formulaire correctement";
     }
   }

@@ -17,11 +17,16 @@ résultat attendu:
 
 ```json
 {
-  status:"",
+  status:"ok",
   data : [],
   message : "" 
 }
-// sdfhsdjhsjfk
+```bash
+Description resultat attendu
+  status: ok si success ko sy erreur
+  data : []
+  message: zay mety amna fa mfanaraka am ilay status (erreur ou success); iny no afficherko am popup 
 ```
+
 
 

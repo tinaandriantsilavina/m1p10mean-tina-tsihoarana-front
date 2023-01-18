@@ -11,12 +11,13 @@ export class AppComponent {
   title = 'meanfront';
   users : any;
   class : any;
+  menutoogle : boolean = false
   constructor(public authservice: AuthService, public router: Router) {
-    if (authservice.users == null) {
-      this.class = ""
-    } else {
+    // if (authservice.users == null ) {
+    //   this.class = ""
+    // } else {
       this.class = 'main-content';
-    }
+    // }
   }
   deconnexion() {
     return new Promise((resolve, reject) => {

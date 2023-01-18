@@ -17,9 +17,9 @@ résultat attendu:
 
 ```json
 {
-  status:"ok" : si success ; "ko": si erreur ,
-  data : []
-  message : "Message Success" si success ; "Message erreur " si erreur  // zay mahafalyfaly an lah lesy le message eto fa iny no afficher ko eo am popup 
+  status:"" /* ok si success/  "ko": si erreur */ ,
+  data : [],
+  message : "" //si success "Message erreur " si erreur  // zay mahafalyfaly an lah lesy le message eto fa iny no afficher ko eo am popup 
 }
 ```
 

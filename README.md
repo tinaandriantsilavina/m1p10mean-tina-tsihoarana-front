@@ -19,7 +19,7 @@ résultat attendu:
 {
   "status":"ok", // "ok" si success "ko" sy erreur
   "data" : [],
-  "message" : ""  //zay mety amna fa mfanaraka am ilay status (erreur ou success); iny no afficherko am popup 
+  "message" : ""  //zay mety amnao fa mfanaraka am ilay status (erreur ou success); iny no afficherko am popup 
 }
 ```
 

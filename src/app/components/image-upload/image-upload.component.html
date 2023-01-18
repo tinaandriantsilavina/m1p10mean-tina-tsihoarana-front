@@ -1,7 +1,7 @@
 <div class="container" appDnd>
   <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
   <input type="file" #fileDropRef id="fileDropRef" type="file" (change)="selectFile($event)" />
-  <h6>Faites glisser vos fichiers ici</h6>
+  <h6>Faites glisser votre image ici</h6>
   <h6>ou</h6>
   <label for="fileDropRef">Parcourir le fichier</label>
 </div>

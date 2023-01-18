@@ -34,7 +34,8 @@
               "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/adminstyle/lib/font-awesome/css/font-awesome.min.css",
               "src/assets/adminstyle/css/style.css",
-              "src/assets/adminstyle/css/style-responsive.css"
+              "src/assets/adminstyle/css/style-responsive.css",
+              "node_modules/ngx-spinner/animations/ball-circus.css"
             ],
             "scripts": []
           },

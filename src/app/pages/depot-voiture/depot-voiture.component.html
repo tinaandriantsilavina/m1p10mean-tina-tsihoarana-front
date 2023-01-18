@@ -1,11 +1,14 @@
 <div class="center-div shadow">
   <h4 class="text-center">Depot Voiture </h4>
+  <ngx-spinner [name]="spinner_name" [fullScreen]="false" [type]="spinner_type" [size]="spinner_size"
+    [bdColor]="spinner_background"></ngx-spinner>
+
   <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
   <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
     <div class="row">
       <div class="col">
         <div class="form-group">
-          <label for="exampleInputEmail1">Marque de la  voiture</label>
+          <label for="exampleInputEmail1">Marque de la voiture</label>
           <input formControlName="marque_voiture" type="text" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
           <div *ngIf="submitted && f.marque_voiture.errors">
@@ -27,7 +30,6 @@
             <small *ngIf="f.date_deposition.errors.required" style="color: red">Champ Obligtoire</small>
           </div>
         </div>
-
       </div>
       <div class="col">
         <app-image-upload></app-image-upload>
@@ -38,3 +40,29 @@
     </div>
   </form>
 </div>
+
+
+<ng-template #modalcontent let-modal>
+  <div>
+    <div class="modal-header modale-header-charte">
+      <h6 class="modal-title" id="modal-basic-title"> Titre Modal </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Date de la déposition</label>
+        <ng-select class="form-control" bindLabel="role.slug"  notFoundText="Aucun rôle  trouvé"
+          [searchable]="true" [clearable]="true">
+          <ng-option [value]="role.id" *ngFor="let role of allRole">
+            {{role.slug}}
+          </ng-option>
+        </ng-select>
+        <div *ngIf="submitted && f.date_deposition.errors">
+          <small *ngIf="f.date_deposition.errors.required" style="color: red">Champ Obligtoire</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

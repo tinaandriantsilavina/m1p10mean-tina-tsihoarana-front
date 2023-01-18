@@ -1,7 +1,9 @@
+import { ToastrModule } from 'ngx-toastr';
 import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,7 +14,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { ProgressComponent } from './components/progress/progress.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -23,16 +26,29 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     NotfoundComponent,
     InscriptionComponent,
     DepotVoitureComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule,
+    ToastrModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [
+    NgxSpinnerModule,
+  ],
+  providers: [
+    // ToastrService
+  ],
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule { }

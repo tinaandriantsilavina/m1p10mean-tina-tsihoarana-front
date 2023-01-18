@@ -6,7 +6,6 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-
 @Component({
   selector: 'app-depot-voiture',
   templateUrl: './depot-voiture.component.html',

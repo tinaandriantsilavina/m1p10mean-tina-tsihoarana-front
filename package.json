@@ -24,6 +24,10 @@
     "ngx-spinner": "^15.0.1",
     "toastr": "^2.1.4",
     "ngx-toastr": "^16.0.2",
+    "chart.js": "^2.7.3",
+    "chartjs-plugin-datalabels": "^0.4.0",
+    "chartjs-plugin-labels": "^1.1.0",
+    "angular-highcharts": "^6.2.6",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

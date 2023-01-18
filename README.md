@@ -17,10 +17,11 @@ résultat attendu:
 
 ```json
 {
-  status:"" /* ok si success/  "ko": si erreur */ ,
+  status:"",
   data : [],
-  message : "" //si success "Message erreur " si erreur  // zay mahafalyfaly an lah lesy le message eto fa iny no afficher ko eo am popup 
+  message : "" 
 }
+// sdfhsdjhsjfk
 ```
 
 

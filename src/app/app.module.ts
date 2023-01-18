@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
 import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
@@ -36,7 +37,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -45,7 +46,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule,
   ],
   providers: [
-    // ToastrService
+    ToastrService
   ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

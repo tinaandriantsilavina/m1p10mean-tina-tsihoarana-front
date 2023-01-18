@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UploadfileService } from './../../services/uploadfile.service';
 import { ImageUploadComponent } from './../../components/image-upload/image-upload.component';
@@ -47,7 +48,7 @@ export class DepotVoitureComponent implements OnInit {
     public uploadService: UploadfileService,
     private spinner: NgxSpinnerService,
     public modal: NgbModal,
-    // private toastr: ToastrService,
+    private toastr: ToastrService,
   ) {
     this.spinner_name = "spinner_list";
     this.spinner_type = "ball-circus";
@@ -74,10 +75,12 @@ export class DepotVoitureComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    // this.toastr.success("huhu")
       // this.spinner.show(this.spinner_name);
   }
 
   async valider() {
+    this.toastr.success("huhu","hahah")
     this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true  });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)

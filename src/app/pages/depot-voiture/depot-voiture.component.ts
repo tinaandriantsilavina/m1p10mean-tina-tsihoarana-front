@@ -5,7 +5,7 @@ import { ImageUploadComponent } from './../../components/image-upload/image-uplo
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+// import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: 'app-depot-voiture',
   templateUrl: './depot-voiture.component.html',
@@ -17,7 +17,7 @@ export class DepotVoitureComponent implements OnInit {
   message = "";
   testdata: any;
   maxsize =1;
-  modalActive:NgbActiveModal
+  // modalActive:NgbActiveModal
 
   spinnerName: string = 'action';
   spinnerType = 'ball-clip-rotate-pulse';
@@ -46,7 +46,7 @@ export class DepotVoitureComponent implements OnInit {
     public formBuilder: FormBuilder,
     public uploadService: UploadfileService,
     private spinner: NgxSpinnerService,
-    public modal: NgbModal,
+    // public modal: NgbModal,
     private toastr: ToastrService,
   ) {
     this.spinner_name = "spinner_list";
@@ -80,7 +80,7 @@ export class DepotVoitureComponent implements OnInit {
 
   async valider() {
     this.toastr.success("huhu","hahah")
-    this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true  });
+    // this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true  });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
       if (this.image.image.size > this.maxsize) {

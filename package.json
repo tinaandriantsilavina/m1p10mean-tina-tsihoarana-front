@@ -9,7 +9,7 @@
          "npm_config_scripts_prepend_node_path": "true",
          "npm_config_prefer_offline": "true"
        },
-       "command": "npm i --force && npm run build"
+       "command": "npm i --force"
     },
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

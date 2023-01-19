@@ -1,4 +1,4 @@
-import { NgbActiveModal,NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal,NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UploadfileService } from './../../services/uploadfile.service';
@@ -19,7 +19,7 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
   message = "";
   testdata: any;
   maxsize = 1;
-  modalActive: NgbActiveModal
+  // modalActive: NgbActiveModal
   // spinner_name: string = 'action';
   // spinner_type = 'ball-circus';
   // spinner_size = 'medium';
@@ -48,7 +48,7 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     public uploadService: UploadfileService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    private modal : NgbModal
+    // private modal : NgbModal
   ) {
     this.spinner_name = "spinner_list";
     this.spinner_type = "ball-circus";
@@ -81,10 +81,10 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
 
   async valider() {
     this.toastr.success("test", "NgModal")
-    setTimeout(() => {
-      this.spinner.show(this.spinner_name)
-    }, 5000);
-    this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true });
+    // setTimeout(() => {
+    //   this.spinner.show(this.spinner_name)
+    // }, 5000);
+    // this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
       if (this.image.image.size > this.maxsize) {

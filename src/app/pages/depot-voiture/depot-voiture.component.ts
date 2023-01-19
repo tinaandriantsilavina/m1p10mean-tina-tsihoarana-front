@@ -20,10 +20,10 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
   testdata: any;
   maxsize = 1;
   modalActive: NgbActiveModal
-  spinnerName: string = 'action';
-  spinnerType = 'ball-clip-rotate-pulse';
-  spinnerSize = 'medium';
-  spinnerBackground = 'rgba(51,51,51,0.1)';
+  // spinner_name: string = 'action';
+  // spinner_type = 'ball-circus';
+  // spinner_size = 'medium';
+  // spinner_background = 'rgba(51,51,51,0.1)';
 
   @ViewChild(ImageUploadComponent, { static: false }) image: ImageUploadComponent;
   @ViewChild('modalcontent', { static: true }) modalcontent: TemplateRef<any>;
@@ -76,10 +76,14 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.initForm();
     // this.toastr.success("huhu")
+
   }
 
   async valider() {
-    this.toastr.success("huhu", "hahah")
+    this.toastr.success("test", "NgModal")
+    setTimeout(() => {
+      this.spinner.show(this.spinner_name)
+    }, 5000);
     this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)

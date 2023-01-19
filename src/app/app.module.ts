@@ -15,7 +15,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { ProgressComponent } from './components/progress/progress.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+// import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule,
+    // NgSelectModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     BrowserAnimationsModule,

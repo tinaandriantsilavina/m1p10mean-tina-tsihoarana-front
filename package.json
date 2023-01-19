@@ -4,12 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": {
-      "env": {
-        "npm_config_scripts_prepend_node_path": "true",
-        "npm_config_prefer_offline": "true"
-      },
-      "command": "npm i --force && npm run build"
+     "build": {
+       "env": {
+         "npm_config_scripts_prepend_node_path": "true",
+         "npm_config_prefer_offline": "true"
+       },
+       "command": "npm i --force && npm run build"
     },
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

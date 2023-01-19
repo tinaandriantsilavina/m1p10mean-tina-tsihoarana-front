@@ -1,3 +1,4 @@
+// import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
 import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
@@ -15,7 +16,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { ProgressComponent } from './components/progress/progress.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-// import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({

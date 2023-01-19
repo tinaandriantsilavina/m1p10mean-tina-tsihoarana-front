@@ -50,11 +50,12 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
     <div class="modal-body">
       <div class="form-group">
         <label for="exampleInputEmail1">Date de la déposition</label>
-        <ng-select class="form-control" bindLabel="role.slug"  notFoundText="Aucun rôle  trouvé"
-          [searchable]="true" [clearable]="true">
+        <ng-select class="form-control" bindLabel="role.slug" notFoundText="Aucun rôle  trouvé" [searchable]="true"
+          [clearable]="true">
           <ng-option [value]="role.id" *ngFor="let role of allRole">
             {{role.slug}}
           </ng-option>
@@ -66,3 +67,10 @@
     </div>
   </div>
 </ng-template>
+
+
+------ hight chat
+<!-- <div id="divChart">
+  <canvas id="myChart"></canvas>
+</div> -->
+-------------

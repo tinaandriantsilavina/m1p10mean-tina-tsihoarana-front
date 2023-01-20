@@ -19,6 +19,7 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalModule } from './components/_modal';
+import { VoitureListeComponent } from './pages/voiture-liste/voiture-liste.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ModalModule } from './components/_modal';
     InscriptionComponent,
     DepotVoitureComponent,
     ImageUploadComponent,
+    VoitureListeComponent,
 
   ],
   imports: [

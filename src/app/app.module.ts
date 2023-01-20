@@ -18,6 +18,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ModalModule } from './components/_modal';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    ModalModule
   ],
   exports: [
     NgxSpinnerModule,

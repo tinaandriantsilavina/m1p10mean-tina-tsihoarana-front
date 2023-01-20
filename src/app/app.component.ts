@@ -1,6 +1,7 @@
 import { AuthService } from './services/auth/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalService } from './components/_modal';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   users : any;
   class : any;
   menutoogle : boolean = false
-  constructor(public authservice: AuthService, public router: Router) {
+  constructor(public authservice: AuthService, public router: Router,private modalService: ModalService) {
     // if (authservice.users == null ) {
     //   this.class = ""
     // } else {
@@ -65,4 +66,12 @@ export class AppComponent {
     // }
     //
   }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+}
+
+closeModal(id: string) {
+    this.modalService.close(id);
+}
 }

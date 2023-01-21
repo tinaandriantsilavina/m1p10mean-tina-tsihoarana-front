@@ -33,8 +33,7 @@ import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details
     DepotVoitureComponent,
     ImageUploadComponent,
     VoitureListeComponent,
-    VoitureDetailsComponent,
-
+    VoitureDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,7 @@ import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    ModalModule
+    ModalModule,
   ],
   exports: [
     NgxSpinnerModule,

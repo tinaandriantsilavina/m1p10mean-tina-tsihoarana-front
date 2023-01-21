@@ -2,6 +2,7 @@ import { AuthService } from './services/auth/auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from './components/_modal';
+import { spinner_background, spinner_type } from 'src/environments/variable';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,12 @@ export class AppComponent {
   title = 'meanfront';
   users : any;
   class : any;
+  spinner_type =""
+  spinner_background=""
   menutoogle : boolean = false
   constructor(public authservice: AuthService, public router: Router,private modalService: ModalService) {
+    this.spinner_type = spinner_type;
+    this.spinner_background = spinner_background;
     if (authservice.users == null ) {
       this.class = ""
     } else {

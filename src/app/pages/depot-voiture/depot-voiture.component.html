@@ -1,7 +1,6 @@
 <div class="center-div shadow">
   <h4 class="text-center">Depot Voiture </h4>
-  <ngx-spinner [name]="spinner_name" [fullScreen]="false" [type]="spinner_type" [bdColor]="spinner_background">
-  </ngx-spinner>
+
   <!-- hhhh -->
   <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
   <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">

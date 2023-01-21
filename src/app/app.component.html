@@ -55,7 +55,7 @@ lines (63 sloc) 2.43 KB
           <span>Utilisateur</span>
         </a>
         <ul class="sub">
-          <li><a routerLink="inscription">Inscription</a></li>
+          <li><a routerLink="inscription" *ngIf="this.authservice.users==null">Inscription</a></li>
           <li><a routerLink="login" *ngIf="this.authservice.users==null">Login</a></li>
           <!-- <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li> -->
           <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li>
@@ -67,6 +67,7 @@ lines (63 sloc) 2.43 KB
 <div style="margin-bottom: 50px">lklkl</div>
 <div id="{{class}}">
   <div class="container-fluid" style="margin-left: 10px; margin-right: 10px">
+    <ngx-spinner  [type]="spinner_type" [bdColor]="spinner_background"></ngx-spinner>
     <router-outlet></router-outlet>
   </div>
 

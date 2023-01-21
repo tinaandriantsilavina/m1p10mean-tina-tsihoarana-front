@@ -71,6 +71,10 @@ export class AuthService {
 
   }
 
+  inscription(body){
+    console.log(body);
+    return this.http.post(base_url + 'api/users', body);
+  }
   connexion(body: any){
     console.log(body);
     return this.http.post(base_url + 'api/auth', body);

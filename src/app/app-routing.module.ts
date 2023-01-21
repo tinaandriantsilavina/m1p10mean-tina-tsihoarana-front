@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
 
 const routes: Routes = [
-  { path: 'connexion/loginform', component:  LoginComponent},
+  { path: 'login', component:  LoginComponent},
   { path :'not-found' , component:NotfoundComponent},
   { path :'depot-voiture' , component: DepotVoitureComponent},
   { path :'liste-voiture' , component: VoitureListeComponent},

@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit , AfterViewInit{
   initForm(){
     this.formulaire = this.formBuilder.group(
       {
-        st1:["tsila", [Validators.required]],
-        st2:["123456", [Validators.required]]
+        email:["a@a.com", [Validators.required]],
+        password:["12345", [Validators.required]]
       }
     ); //methode retourn objet de type FormGroup
   }
@@ -53,18 +53,25 @@ export class LoginComponent implements OnInit , AfterViewInit{
       this.authservice.connexion(this.formulaire.getRawValue()).subscribe(
         d => {
           let data = (d as {[key: string]: any})
-          if(data['status'] ==200){
-            console.log(data['data']);
-            localStorage.setItem('users',JSON.stringify(data['data'][0]))
-            localStorage.setItem('token',data['data'][1])
-            this.router.navigate([''])
+          // if(data['status'] ==200){
+            console.log(data);
+            // localStorage.setItem('users',JSON.stringify(data['data'][0]))
+            // localStorage.setItem('token',data['data'][1])
+            let user = {
+              name:"huhu",
+              surname:"heheh"              
+          }
+            localStorage.setItem('users', JSON.stringify(user))
+            localStorage.setItem('token',data['token'])
+            
+            this.router.navigate(['liste-voiture'])
               .then(() => {
                 window.location.reload();
               });
-          }
-          else{
-            this.message="Mot de Passe ou User Incorrecte";
-          }
+          // }
+          // else{
+          //   this.message="Mot de Passe ou User Incorrecte";
+          // }
         },error => {
           this.message = <any>error;
           if(this.message != null){

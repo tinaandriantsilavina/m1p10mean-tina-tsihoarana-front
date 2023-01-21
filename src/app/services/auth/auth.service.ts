@@ -11,7 +11,7 @@ export class AuthService {
     let tok=localStorage.getItem('token');
     this.getUsersByToken(tok);
     if(localStorage.getItem('users')!=null ){
-        // this.users=JSON.parse(localStorage.getItem('users'));
+        this.users=JSON.parse(localStorage.getItem('users') || '{}');
       }
     console.log("Constructor  Am auth TOKEN "+tok)
   }
@@ -19,31 +19,31 @@ export class AuthService {
     let body={
       "st1":token
     }
-    new Promise((resolve, reject) => {
-      this.http.post(base_url + 'login/verifierToken', body).subscribe(
-        data => {
-          // let d = (data as {[key: string]: any})
-          if(data['status'] ==200){
-            localStorage.setItem('users',JSON.stringify(data['data'][0]))
-            localStorage.setItem('token',data['data'][1])
-            console.log("Verification TOTOTOT")
-            console.log(this.users)
-          }
-          else{
-            console.log("===========>>>> " )
-            console.log(body)
-            localStorage.clear()
-            // reject('Erreur Connexx');
-          }
-        },error => {
-          let message = <any>error;
-          if(message != null){
-            // reject(message);
-            localStorage.clear()
-          }
-        }
-      );
-    })
+    // new Promise((resolve, reject) => {
+    //   this.http.post(base_url + 'login/verifierToken', body).subscribe(
+    //     data => {
+    //       // let d = (data as {[key: string]: any})
+    //       if(data['status'] ==200){
+    //         localStorage.setItem('users',JSON.stringify(data['data'][0]))
+    //         localStorage.setItem('token',data['data'][1])
+    //         console.log("Verification TOTOTOT")
+    //         console.log(this.users)
+    //       }
+    //       else{
+    //         console.log("===========>>>> " )
+    //         console.log(body)
+    //         localStorage.clear()
+    //         // reject('Erreur Connexx');
+    //       }
+    //     },error => {
+    //       let message = <any>error;
+    //       if(message != null){
+    //         // reject(message);
+    //         localStorage.clear()
+    //       }
+    //     }
+    //   );
+    // })
   }
 
   option (use_authorization = false) {
@@ -61,7 +61,8 @@ export class AuthService {
         headers: new HttpHeaders(
           {
             'Authorization': 'Bearer ' + tok,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-auth-token':tok
           })}
     }
     return headers;
@@ -72,15 +73,13 @@ export class AuthService {
 
   connexion(body: any){
     console.log(body);
-    return this.http.post(base_url + 'login/connexionusers', body);
+    return this.http.post(base_url + 'api/auth', body);
   }
   deconnexion(){
     let body={
       "int1":this.users.idusers
     }
     console.log(body)
-    // localStorage.clear()
-    // this.users=[];
-    return this.http.post(base_url + 'login/deconnexionusers', body);
+    return this.http.post(base_url + 'deconnexion', body);
   }
 }

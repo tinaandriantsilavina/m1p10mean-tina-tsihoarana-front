@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { base_url } from 'src/environments/environment';
+import { SharedService } from '../shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   users: any;
-  constructor(private http:HttpClient) {
+  constructor(
+    private http:HttpClient,
+    private sharedService : SharedService
+    ) {
     let tok=localStorage.getItem('token');
+    this.sharedService.user$.subscribe(value => {
+      this.users = value;
+    });
     this.getUsersByToken(tok);
     if(localStorage.getItem('users')!=null ){
         this.users=JSON.parse(localStorage.getItem('users') || '{}');

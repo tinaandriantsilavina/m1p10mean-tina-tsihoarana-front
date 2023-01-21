@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from './components/_modal';
 import { spinner_background, spinner_type } from 'src/environments/variable';
+import { SharedService } from './services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,18 @@ export class AppComponent {
   spinner_type =""
   spinner_background=""
   menutoogle : boolean = false
-  constructor(public authservice: AuthService, public router: Router,private modalService: ModalService) {
+  constructor(public authservice: AuthService, 
+    public router: Router,
+    private modalService: ModalService,
+    private sharedService : SharedService
+    ) {
     this.spinner_type = spinner_type;
     this.spinner_background = spinner_background;
+
+    this.sharedService.class$.subscribe(value => {
+      this.class = value;
+    });
+
     if (authservice.users == null ) {
       this.class = ""
     } else {
@@ -27,10 +37,12 @@ export class AppComponent {
   }
   deconnexion() {
     localStorage.clear()
-    this.router.navigate([''])
-              .then(() => {
-                window.location.reload();
-              });
+    this.sharedService.changeUser(null);
+    this.sharedService.changeClass("");
+    this.router.navigate(['login'])
+              // .then(() => {
+              //   window.location.reload();
+              // });
     // return new Promise((resolve, reject) => {
     //   this.authservice.deconnexion().subscribe(
     //     data => {

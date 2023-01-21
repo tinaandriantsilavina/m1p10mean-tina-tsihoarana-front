@@ -1,7 +1,8 @@
 lines (63 sloc) 2.43 KB
 
 <!-- <aside> -->
-  <aside *ngIf="this.authservice.users!=null">
+  <!-- <aside  *ngIf="this.authservice.users!=null"> -->
+    <aside [ngClass]=" this.authservice.users!=null ? '' : 'display_none'" >
   <div id="sidebar" class="nav-collapse ">
 
     <ul class="sidebar-menu" id="nav-accordion">

@@ -1,7 +1,9 @@
 import { AuthService } from './../../services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from 'src/app/services/shared.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit , AfterViewInit{
   formulaire : FormGroup;
   message="";
   testdata : any;
+  @Output() emitClass = new EventEmitter<string>();
 
   ngAfterViewInit(): void {
     if(this.authservice.users!=null){
@@ -25,7 +28,10 @@ export class LoginComponent implements OnInit , AfterViewInit{
     public route:ActivatedRoute,
     public router:Router,
     public authservice:AuthService,
-    public formBuilder:FormBuilder) {
+    public formBuilder:FormBuilder,
+    public sharedService: SharedService,
+    public spinner : NgxSpinnerService
+    ) {
 
   }
 
@@ -49,6 +55,7 @@ export class LoginComponent implements OnInit , AfterViewInit{
     this.testdata=localStorage.getItem('users');
   }
   connexion(){
+    this.spinner.show()
     return new Promise((resolve, reject) => {
       this.authservice.connexion(this.formulaire.getRawValue()).subscribe(
         d => {
@@ -63,11 +70,14 @@ export class LoginComponent implements OnInit , AfterViewInit{
           }
             localStorage.setItem('users', JSON.stringify(user))
             localStorage.setItem('token',data['token'])
-            
+            this.sharedService.changeClass("main-content");
+            this.sharedService.changeUser(user);
+            // this.emitClass.emit('Event emitted!');
             this.router.navigate(['liste-voiture'])
-              .then(() => {
-                window.location.reload();
-              });
+            //   .then(() => {
+            //     window.location.reload();
+            //   });
+
           // }
           // else{
           //   this.message="Mot de Passe ou User Incorrecte";

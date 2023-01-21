@@ -51,10 +51,6 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     // private modal : NgbModal
   ) {
-    this.spinner_name = "spinner_list";
-    this.spinner_type = "ball-circus";
-    this.spinner_size = "medium";
-    this.spinner_background = "rgba(51,51,51,0.3)";
   }
 
   onSubmit(): void {
@@ -105,11 +101,4 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
       // this.toastr.warning('Veuillez y mettre une réponse intermédiaire');
     }
   }
-
-
-
-
-
-
-
 }

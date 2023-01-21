@@ -5,12 +5,14 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
 
 const routes: Routes = [
   { path: 'connexion/loginform', component:  LoginComponent},
   { path :'not-found' , component:NotfoundComponent},
   { path :'depot-voiture' , component: DepotVoitureComponent},
   { path :'liste-voiture' , component: VoitureListeComponent},
+  { path :'detail-voiture/:idvoiture' , component: VoitureDetailsComponent},
   { path :'inscription' , component : InscriptionComponent},
 
 

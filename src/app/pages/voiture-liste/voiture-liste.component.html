@@ -15,10 +15,10 @@
           Status: <span class="badge badge-success"> En cours</span>
         </div>
         <div class="titre2">
-          <span type="button" class="badge badge-info">
+          <a [routerLink]="['/detail-voiture',l['_id']]" type="button" class="badge badge-info">
             <i class="fa fa-plus" aria-hidden="true"></i>
             Voir Plus
-          </span>
+          </a>
         </div>
       </div>
     </li>

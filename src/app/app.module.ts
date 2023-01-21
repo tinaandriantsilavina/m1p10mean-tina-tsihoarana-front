@@ -20,6 +20,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalModule } from './components/_modal';
 import { VoitureListeComponent } from './pages/voiture-liste/voiture-liste.component';
+import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { VoitureListeComponent } from './pages/voiture-liste/voiture-liste.compo
     DepotVoitureComponent,
     ImageUploadComponent,
     VoitureListeComponent,
+    VoitureDetailsComponent,
 
   ],
   imports: [

@@ -76,10 +76,6 @@ export class LoginComponent implements OnInit , AfterViewInit{
             this.sharedService.changeUser(user);
             // this.emitClass.emit('Event emitted!');
             this.router.navigate(['liste-voiture'])
-            //   .then(() => {
-            //     window.location.reload();
-            //   });
-
           // }
           // else{
           //   this.message="Mot de Passe ou User Incorrecte";

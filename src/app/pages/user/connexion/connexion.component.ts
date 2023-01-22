@@ -1,17 +1,17 @@
-import { AuthService } from './../../services/auth/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SharedService } from 'src/app/services/shared.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-connexion',
+  templateUrl: './connexion.component.html',
+  styleUrls: ['./connexion.component.scss']
 })
-export class LoginComponent implements OnInit , AfterViewInit{
+export class ConnexionComponent {
 
   submitted=false;
   formulaire : FormGroup;

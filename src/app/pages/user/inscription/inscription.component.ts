@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { spinner_background, spinner_type } from 'src/environments/variable';
 
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.scss']
 })
-export class InscriptionComponent implements OnInit {
+export class InscriptionComponent {
   submitted=false;
   formulaire : FormGroup;
   message="";
@@ -30,8 +29,7 @@ export class InscriptionComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     ) {
-      this.spinner_type = spinner_type;
-      this.spinner_background = spinner_background;
+
   }
 
   onSubmit(): void {

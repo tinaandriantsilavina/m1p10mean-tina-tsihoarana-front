@@ -1,19 +1,19 @@
-import { VoitureService } from './../../services/voiture.service';
-import { Component, OnInit } from '@angular/core';
-import { Spinner, NgxSpinnerService } from 'ngx-spinner';
+import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { VoitureService } from 'src/app/services/voiture.service';
 
 @Component({
-  selector: 'app-voiture-liste',
-  templateUrl: './voiture-liste.component.html',
-  styleUrls: ['./voiture-liste.component.scss']
+  selector: 'app-voiture-list',
+  templateUrl: './voiture-list.component.html',
+  styleUrls: ['./voiture-list.component.scss']
 })
-export class VoitureListeComponent implements OnInit {
+export class VoitureListComponent {
   list=[]
   constructor(
     public voitureService: VoitureService,
-    private spinner: NgxSpinnerService,
-    private toastr: ToastrService
+    private spinner: NgxSpinnerService ,
+    private toastr: ToastrService 
   ) { }
 
   ngOnInit(): void {

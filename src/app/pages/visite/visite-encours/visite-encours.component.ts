@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { VisiteService } from 'src/app/services/visite.service';
@@ -8,7 +8,7 @@ import { VisiteService } from 'src/app/services/visite.service';
   templateUrl: './visite-encours.component.html',
   styleUrls: ['./visite-encours.component.scss']
 })
-export class VisiteEncoursComponent implements OnInit {
+export class VisiteEncoursComponent {
   list =[]
   constructor(
     private visiteService: VisiteService,

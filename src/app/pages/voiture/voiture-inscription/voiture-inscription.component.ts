@@ -1,31 +1,23 @@
-// import { NgbActiveModal,NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { UploadfileService } from './../../services/uploadfile.service';
-import { ImageUploadComponent } from './../../components/image-upload/image-upload.component';
-import { Component, OnInit, TemplateRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
+import { UploadfileService } from 'src/app/services/uploadfile.service';
 import { VoitureService } from 'src/app/services/voiture.service';
-// import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { Chart, registerables } from 'chart.js';
-// Chart.register(...registerables);
+
 @Component({
-  selector: 'app-depot-voiture',
-  templateUrl: './depot-voiture.component.html',
-  styleUrls: ['./depot-voiture.component.scss']
+  selector: 'app-voiture-inscription',
+  templateUrl: './voiture-inscription.component.html',
+  styleUrls: ['./voiture-inscription.component.scss']
 })
-export class DepotVoitureComponent implements OnInit, AfterViewInit {
+export class VoitureInscriptionComponent implements OnInit {
   submitted = false;
   formulaire: FormGroup;
   message = "";
   testdata: any;
   maxsize = 1;
-  // modalActive: NgbActiveModal
-  // spinner_name: string = 'action';
-  // spinner_type = 'ball-circus';
-  // spinner_size = 'medium';
-  // spinner_background = 'rgba(51,51,51,0.1)';
 
   @ViewChild(ImageUploadComponent, { static: false }) image: ImageUploadComponent;
   @ViewChild('modalcontent', { static: true }) modalcontent: TemplateRef<any>;
@@ -36,13 +28,6 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     id: 1,
 
   }]
-
-  spinner_name = "";
-  spinner_detail_tickets: any;
-  spinner_type: any;
-  spinner_size: any;
-  spinner_background: any;
-
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -51,12 +36,11 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private voitureService: VoitureService
-    // private modal : NgbModal
   ) {
   }
 
   onSubmit(): void {
-    this.submitted = true; // ijerena ftsn we ef nanindry an ilay boutton ve izy
+    this.submitted = true;
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -67,18 +51,16 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
       {
         marque: ["Mercedes-benz", [Validators.required]],
         modele: ["Sprinter 312", [Validators.required]],
-        numero: ["3198 TAB", [Validators.required]]
+        numero: ["3198TAB", [Validators.required]]
       }
     );
   }
 
   ngOnInit(): void {
     this.initForm();
-    // this.toastr.success("huhu")
   }
 
   async valider() {
-    // this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
       if (this.image.image.size > this.maxsize) {
@@ -93,17 +75,15 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
         // this.toastr.warning("Demande du depot voiture effectuer avec success");
       } else {
         // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
-        this.toastr.warning("Taille max",  "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
-        // this.toastr.warning("la taille de l'image ne doit pas dépasser"+this.maxsize/1000+  " ko");
+        this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
       }
     } else {
       this.message = "Veuillez remplir le formulaire correctement";
-      // this.toastr.warning('Veuillez y mettre une réponse intermédiaire');
     }
   }
 
 
-  enregistrervoiture(body){
+  enregistrervoiture(body) {
     let bod = {
       numero: body['numero']
     }
@@ -111,22 +91,22 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     return new Promise((resolve, reject) => {
       this.voitureService.enregistrerVoiture(bod).subscribe(
         d => {
-          let data = (d as {[key: string]: any})
+          let data = (d as { [key: string]: any })
           // if(data['status'] ==200){
-            console.log(data);
-            this.toastr.success("Inscription","Enregistrement terminé")
-            this.router.navigate(['/liste-voiture'])
-            this.spinner.hide()
+          console.log(data);
+          this.toastr.success("Inscription", "Enregistrement terminé")
+          this.router.navigate(['/liste-voiture'])
+          this.spinner.hide()
           // }
           // else{
           //   this.message="Mot de Passe ou User Incorrecte";
-            // this.toastr.warning("Erreur",data['message'])
+          // this.toastr.warning("Erreur",data['message'])
           // }
-        },error => {
+        }, error => {
           this.spinner.hide()
-          this.toastr.error("Erreur","Echec de la connexion")
+          this.toastr.error("Erreur", "Echec de la connexion")
           this.message = <any>error;
-          if(this.message != null){
+          if (this.message != null) {
           }
         }
       );

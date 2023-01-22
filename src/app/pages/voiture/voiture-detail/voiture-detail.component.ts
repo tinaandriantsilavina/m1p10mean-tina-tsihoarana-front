@@ -1,13 +1,13 @@
-import {Component, Directive, Input, ViewChild, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 @Component({
-  selector: 'app-voiture-details',
-  templateUrl: './voiture-details.component.html',
-  styleUrls: ['./voiture-details.component.scss']
+  selector: 'app-voiture-detail',
+  templateUrl: './voiture-detail.component.html',
+  styleUrls: ['./voiture-detail.component.scss']
 })
-export class VoitureDetailsComponent implements OnInit {
+export class VoitureDetailComponent {
   ngOnInit(): void {
     var myChart = new Chart("myChart", {
       type: 'polarArea',

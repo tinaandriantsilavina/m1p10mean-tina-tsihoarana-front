@@ -1,7 +1,6 @@
 // import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
-import { DepotVoitureComponent } from './pages/depot-voiture/depot-voiture.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,8 +19,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalModule } from './components/_modal';
 import { VoitureListeComponent } from './pages/voiture-liste/voiture-liste.component';
-import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
 import { VisiteEncoursComponent } from './pages/visite-encours/visite-encours.component';
+import { VoitureInscriptionComponent } from './pages/voiture/voiture-inscription/voiture-inscription.component';
+import { VoitureDetailComponent } from './pages/voiture/voiture-detail/voiture-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,12 @@ import { VisiteEncoursComponent } from './pages/visite-encours/visite-encours.co
     ProgressComponent,
     NotfoundComponent,
     InscriptionComponent,
-    DepotVoitureComponent,
     ImageUploadComponent,
     VoitureListeComponent,
-    VoitureDetailsComponent,
-    VisiteEncoursComponent
+    VoitureDetailComponent,
+    VisiteEncoursComponent,
+    VoitureInscriptionComponent,
+    VoitureDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,7 @@ import { VisiteEncoursComponent } from './pages/visite-encours/visite-encours.co
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    ModalModule,
+    ModalModule
   ],
   exports: [
     NgxSpinnerModule,

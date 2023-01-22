@@ -7,6 +7,7 @@ import { VoitureListComponent } from './pages/voiture/voiture-list/voiture-list.
 import { VisiteEncoursComponent } from './pages/visite/visite-encours/visite-encours.component';
 import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
+import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
 
 const routes: Routes = [
   { path: 'login', component:  ConnexionComponent},
@@ -16,6 +17,12 @@ const routes: Routes = [
   { path :'detail-voiture/:idvoiture' , component: VoitureDetailComponent},
   { path :'visite-encours' , component: VisiteEncoursComponent},
   { path :'inscription' , component : InscriptionComponent},
+
+
+  // responsable atelier
+  { path :'demande-voiture' , component: VoitureDemandeComponent},
+
+
   {path: '**', redirectTo:'/not-found'}
 
 ];

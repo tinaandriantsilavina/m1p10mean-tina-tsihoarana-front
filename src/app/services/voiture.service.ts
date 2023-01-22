@@ -2,12 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { base_url } from 'src/environments/environment';
 import { delay } from 'rxjs/operators';
+import { AuthService } from './auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class VoitureService {
   private url:any;
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+    ) {
     this.url = base_url
    }
   httpOptions = {
@@ -26,6 +30,10 @@ export class VoitureService {
     withCredentials: true
   };
 
+  enregistrerVoiture(body){
+    console.log(body);
+    return this.http.post(base_url + 'api/voitures/client/enregistrer', body, this.authService.option(true));
+  }
 
   // getreparation(dcs : any) {
   //   const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');

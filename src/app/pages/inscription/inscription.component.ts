@@ -73,6 +73,7 @@ export class InscriptionComponent implements OnInit {
           //   this.message="Mot de Passe ou User Incorrecte";
           // }
         },error => {
+          this.spinner.hide()
           this.message = <any>error;
           if(this.message != null){
           }

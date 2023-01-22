@@ -6,6 +6,7 @@ import { ImageUploadComponent } from './../../components/image-upload/image-uplo
 import { Component, OnInit, TemplateRef, ViewChild, AfterViewInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VoitureService } from 'src/app/services/voiture.service';
 // import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { Chart, registerables } from 'chart.js';
 // Chart.register(...registerables);
@@ -49,6 +50,7 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
     public uploadService: UploadfileService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
+    private voitureService: VoitureService
     // private modal : NgbModal
   ) {
   }
@@ -63,9 +65,9 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
   initForm() {
     this.formulaire = this.formBuilder.group(
       {
-        marque_voiture: ["Mercedes-benz", [Validators.required]],
-        model_voiture: ["Sprinter 312", [Validators.required]],
-        date_deposition: ["2022-01-10", [Validators.required]]
+        marque: ["Mercedes-benz", [Validators.required]],
+        modele: ["Sprinter 312", [Validators.required]],
+        numero: ["3198 TAB", [Validators.required]]
       }
     );
   }
@@ -73,14 +75,9 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.initForm();
     // this.toastr.success("huhu")
-
   }
 
   async valider() {
-    this.toastr.success("Modal component ceation", "NgModal")
-    setTimeout(() => {
-      this.spinner.show(this.spinner_name)
-    }, 5000);
     // this.modalActive = this.modal.open(this.modalcontent, { size: 'sm', backdrop: 'static', centered: true });
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
@@ -90,15 +87,49 @@ export class DepotVoitureComponent implements OnInit, AfterViewInit {
         let form = {}
         form = this.formulaire.getRawValue()
         form['image'] = image
+        this.enregistrervoiture(form)
         console.log(form)
+
         // this.toastr.warning("Demande du depot voiture effectuer avec success");
       } else {
-        this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
+        // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
+        this.toastr.warning("Taille max",  "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
         // this.toastr.warning("la taille de l'image ne doit pas dépasser"+this.maxsize/1000+  " ko");
       }
     } else {
       this.message = "Veuillez remplir le formulaire correctement";
       // this.toastr.warning('Veuillez y mettre une réponse intermédiaire');
     }
+  }
+
+
+  enregistrervoiture(body){
+    let bod = {
+      numero: body['numero']
+    }
+    this.spinner.show()
+    return new Promise((resolve, reject) => {
+      this.voitureService.enregistrerVoiture(bod).subscribe(
+        d => {
+          let data = (d as {[key: string]: any})
+          // if(data['status'] ==200){
+            console.log(data);
+            this.toastr.success("Inscription","Enregistrement terminé")
+            this.router.navigate(['/liste-voiture'])
+            this.spinner.hide()
+          // }
+          // else{
+          //   this.message="Mot de Passe ou User Incorrecte";
+            // this.toastr.warning("Erreur",data['message'])
+          // }
+        },error => {
+          this.spinner.hide()
+          this.toastr.error("Erreur","Echec de la connexion")
+          this.message = <any>error;
+          if(this.message != null){
+          }
+        }
+      );
+    })
   }
 }

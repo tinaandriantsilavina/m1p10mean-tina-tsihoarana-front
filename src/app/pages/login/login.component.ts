@@ -4,6 +4,7 @@ import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit , AfterViewInit{
     public authservice:AuthService,
     public formBuilder:FormBuilder,
     public sharedService: SharedService,
-    public spinner : NgxSpinnerService
+    public spinner : NgxSpinnerService,
+    private toastr : ToastrService
     ) {
 
   }
@@ -83,18 +85,14 @@ export class LoginComponent implements OnInit , AfterViewInit{
           //   this.message="Mot de Passe ou User Incorrecte";
           // }
         },error => {
-          this.message = <any>error;
-          if(this.message != null){
-          }
+          this.message = "Erreur connexion";
+          this.spinner.hide()
         }
       );
     })
   }
   ngOnInit(): void {
     this.initForm();
-  }
-  connexionn(){
-    console.log(this.formulaire.getRawValue());
   }
 
 }

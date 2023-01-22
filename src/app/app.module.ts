@@ -21,6 +21,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalModule } from './components/_modal';
 import { VoitureListeComponent } from './pages/voiture-liste/voiture-liste.component';
 import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
+import { VisiteEncoursComponent } from './pages/visite-encours/visite-encours.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details
     DepotVoitureComponent,
     ImageUploadComponent,
     VoitureListeComponent,
-    VoitureDetailsComponent
+    VoitureDetailsComponent,
+    VisiteEncoursComponent
   ],
   imports: [
     BrowserModule,

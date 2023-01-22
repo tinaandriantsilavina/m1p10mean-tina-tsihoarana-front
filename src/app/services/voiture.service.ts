@@ -24,6 +24,12 @@ export class VoitureService {
     console.log();
     return this.http.post(base_url + 'api/voitures/client/enregistrer',  this.authService.option(true));
   }
+
+  getlistevisiteencours(){
+    console.log();
+    return this.http.post(base_url + 'api/',  this.authService.option(true));
+  }
+
   getlistvoiture() {
     return   this.http.get('assets/datajson/voiture.json')
   }

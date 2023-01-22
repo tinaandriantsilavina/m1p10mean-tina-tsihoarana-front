@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VoitureDetailsComponent } from './pages/voiture-details/voiture-details.component';
+import { VisiteEncoursComponent } from './pages/visite-encours/visite-encours.component';
 
 const routes: Routes = [
   { path: 'login', component:  LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path :'depot-voiture' , component: DepotVoitureComponent},
   { path :'liste-voiture' , component: VoitureListeComponent},
   { path :'detail-voiture/:idvoiture' , component: VoitureDetailsComponent},
+  { path :'visite-encours' , component: VisiteEncoursComponent},
   { path :'inscription' , component : InscriptionComponent},
 
 

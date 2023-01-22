@@ -1,6 +1,7 @@
 import { VoitureService } from './../../services/voiture.service';
 import { Component, OnInit } from '@angular/core';
 import { Spinner, NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-voiture-liste',
@@ -12,6 +13,7 @@ export class VoitureListeComponent implements OnInit {
   constructor(
     public voitureService: VoitureService,
     private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {

@@ -20,4 +20,9 @@ export class VisiteService {
     console.log();
     return this.http.get(base_url + 'api/visites/client/encours',  this.authService.option(true));
   }
+
+  creervisite(voiture){
+    console.log();
+    return this.http.get(base_url + `api/visites/atelier/voiture/${voiture}/create`,  this.authService.option(true));
+  }
 }

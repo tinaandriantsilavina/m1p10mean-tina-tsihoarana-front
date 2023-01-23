@@ -1,3 +1,4 @@
+import { ModalService } from './../../../components/_modal/modal.service';
 import { VisiteService } from './../../../services/visite.service';
 import { Component } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -15,7 +16,8 @@ export class VoitureDemandeComponent {
     private voitureService: VoitureService,
     private visiteService : VisiteService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private modalService: ModalService,
   ){
 
   }
@@ -76,4 +78,13 @@ export class VoitureDemandeComponent {
         );
       })
     }
+
+    openModal(id: string) {
+      this.modalService.open(id);
+    }
+
+    closeModal(id: string) {
+      this.modalService.close(id);
+    }
+
 }

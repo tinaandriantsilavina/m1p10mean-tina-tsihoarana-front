@@ -12,9 +12,12 @@ jw-modal {
         bottom: 0;
         left: 0;
 
+        margin: 0 auto;
+        width: 80%;
+
         /* z-index must be higher than .jw-modal-background */
         z-index: 1000;
-        
+
         /* enables scrolling for tall modals */
         overflow: auto;
 
@@ -38,7 +41,7 @@ jw-modal {
         /* semi-transparent black  */
         background-color: #000;
         opacity: 0.75;
-        
+
         /* z-index must be below .jw-modal and above everything else  */
         z-index: 900;
     }
@@ -47,4 +50,5 @@ jw-modal {
 body.jw-modal-open {
     /* body overflow is hidden to hide main scrollbar when modal window is open */
     overflow: hidden;
+
 }

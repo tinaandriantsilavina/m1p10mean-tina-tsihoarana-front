@@ -21,8 +21,8 @@ export class VisiteService {
     return this.http.get(base_url + 'api/visites/client/encours',  this.authService.option(true));
   }
 
-  creervisite(voiture){
+  creervisite(voiture,body){
     console.log();
-    return this.http.get(base_url + `api/visites/atelier/voiture/${voiture}/create`,  this.authService.option(true));
+    return this.http.post(base_url + `api/visites/atelier/voiture/${voiture}/create`, body ,  this.authService.option(true));
   }
 }

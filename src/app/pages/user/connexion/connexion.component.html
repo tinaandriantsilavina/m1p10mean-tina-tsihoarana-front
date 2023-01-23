@@ -2,11 +2,11 @@
 
     <div class="col-md-6 offset-md-3 text-center">
       <div class="row align-items-center" style="margin-top: 10%">
-  
+
       </div>
     </div>
   </div>
-  
+
   <div class="center-div shadow">
       <h4 class="text-center">Connexion </h4>
       <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
@@ -26,15 +26,14 @@
             <small *ngIf="f.password.errors.required" style="color: red">Champ Obligtoire</small>
           </div>
         </div>
+        <div class="text-center">
+          <button (click)="connexion()" type="submit" class="btn btn-primary">Connexion</button>
+        </div>
         <div class="text-center" style="margin-bottom:20px">
           <a routerLink="/inscription" class="text-success" >
             Inscription
           </a>
         </div>
-        <div class="text-center">
-          <button (click)="connexion()" type="submit" class="btn btn-primary">Connexion</button>
-        </div>
       </form>
   </div>
-  
-  
+

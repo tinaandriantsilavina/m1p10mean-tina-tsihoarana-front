@@ -13,7 +13,8 @@
         <th scope="row"> {{l?.numero}} </th>
         <td>Mark</td>
         <td>
-          <button type="button"  class="btn btn-success btn-sm">Creer une
+          <button type="button" (click)="dialog.showModal() ; initForm(l?.numero)  "
+            class="btn btn-success btn-sm">Creer une
             visite</button>
         </td>
       </tr>
@@ -22,16 +23,27 @@
 </div>
 
 
-
-
 <div>
-<!-- <jw-modal id="custom-modal-2">
-  <div class="contenu">
-    <div class="titre1">
-      <h6>A Tall Custom Modal!</h6>
-    </div>
-    <div class="titre2">
-      <button (click)="closeModal('custom-modal-2');">Close</button>
-    </div>
-  </div>
-</jw-modal> -->
+  <dialog #dialog>
+    <header>
+      <div class="title">Modal Titre</div>
+      <span class="close-btn" (click)="dialog.close()"> ✖ </span>
+    </header>
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
+      <div class="center">
+        <div class="form-group">
+          <label>Date debut Visite</label>
+          <input formControlName="date_debut" type="date" class="form-control">
+          <div *ngIf="submitted && f.date_debut.errors">
+            <small *ngIf="f.date_debut.errors.required" style="color: red">Champ Obligtoire</small>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <button class="btn btn-success btn-sm" type="submit" (click)="dialog.close() ; creervisite() ">Ok</button>
+        <span style="margin-right: 10px;"></span>
+        <button class="btn btn-danger btn-sm" (click)="dialog.close()">Annuler</button>
+      </div>
+    </form>
+  </dialog>
+</div>

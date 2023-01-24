@@ -1,13 +1,13 @@
 
   .cont_breadcrumbs_2 {
-    position: relative;
+    // position: relative;
     width: 100%;
-    float: left;
-    margin: 20px 20px;
+    // float: left;
+    margin-bottom: 20px;
   }
 
   .cont_breadcrumbs_2 > ul > li {
-    position: relative;
+    // position: relative;
     float: left;
     transform: skewX(-15deg);
     background-color: #fff;
@@ -45,4 +45,19 @@
   background-color: #e7e7e7;
   margin-right: 50px;
   border-radius: 10px;
+}
+
+
+.bg-vert {
+  background-color: #00a72a;
+  color: white;
+  margin : 5px;
+  padding : 4.2px 7px;
+}
+
+.bg-black {
+  background-color: black;
+  color: white;
+  margin : 5px;
+  padding : 4.2px 7px;
 }

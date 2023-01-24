@@ -30,6 +30,21 @@ export class VoitureService {
     return this.http.get(base_url + 'api/voitures/atelier/demande',  this.authService.option(true));
   }
 
+  getlistevoiturecustome(numero,etat){
+    console.log();
+    return this.http.get(base_url + `api/voitures/atelier?numero=${numero}&etat=${etat}`,  this.authService.option(true));
+  }
+  getlistevoitureetat(etat){
+    console.log();
+    return this.http.get(base_url + `api/voitures/atelier?etat=${etat}`,  this.authService.option(true));
+  }
+
+  demandevoitureaccepter(id){
+    console.log();
+    let body =null;
+    return this.http.post(base_url + `api/voitures/atelier/demande/accepter/${id}`, body,  this.authService.option(true));
+  }
+
   deposervoiture(body){
     console.log();
     return this.http.post(base_url + 'api/voitures/client/deposer',body,  this.authService.option(true));

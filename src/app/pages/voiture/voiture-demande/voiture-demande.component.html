@@ -1,26 +1,67 @@
-<h5 class="text-center">Réception des voitures</h5>
-<div class="center-div shadow-lg p-3 mb-5 bg-white rounded">
-  <table class="table table table-striped table-hover">
-    <thead>
-      <tr class="bg-success white">
-        <th scope="col">Voiture</th>
-        <th scope="col">Proprietaire</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let l of list">
-        <th scope="row"> {{l?.numero}} </th>
-        <td>Mark</td>
-        <td>
-          <button type="button" (click)="dialog.showModal() ; initForm(l?.numero)  "
-            class="btn btn-success btn-sm">Creer une
-            visite</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="row">
+  <div class="cont_breadcrumbs_2">
+    <ul>
+      <li><a><span class="fa fa-home"></span> Accueil</a></li>
+      <li><a>Liste voitures</a></li>
+    </ul>
+  </div>
 </div>
+<div class="row" style="margin-top: 20px;" >
+  <div class="col">
+    <h6 class="title" >Voiture en attente</h6>
+    <div class=" shadow-lg p-3 mb-5 bg-white rounded">
+      
+      <table class="table table table-striped table-hover">
+        <thead>
+          <tr class="bg-warning white">
+            <th scope="col">Voiture</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of voiture_enattente">
+            <th scope="row"> {{l['numero']}} </th>
+            <td>
+              <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
+                class="btn btn-success btn-sm">Creer une
+                visite</button> -->
+                <button type="button"
+                class="btn btn-warning btn-sm btn-valider">Accepter</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col">
+    <h6 class="title" >Voiture Accepter</h6>
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+      <table class="table table table-striped table-hover">
+        <thead>
+          <tr class="bg-info white">
+            <th scope="col">Voiture</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of voitureaccepter">
+            <th scope="row"> {{l['numero']}} </th>
+            <td>
+              <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
+                class="btn btn-success btn-sm">Creer une
+                visite</button> -->
+                <button type="button" (click)="demandeaccepter(l['_id'])"
+                class="btn btn-info btn-sm btn-valider">  <i class="fa fa-cog" aria-hidden="true"></i>  details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 
 
 <div>

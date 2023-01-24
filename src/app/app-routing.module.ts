@@ -20,7 +20,7 @@ const routes: Routes = [
 
 
   // responsable atelier
-  { path :'demande-voiture' , component: VoitureDemandeComponent},
+  { path :'atelier-voiture' , component: VoitureDemandeComponent},
 
 
   {path: '**', redirectTo:'/not-found'}

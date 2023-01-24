@@ -23,6 +23,7 @@ import { VisiteEncoursComponent } from './pages/visite/visite-encours/visite-enc
 import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
+import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture
     VoitureDetailComponent,
     VoitureListComponent,
     ConnexionComponent,
-    VoitureDemandeComponent
+    VoitureDemandeComponent,
+    AtelierDetailVoitureComponent
   ],
   imports: [
     BrowserModule,

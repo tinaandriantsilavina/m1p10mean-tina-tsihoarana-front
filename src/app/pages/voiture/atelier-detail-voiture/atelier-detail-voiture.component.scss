@@ -1,0 +1,28 @@
+.shadow{
+    box-shadow: 5px 5px 20px rgba(204, 204, 204, 0.849);
+    border-radius: 10px;
+  }
+.item-voiture{
+    max-width: 350px;
+    margin: 0 auto;
+
+}
+
+
+.contenu {
+    display: inline-block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .titre1 {
+    float: left;
+  }
+  .titre2 {
+    float: right;
+    margin-top: 0.4%;
+  }
+  .titre2 i{
+    color: #ffffff;
+    font-size: large;
+  }

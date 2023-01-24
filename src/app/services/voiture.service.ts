@@ -34,6 +34,7 @@ export class VoitureService {
     console.log();
     return this.http.get(base_url + `api/voitures/atelier?numero=${numero}&etat=${etat}`,  this.authService.option(true));
   }
+
   getlistevoitureetat(etat){
     console.log();
     return this.http.get(base_url + `api/voitures/atelier?etat=${etat}`,  this.authService.option(true));

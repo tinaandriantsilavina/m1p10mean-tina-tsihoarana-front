@@ -52,7 +52,7 @@
               <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
                 class="btn btn-success btn-sm">Creer une
                 visite</button> -->
-                <button type="button" (click)="demandeaccepter(l['_id'])"
+                <button type="button" [routerLink]="['/atelier-detail-voiture',l['numero']]"
                 class="btn btn-info btn-sm btn-valider">  <i class="fa fa-cog" aria-hidden="true"></i>  details</button>
             </td>
           </tr>

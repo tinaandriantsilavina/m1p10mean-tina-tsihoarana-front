@@ -10,9 +10,9 @@ Chart.register(...registerables);
 })
 export class VoitureDetailComponent {
   isShowTab   : boolean = false;
-  currentTab =1;
+  currentTab =2;
   ngOnInit(): void {
-    this.chartInit()
+    // this.chartInit()
   }
   showTab(id) {
     this.currentTab = id

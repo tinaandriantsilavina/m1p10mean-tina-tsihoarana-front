@@ -4,7 +4,6 @@
    .tabset .tab-panel {
      display: none;
    }
-
    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
@@ -14,7 +13,7 @@
      display: block;
    }
 
- .mes_tickets{
+ .menu{
    color : #fff;
    text-decoration: none;
    text-transform: none!important;
@@ -23,8 +22,6 @@
  .card-header {
    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
    font-weight: bold;
-  //  text-transform: capitalize;
-  //  font-size: 11px;
  }
 .nav-tabs{
   background: rgba(0,0,0,0.0)
@@ -39,8 +36,6 @@
   margin : 5px;
   padding : 4.2px 7px;
 }
-
-
 .center {
   margin: 0 auto;
   width: 90%;

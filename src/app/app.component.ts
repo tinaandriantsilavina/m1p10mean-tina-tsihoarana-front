@@ -28,7 +28,6 @@ export class AppComponent {
     this.sharedService.class$.subscribe(value => {
       this.class = value;
     });
-
     if (authservice.users == null) {
       this.class = ""
     } else {

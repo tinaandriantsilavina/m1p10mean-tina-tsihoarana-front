@@ -30,6 +30,11 @@ export class VoitureService {
     return this.http.get(base_url + 'api/voitures/atelier/demande',  this.authService.option(true));
   }
 
+  deposervoiture(body){
+    console.log();
+    return this.http.post(base_url + 'api/voitures/client/deposer',body,  this.authService.option(true));
+  }
+
   getlistevisiteencours(){
     console.log();
     return this.http.post(base_url + 'api/',  this.authService.option(true));

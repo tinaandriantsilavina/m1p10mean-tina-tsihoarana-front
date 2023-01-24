@@ -19,10 +19,10 @@ export class VoitureListComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getlistvoiture()
+    this.getlistvoiturejson()
     this.getlistevoiture()
   }
-  getlistvoiture() {
+  getlistvoiturejson() {
     this.spinner.show()
     return new Promise((resolve, reject) => {
       // this.loadSouscription=1;
@@ -33,8 +33,7 @@ export class VoitureListComponent {
               console.log(this.list)
           }
           else {
-            // this.spinner.hide();
-            reject('Erreur Connexx');
+            reject('Erreur Connex');
           }
           this.spinner.hide()
         }, error => {
@@ -57,6 +56,35 @@ export class VoitureListComponent {
           else{
             this.message=data['message'];
             this.toastr.warning("Erreur",this.message)
+          }
+          this.spinner.hide()
+        }, error => {
+          this.spinner.hide()
+          this.message= "Echec de la connexion"
+          this.toastr.error(this.message, "Erreur")
+        }
+      );
+    })
+  }
+
+  
+  deposervoiture(numero) {
+    this.spinner.show()
+    let body ={
+      numero : numero
+    }
+    return new Promise((resolve, reject) => {
+      this.voitureService.deposervoiture(body).subscribe(
+        d => {
+          let data = (d as { [key: string]: any })
+          if(data['status'] ==200){
+            this.message ="Depot voiture "+numero+" terminé"
+            this.toastr.warning(this.message, "Success")
+            this.getlistevoiture()
+          }
+          else{
+            this.message=data['message'];
+            this.toastr.warning(this.message,"Erreur")
           }
           this.spinner.hide()
         }, error => {

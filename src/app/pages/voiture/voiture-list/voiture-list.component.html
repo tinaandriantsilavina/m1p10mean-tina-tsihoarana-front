@@ -23,14 +23,20 @@
             Status:
             <span
               [ngClass]="{'badge badge-secondary': l['etat'] == 0 , 'badge badge-primary': l['etat'] == 1 , 'badge badge-success': l['etat'] == 2 }">
-              {{ l['etat'] == 0 ? 'Demande de visite' : (l['etat']== 1 ? 'En cours' : 'Terminé' ) }}
+              {{ l['etat'] == 0 ? 'Demande de visite' : (l['etat']== 1 ? 'En cours' : '' ) }}
             </span>
           </div>
           <div class="titre2">
-            <button *ngIf="l['etat']== 1 || l['etat']== 2" [routerLink]="['/detail-voiture',l['_id']]" type="button" class="btn btn-info btn-sm">
+            <button *ngIf="l['etat']== 1" [routerLink]="['/detail-voiture',l['_id']]" type="button" class="btn btn-info btn-sm">
               <i class="fa fa-cog" aria-hidden="true"></i>
-              Details
+              Situation en cours
             </button>
+
+            <button *ngIf="l['etat']== 2" (click)="deposervoiture(l['numero'])" type="button" class="btn btn-primary btn-sm">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              Deposer
+            </button>
+
           </div>
         </div>
       </li>

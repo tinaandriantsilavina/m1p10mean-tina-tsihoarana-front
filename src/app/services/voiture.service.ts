@@ -14,15 +14,15 @@ export class VoitureService {
     ) {
     this.url = base_url
    }
- 
+
   enregistrerVoiture(body){
     console.log(body);
     return this.http.post(base_url + 'api/voitures/client/enregistrer', body, this.authService.option(true));
   }
 
-  getlisteVoiture(){
+  getlistevoiture(){
     console.log();
-    return this.http.post(base_url + 'api/voitures/client/enregistrer',  this.authService.option(true));
+    return this.http.get(base_url + 'api/voitures/client',  this.authService.option(true));
   }
 
   getlistedemande(){

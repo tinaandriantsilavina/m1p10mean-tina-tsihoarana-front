@@ -2,9 +2,9 @@
     box-shadow: 5px 5px 20px rgba(204, 204, 204, 0.849);
     border-radius: 10px;
   }
-  
-  
-  
+
+
+
   .contenu {
     display: inline-block;
     width: 100%;
@@ -19,4 +19,33 @@
   .titre2 i{
     color: #ffffff;
   }
-  
+
+  .voiture-container{
+    display: grid;
+    grid-template-columns: 120px 120px 120px;
+    align-items: start;
+  }
+
+
+
+  // .containerr {
+  //   width: 500px;
+  //   border: 5px solid rgb(111,41,97);
+  //   border-radius: .5em;
+  //   padding: 10px;
+  // }
+
+  .item {
+    width: 400px;
+    padding: 10px;
+    background-color: rgba(0, 122, 41, 0.3);
+    border: 2px solid rgba(0, 122, 41, 0.6);
+    display: inline-block;
+    vertical-align: middle;
+    margin :8px;
+  }
+
+  .center{
+    margin: 0 auto;
+    width: 10px;
+  }

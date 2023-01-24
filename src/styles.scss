@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+
+  .cont_breadcrumbs_2 {
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 20px 20px;
+  }
+
+  .cont_breadcrumbs_2 > ul > li {
+    position: relative;
+    float: left;
+    transform: skewX(-15deg);
+    background-color: #fff;
+  box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+  z-index: 1;
+  transition: all 0.5s;
+  }
+
+  .cont_breadcrumbs_2 > ul > li:hover {
+   background-color: #c4dfc3;
+  }
+
+  .cont_breadcrumbs_2 > ul > li  > a {
+    display: block;
+    padding: 10px;
+    font-size: 15px;
+   transform: skewX(15deg);
+   text-decoration:none;
+   color: #444;
+  font-weight: 300;
+  }
+  .cont_breadcrumbs_2 > ul > li:last-child {
+    background-color: #1b9e3cbe;
+    transform: skew(0deg);
+  margin-left: -5px;
+
+  }
+
+  .cont_breadcrumbs_2 > ul > li:last-child > a {
+    color: #fff;
+   transform: skewX(0deg);
+  }
+
+.cont_breadcrumbs_2{
+  background-color: #e7e7e7;
+  margin-right: 50px;
+  border-radius: 10px;
+}

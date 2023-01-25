@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/fo
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { VisiteService } from './../../../services/visite.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-atelier-visite',
@@ -12,9 +12,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AtelierVisiteComponent implements OnInit {
   @Input() numero = ""
+  @Output() emitVisite: EventEmitter<any> = new EventEmitter();
   message = ""
   list = [];
-  visiteselectionner ="";
+  visiteselectionner:any;
   submitted = false;
   formulaire: FormGroup;
   constructor(
@@ -74,7 +75,9 @@ export class AtelierVisiteComponent implements OnInit {
     })
   }
 
+  reparationList(){
 
+  }
   creervisite() {
     new Promise((resolve, reject) => {
       this.visiteService.creervisite(this.numero, null).subscribe(
@@ -82,7 +85,7 @@ export class AtelierVisiteComponent implements OnInit {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
             this.message = "Visite crée "
-            this.toastr.error(this.message, "Success")
+            this.toastr.success(this.message, "Success")
             this.getlistevisite()
           }
           else {
@@ -99,33 +102,4 @@ export class AtelierVisiteComponent implements OnInit {
     })
   }
 
-  creationreparation() {
-    if(this.formulaire.valid){
-      new Promise((resolve, reject) => {
-        this.reparationService.ateliercreationreparation(this.visiteselectionner, this.formulaire.getRawValue()).subscribe(
-          d => {
-            let data = (d as { [key: string]: any })
-            if (data['status'] == 200) {
-              this.getlistevisite()
-              this.message = "Reparation crée "
-              this.visiteselectionner =""
-            this.toastr.success(this.message, "Success")
-            }
-            else {
-              this.message = data['message'];
-              this.toastr.warning( this.message,"Erreur")
-            }
-            this.spinner.hide()
-          }, error => {
-            this.spinner.hide()
-            this.message = "Echec de la connexion"
-            this.toastr.error(this.message, "Erreur")
-          }
-        );
-      })
-    }else{
-      this.message =" Veuillez Completer correctement les champs"
-      this.toastr.warning(this.message, "Champs incorrecte")
-    }
-  }
 }

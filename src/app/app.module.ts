@@ -25,6 +25,7 @@ import { InscriptionComponent } from './pages/user/inscription/inscription.compo
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
 import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
 import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-visite.component';
+import { AtelierReparationListComponent } from './pages/reparation/atelier-reparation-list/atelier-reparation-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-vi
     ConnexionComponent,
     VoitureDemandeComponent,
     AtelierDetailVoitureComponent,
-    AtelierVisiteComponent
+    AtelierVisiteComponent,
+    AtelierReparationListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-vi
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    ModalModule
+    ModalModule,
   ],
   exports: [
     NgxSpinnerModule,

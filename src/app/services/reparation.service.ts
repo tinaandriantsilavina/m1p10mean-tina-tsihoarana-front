@@ -13,11 +13,15 @@ export class ReparationService {
     private authService: AuthService
   ) { }
 
-  atelierlistereparation(numero){
-    return this.http.get(base_url + `api/visites/atelier/voiture/${numero}`,  this.authService.option(true));
+  atelierlistereparation(idvisite){
+    return this.http.get(base_url + `api/reparations/atelier/visite/${idvisite}`,  this.authService.option(true));
   }
 
   ateliercreationreparation(visite,body){
     return this.http.post(base_url + `api/reparations/atelier/create/visite/${visite}`, body ,  this.authService.option(true));
+  }
+
+  atelierupdatereparation(visite,reparation,body){
+    return this.http.put(base_url + `api/reparations/atelier/visite/${visite}/reparation/${reparation}`, body ,  this.authService.option(true));
   }
 }

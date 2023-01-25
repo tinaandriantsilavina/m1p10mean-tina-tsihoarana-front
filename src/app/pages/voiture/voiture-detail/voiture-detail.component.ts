@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import * as $ from "node_modules/jquery/dist/jquery.js";
 Chart.register(...registerables);
 
 @Component({
@@ -11,19 +10,19 @@ Chart.register(...registerables);
 export class VoitureDetailComponent {
   isShowTab   : boolean = false;
   currentTab =2;
+  breadcrumb_active= ""
   ngOnInit(): void {
     // this.chartInit()
+    this.showTab(this.currentTab)
   }
   showTab(id) {
     this.currentTab = id
     switch (id) {
-      case 1: $("#breadcrumb_active").html("Rôles"); break;
-      case 2: $("#breadcrumb_active").html("Permissions"); break;
-      case 3: $("#breadcrumb_active").html("Capacité des rôles"); break;
-      case 4: $("#breadcrumb_active").html("Rôles utilisateurs"); break;
-      case 5: $("#breadcrumb_active").html("Liste des utilisateurs"); break;
-      case 6: $("#breadcrumb_active").html("Utilisateurs Permissions"); break;
-      case 7: $("#breadcrumb_active").html("Liste Gp Manager Permissions"); break;
+      case 1: this.breadcrumb_active ="Visite" ; break ;
+      case 2: this.breadcrumb_active ="Reparation" ; break ;
+      case 3: this.breadcrumb_active ="Historiuque Visite" ; break ;
+      case 4: this.breadcrumb_active ="" ; break ;
+
       default: break;
     }
     this.isShowTab = !this.isShowTab;

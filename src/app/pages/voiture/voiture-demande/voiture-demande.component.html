@@ -2,6 +2,7 @@
 <div class="row">
   <div class="cont_breadcrumbs_2">
     <ul>
+      <li><img class="logo-breadcrumbs" src="assets/images/logo.png" ></li>
       <li><a><span class="fa fa-home"></span> Accueil</a></li>
       <li><a>Liste voitures</a></li>
     </ul>
@@ -11,7 +12,7 @@
   <div class="col">
     <h6 class="title" >Voiture en attente</h6>
     <div class=" shadow-lg p-3 mb-5 bg-white rounded">
-      
+
       <table class="table table table-striped table-hover">
         <thead>
           <tr class="bg-warning white">
@@ -26,8 +27,8 @@
               <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
                 class="btn btn-success btn-sm">Creer une
                 visite</button> -->
-                <button type="button"
-                class="btn btn-warning btn-sm btn-valider">Accepter</button>
+                <button type="button" (click)="demandeaccepter(l['_id'])"
+                class="btn btn-warning btn-sm btn-valider"><i class="fa fa-check" aria-hidden="true"></i> Accepter</button>
             </td>
           </tr>
         </tbody>
@@ -53,7 +54,7 @@
                 class="btn btn-success btn-sm">Creer une
                 visite</button> -->
                 <button type="button" [routerLink]="['/atelier-detail-voiture',l['numero']]"
-                class="btn btn-info btn-sm btn-valider">  <i class="fa fa-cog" aria-hidden="true"></i>  details</button>
+                class="btn btn-info btn-sm btn-valider">  <i class="fa fa-cog" aria-hidden="true"></i>  Details</button>
             </td>
           </tr>
         </tbody>

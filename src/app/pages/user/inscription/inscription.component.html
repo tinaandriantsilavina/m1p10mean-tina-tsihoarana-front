@@ -1,48 +1,50 @@
 <div class="row">
 
-    <div class="col-md-6 offset-md-3 text-center">
-      <div class="row align-items-center" style="margin-top: 10%">
-  
-      </div>
+  <div class="col-md-6 offset-md-3 text-center">
+    <div class="row align-items-center" style="margin-top: 10%">
+
     </div>
   </div>
+</div>
 
-  <div class="center-div shadow">
-      <h4 class="text-center">Inscription </h4>
-      <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
-      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Nom</label>
-          <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1"
-            aria-describedby="emailHelp">
-          <div *ngIf="submitted && f.name.errors">
-            <small *ngIf="f.name.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
-          <input formControlName="email" type="text" class="form-control" aria-describedby="emailHelp">
-          <div *ngIf="submitted && f.email.errors">
-            <small *ngIf="f.email.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
-        </div>
+<div class="center-div shadow">
+  <h3 class="text-center">
+    <img class="logo-connexion" src="assets/images/logo.png">
+  </h3>
+  <h4 class="text-center">Bienvenue </h4>
+  <h6 class="text-center">Créer votre compte E-garage</h6>
+  <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
+  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nom</label>
+      <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+      <div *ngIf="submitted && f.name.errors">
+        <small *ngIf="f.name.errors.required" style="color: red">Champ Obligtoire</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input formControlName="email" type="text" class="form-control" aria-describedby="emailHelp">
+      <div *ngIf="submitted && f.email.errors">
+        <small *ngIf="f.email.errors.required" style="color: red">Champ Obligtoire</small>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Mot de passe</label>
-          <input formControlName="password" type="text" class="form-control" aria-describedby="emailHelp">
-          <div *ngIf="submitted && f.password.errors">
-            <small *ngIf="f.password.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Mot de passe</label>
+      <input formControlName="password" type="text" class="form-control" aria-describedby="emailHelp">
+      <div *ngIf="submitted && f.password.errors">
+        <small *ngIf="f.password.errors.required" style="color: red">Champ Obligtoire</small>
+      </div>
+    </div>
 
-        <div class="text-center">
-          <button (click)="inscription()"  type="submit" class="btn btn-success">Inscription</button>
-        </div>
+    <div class="text-center">
+      <button (click)="inscription()" type="submit" class="btn btn-success">Inscription</button>
+    </div>
 
-        <div class="text-center" style="margin-top: 20px;">
-          <a routerLink="/login">Login</a>
-        </div>
-      </form>
-  </div>
-
-  
+    <div class="text-center" style="margin-top: 20px;">
+      <a routerLink="/login">Se connecter à un compte existant</a>
+    </div>
+  </form>
+</div>

@@ -38,7 +38,7 @@ export class AtelierVisiteComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.formulaire.controls;
   }
-  initForm(idvisite) {
+  initformupdatevisite(idvisite) {
     this.visiteselectionner = idvisite
     console.log(this.visiteselectionner)
     this.formulaire = this.formBuilder.group(

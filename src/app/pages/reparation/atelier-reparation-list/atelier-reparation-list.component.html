@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <div class="row">
     <button type="button" class="btn btn-secondary btn-sm" (click)="dialog_reparation.showModal(); initForm('id')">
       <i class="fa fa-cog" aria-hidden="true"></i> Creation Reparation
@@ -32,6 +32,11 @@
               <i class="fa fa-edit" aria-hidden="true"></i> Modifier
             </button>
 
+            <button type="button" class="btn btn-danger btn-sm btn-valider"
+              (click)="dialog_delete.showModal() ; selectionnerReparation(l)">
+              <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+            </button>
+
           </td>
         </tr>
       </tbody>
@@ -44,7 +49,7 @@
 <div>
   <dialog #dialog_reparation>
     <header>
-      <div class="title">Modification Reparation</div>
+      <div class="title"> {{isCreateReparation?'Creation' :'Modification '}} Reparation</div>
       <span class="close-btn" (click)="dialog_reparation.close()"> ✖ </span>
     </header>
     <div class="center">
@@ -98,61 +103,19 @@
   </dialog>
 </div>
 
-
-
-
-<!-- <div>
-  <dialog #dialog_reparation>
-    <header>
-      <div class="title">Creation reparation</div>
-      <span class="close-btn" (click)="dialog_reparation.close()"> ✖ </span>
-    </header>
-    <div class="center">
-      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
-        <div class="form-group">
-          <label>Pièce</label>
-          <input formControlName="piece" type="text" class="form-control">
-          <div *ngIf="submitted && f.piece.errors">
-            <small *ngIf="f.piece.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Durée</label>
-          <input formControlName="duree" type="text" class="form-control">
-          <div *ngIf="submitted && f.duree.errors">
-            <small *ngIf="f.duree.errors.required" style="color: red">Champ Obligtoire</small>
-            <small *ngIf="f.duree.errors.pattern" style="color: red">La valeur du champ doit être un nombre</small>
-            <small *ngIf="f.duree.errors.min" style="color: red">la valeur du champ doit être supérieure à 0 </small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Avancement</label>
-          <input formControlName="avancement" type="text" class="form-control">
-          <div *ngIf="submitted && f.avancement.errors">
-            <small *ngIf="f.avancement.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Prix</label>
-          <input formControlName="prix" type="text" class="form-control">
-          <div *ngIf="submitted && f.prix.errors">
-            <small *ngIf="f.prix.errors.required" style="color: red">Champ Obligtoire</small>
-            <small *ngIf="f.prix.errors.pattern" style="color: red">La valeur du champ doit être un nombre</small>
-            <small *ngIf="f.prix.errors.min" style="color: red">la valeur du champ doit être supérieure à 0 </small>
-          </div>
-        </div>
-
-
-        <div class="center">
-          <button class="btn btn-success btn-sm" type="submit"
-            (click)="dialog_reparation.close() ; creationreparation() ">Ok</button>
-          <span style="margin-right: 10px;"></span>
-          <button class="btn btn-danger btn-sm" (click)="dialog_reparation.close()">Annuler</button>
-        </div>
-      </form>
-    </div>
-  </dialog>
-</div> -->
+<div>
+<dialog #dialog_delete>
+  <header>
+    <div class="title">Creation visite</div>
+    <span class="close-btn" (click)="dialog_delete.close()"> ✖ </span>
+  </header>
+  <span class="center">
+    Voulez-vous supprimer cette reparations  ?
+  </span>
+  <div class="center">
+    <button class="btn btn-success btn-sm" type="submit" (click)="dialog_delete.close() ; deleteReparation()">Ok</button>
+    <span style="margin-right: 10px;"></span>
+    <button class="btn btn-danger btn-sm" (click)="dialog_delete.close()">Annuler</button>
+  </div>
+</dialog>
+</div>

@@ -12,6 +12,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AtelierReparationListComponent {
   @Input() visiteselectionner= ""
+  reparationSelection:any
   isUpdateReparation =false;
   isCreateReparation = false;
   message = ""
@@ -30,6 +31,7 @@ export class AtelierReparationListComponent {
   }
   ngOnInit() {
     this.getlistereparation()
+    this.reparationSelection =null;
   }
 
   onSubmit(): void {
@@ -77,7 +79,6 @@ export class AtelierReparationListComponent {
             if (data['status'] == 200) {
               this.getlistereparation()
               this.message = "Reparation crée "
-              this.visiteselectionner =""
             this.toastr.success(this.message, "Success")
             this.isCreateReparation = false
             }
@@ -99,8 +100,39 @@ export class AtelierReparationListComponent {
     }
   }
 
-
-
+  selectionnerReparation(reparation){
+    this.reparationSelection =null;
+    this.reparationSelection = reparation
+  }
+  deleteReparation() {
+    if(this.reparationSelection!=null){
+      new Promise((resolve, reject) => {
+        this.reparationService.atelierdeletereparation(this.visiteselectionner['_id'], this.reparationSelection['_id']).subscribe(
+          d => {
+            let data = (d as { [key: string]: any })
+            if (data['status'] == 200) {
+              this.getlistereparation()
+              this.message = "Reparation Supprimer "
+            this.toastr.success(this.message, "Success")
+            
+            }
+            else {
+              this.message = data['message'];
+              this.toastr.warning( this.message,"Erreur")
+            }
+            this.spinner.hide()
+          }, error => {
+            this.spinner.hide()
+            this.message = "Echec de la connexion"
+            this.toastr.error(this.message, "Erreur")
+          }
+        );
+      })
+    }else{
+      this.message ="Veuillez selectionner la reparation à supprimer svp"
+      this.toastr.warning(this.message, "Incorrecte")
+    }
+  }
 
   updatereparation() {
     if(this.formulaire.valid){

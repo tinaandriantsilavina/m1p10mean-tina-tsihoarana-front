@@ -25,7 +25,7 @@ export class VisiteEncoursComponent {
       this.spinner.show()
       return new Promise((resolve, reject) => {
         // this.loadSouscription=1;
-        this.visiteService.getvisiteencours().subscribe(
+        this.visiteService.clientvisiteencours().subscribe(
           data => {
             if (data['status'] == 'success') {
                 // this.list = data ['data']

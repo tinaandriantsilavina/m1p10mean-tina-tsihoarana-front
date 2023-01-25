@@ -24,6 +24,7 @@ import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
 import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
+import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-visite.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-vo
     VoitureListComponent,
     ConnexionComponent,
     VoitureDemandeComponent,
-    AtelierDetailVoitureComponent
+    AtelierDetailVoitureComponent,
+    AtelierVisiteComponent
   ],
   imports: [
     BrowserModule,

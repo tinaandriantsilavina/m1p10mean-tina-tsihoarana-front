@@ -75,3 +75,53 @@
   vertical-align: middle;
   margin :8px;
 }
+
+
+
+
+
+//  Stylev pour dialog (Modal)
+
+dialog {
+  padding:0;
+  border: solid gray 0px;
+  border-radius: 5px;
+  width:500px;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+}
+
+dialog > header {
+  background-color: rgb(25, 151, 0);
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 10px;
+
+}
+
+dialog > header > .close-btn {
+  // border: none;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+dialog > header > .title {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+dialog > .body {
+  padding: 10px;
+}
+
+::backdrop,
+dialog + .backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}

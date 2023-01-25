@@ -14,21 +14,18 @@
       <div class="card tabset center">
         <div class="card-header bg-vert">
           <ul class="nav nav-tabs tab-list" role="tablist">
-
             <li class="nav-item" (click)="showTab(1);">
               <a class="nav-link menu" [ngClass]="{'active': currentTab === 1}">
-                <i class="fa fa-wrench" aria-hidden="true"></i>
-                Reparations
-              </a>
-            </li>
-
-            <li class="nav-item" (click)="showTab(2);">
-              <a class="nav-link menu" [ngClass]="{'active': currentTab === 2}">
                 <i class="fa fa-eye"></i>
                 Visites
               </a>
             </li>
-
+            <li class="nav-item" (click)="showTab(2);">
+              <a class="nav-link menu" [ngClass]="{'active': currentTab === 2}">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+                Reparations
+              </a>
+            </li>
             <li class="nav-item" (click)="showTab(3);">
               <a class="nav-link menu" [ngClass]="{'active': currentTab === 3}">
                 <i class="fa fa-history"></i>
@@ -38,8 +35,8 @@
           </ul>
         </div>
         <div class="card-body">
-          <div *ngIf="currentTab === 1"> 1 </div>
-          <div *ngIf="currentTab === 2"> 2 </div>
+          <app-atelier-visite *ngIf="currentTab === 1" [numero]="numero" ></app-atelier-visite>
+          <div *ngIf="currentTab === 2"> 1 </div>
           <div *ngIf="currentTab === 3"> 3 </div>
           <div *ngIf="currentTab === 4"> 4 </div>
 

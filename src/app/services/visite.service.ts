@@ -16,10 +16,16 @@ export class VisiteService {
     this.url = base_url
    }
 
-   getvisiteencours(){
-    console.log();
+   clientvisiteencours(){
     return this.http.get(base_url + 'api/visites/client/encours',  this.authService.option(true));
   }
+
+
+  ateliervisite(numero){
+    return this.http.get(base_url + `api/visites/atelier/voiture/${numero}`,  this.authService.option(true));
+  }
+
+
 
   creervisite(voiture,body){
     console.log();

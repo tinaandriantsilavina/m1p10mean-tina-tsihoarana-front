@@ -59,38 +59,7 @@ export class VoitureDemandeComponent {
     //   })
     // }
 
-    creervisite(){
-      if(this.formulaire.valid){
-        new Promise((resolve, reject) => {
-          // this.loadSouscription=1;
-          this.visiteService.creervisite(this.voitureSelectionner, this.formulaire.getRawValue()).subscribe(
-            data => {
-              console.log(data)
-              this.voitureSelectionner ="" // supprimer la selection
 
-              // if (data['status'] == 200) {
-                  // this.list = data ['data']
-                  // this.toastr.error("Visite crée avec success")
-                  // this.list= data;
-
-              // }
-              // else {
-              //   // this.spinner.hide();
-              //   this.toastr.error('Erreur',"Erreur connexion")
-              //   reject('Erreur Connexx');
-              // }
-              this.spinner.hide()
-            }, error => {
-              reject("erreur");
-              this.toastr.error('Erreur connexion',"Erreur")
-              this.spinner.hide()
-            }
-          );
-        })
-      }else {
-        this.toastr.warning("Veuillez completer correctement le champ svp ", "Erreur input")
-      }
-    }
     onSubmit(): void {
       this.submitted = true; // ijerena ftsn we ef nanindry an ilay boutton ve izy
     }
@@ -153,7 +122,7 @@ export class VoitureDemandeComponent {
       })
     }
 
-    
+
     demandeaccepter(id) {
       this.spinner.show()
       return new Promise((resolve, reject) => {

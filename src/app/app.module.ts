@@ -27,6 +27,8 @@ import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-vo
 import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-visite.component';
 import { AtelierReparationListComponent } from './pages/reparation/atelier-reparation-list/atelier-reparation-list.component';
 import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
+import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
+import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
     AtelierDetailVoitureComponent,
     AtelierVisiteComponent,
     AtelierReparationListComponent,
-    AccueilComponent
+    AccueilComponent,
+    VisiteHistoriqueComponent,
+    FinanceStatComponent
   ],
   imports: [
     BrowserModule,

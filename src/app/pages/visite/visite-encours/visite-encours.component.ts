@@ -18,17 +18,17 @@ export class VisiteEncoursComponent {
 
   }
     ngOnInit(): void {
-      this.getlistvoiture()
+      this.getlist()
     }
 
-    getlistvoiture() {
+    getlist() {
       this.spinner.show()
       return new Promise((resolve, reject) => {
         // this.loadSouscription=1;
         this.visiteService.clientvisiteencours().subscribe(
           data => {
-            if (data['status'] == 'success') {
-                // this.list = data ['data']
+            if (data['status'] == 200) {
+                this.list = data ['datas']
                 console.log(data)
             }
             else {

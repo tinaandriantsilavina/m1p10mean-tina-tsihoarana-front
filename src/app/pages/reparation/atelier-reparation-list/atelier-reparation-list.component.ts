@@ -114,7 +114,7 @@ export class AtelierReparationListComponent {
               this.getlistereparation()
               this.message = "Reparation Supprimer "
             this.toastr.success(this.message, "Success")
-            
+
             }
             else {
               this.message = data['message'];
@@ -143,7 +143,6 @@ export class AtelierReparationListComponent {
             if (data['status'] == 200) {
               this.getlistereparation()
               this.message = "Modification terminé"
-              this.visiteselectionner =""
             this.toastr.success(this.message, "Success")
             this.isUpdateReparation = false
             }

@@ -1,3 +1,4 @@
+import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
 import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,9 @@ const routes: Routes = [
   { path :'atelier-voiture' , component: VoitureDemandeComponent},
   { path :'atelier-detail-voiture/:numero' , component: AtelierDetailVoitureComponent},
 
+
+  // Finance
+  { path :'finance-stat' , component: FinanceStatComponent},
 
   {path: '**', redirectTo:'/not-found'}
 

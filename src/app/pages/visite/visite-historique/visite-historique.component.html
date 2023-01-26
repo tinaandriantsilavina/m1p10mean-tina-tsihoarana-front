@@ -1,1 +1,57 @@
-<p>visite-historique works!</p>
+<div class="row">
+    <div class="cont_breadcrumbs_2">
+        <ul>
+            <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
+            <li><a><span class="fa fa-home"></span> Acueil</a></li>
+            <li><a>Historique Visite</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="center-div shadow-lg p-3 mb-5 bg-white rounded contenu">
+        <div class="titre1">
+
+        </div>
+
+        <div class="titre2">
+            <button type="button" class="btn btn-success btn-sm"  >Export en excel</button>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="center-div shadow-lg p-3 mb-5 bg-white rounded">
+        <table class="table-visite table table-striped table-hover table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Visite</th>
+                    <th scope="col">Reparations</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let l of list ; let i=index">
+                    <th scope="row"> {{l['date_debut'] | date: 'dd/MM/yyyy hh:mm'}} </th>
+                    <td>
+                        <li *ngFor="let rep of l['reparations'] " class="list-reparation">
+                            Pièce : <span class="value"> {{rep['piece']}}</span> ,
+                            Durée : <span class="value">{{rep['duree']}}</span> ,
+                            Prix: <span class="value">{{rep['prix']}} </span>,
+                            <span
+                                [ngClass]="{'badge badge-pill badge-primary': rep['avancement'] == 0 , 'badge badge-pill badge-warning': rep['avancement'] == 1 , 'badge badge-pill badge-success': rep['avancement'] == 2 }">
+                                {{ rep['avancement'] == 0 ? 'En cours' : (rep['avancement']== 1 ? 'Non payé' : 'Terminé'
+                                ) }}
+                            </span>
+                        </li>
+                    </td>
+                    <td>
+                        <span
+                            [ngClass]="{'badge badge-pill badge-primary': l['etat'] == 0 , 'badge badge-pill badge-warning': l['etat'] == 1 , 'badge badge-pill badge-success': l['etat'] == 2 }">
+                            {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non ayé' ) }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

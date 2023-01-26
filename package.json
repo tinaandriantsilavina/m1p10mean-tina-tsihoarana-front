@@ -21,6 +21,7 @@
     "@ng-select/ng-select": "^10.0.3",
     "chart.js": "^4.2.0",
     "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
     "jquery": "^3.6.3",
     "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^16.0.2",

@@ -11,17 +11,21 @@ import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
 import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
+import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
 
 const routes: Routes = [
+  { path :'accueil' , component : AccueilComponent},
+  { path :'' , component : AccueilComponent},
   { path: 'login', component:  ConnexionComponent},
   { path :'not-found' , component:NotfoundComponent},
   { path :'inscription-voiture' , component: VoitureInscriptionComponent},
   { path :'liste-voiture' , component: VoitureListComponent},
   { path :'detail-voiture/:idvoiture' , component: VoitureDetailComponent},
-  { path :'visite-encours' , component: VisiteEncoursComponent},
+  { path :'visite-voiture/:numero' , component: VisiteEncoursComponent},
+  { path :'historique-visite' , component: VisiteHistoriqueComponent},
   { path :'inscription' , component : InscriptionComponent},
 
-  { path :'accueil' , component : AccueilComponent},
+ 
 
 
   // responsable atelier

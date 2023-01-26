@@ -21,7 +21,7 @@ export class ConnexionComponent {
 
   ngAfterViewInit(): void {
     if(this.authservice.users!=null){
-        this.router.navigate(['/actuel/dashboard']);
+        this.router.navigate(['/accueil']);
     }
   }
 
@@ -62,26 +62,24 @@ export class ConnexionComponent {
       this.authservice.connexion(this.formulaire.getRawValue()).subscribe(
         d => {
           let data = (d as {[key: string]: any})
-          // if(data['status'] ==200){
+          if(data['status'] ==200){
             console.log(data);
-            // localStorage.setItem('users',JSON.stringify(data['data'][0]))
-            // localStorage.setItem('token',data['data'][1])
-            let user = {
-              name:"huhu",
-              surname:"heheh"              
-          }
-            localStorage.setItem('users', JSON.stringify(user))
-            localStorage.setItem('token',data['token'])
+            let user = data['datas']['user']
+            localStorage.setItem('users',JSON.stringify(user))
+            localStorage.setItem('token',data['datas']["token"])
             this.sharedService.changeClass("main-content");
             this.sharedService.changeUser(user);
-            // this.emitClass.emit('Event emitted!');
-            this.router.navigate(['liste-voiture'])
-          // }
-          // else{
-          //   this.message="Mot de Passe ou User Incorrecte";
-          // }
-        },error => {
+            this.router.navigate(['accueil'])
+          }else{
+            this.message=data['message'];
+            this.toastr.warning(this.message, "Erreur")
+
+          }
+          this.spinner.hide()
+        },
+        error => {
           this.message = "Erreur connexion";
+          this.toastr.error(this.message, "Erreur")
           this.spinner.hide()
         }
       );

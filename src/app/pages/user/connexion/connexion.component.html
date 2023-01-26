@@ -8,8 +8,12 @@
   </div>
 
   <div class="center-div shadow">
-      <h4 class="text-center">Connexion </h4>
+      <h3 class="text-center">
+        <img class="logo-connexion"  src="assets/images/logo.png" >
+      </h3>
       <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
+      <h3 class="text-center" >Bienvenue</h3>
+      <p class="text-center">Veuillez vous connecter à votre compte</p>
       <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
         <div class="form-group">
           <label for="exampleInputEmail1">Email</label>
@@ -30,8 +34,9 @@
           <button (click)="connexion()" type="submit" class="btn btn-primary">Connexion</button>
         </div>
         <div class="text-center" style="margin-bottom:20px">
+          Vous n'avez pas de compte?
           <a routerLink="/inscription" class="text-success" >
-            Inscription
+            Créer un compte
           </a>
         </div>
       </form>

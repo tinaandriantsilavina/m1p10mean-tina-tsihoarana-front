@@ -1,61 +1,102 @@
 lines (63 sloc) 2.43 KB
 
 <!-- <aside> -->
-  <!-- <aside  *ngIf="this.authservice.users!=null"> -->
-    <aside [ngClass]=" this.authservice.users!=null ? '' : 'display_none'" >
+<!-- <aside  *ngIf="this.authservice.users!=null"> -->
+<aside [ngClass]=" this.authservice.users!=null ? '' : 'display_none'">
   <div id="sidebar" class="nav-collapse ">
 
     <ul class="sidebar-menu" id="nav-accordion">
       <p class="centered">
         <!-- <a href="profile.html"> <img src="assets/adminstyle/img/ui-sam.jpg" class="img-circle" width="80"></a> -->
       </p>
-      <h5 class="centered"> </h5>
+      <p class="centered"><i class="fa fa-user-circle img-circle" width="80"
+          style="color: #FFFFFF; font-size: 50px"></i> </p>
+      <h6 class="centered" style="color: #FFFFFF"> {{authservice.users?.name}} </h6>
+      <p class="centered" style="color: #FFFFFF"> {{authservice.users?.code_type==0? 'Client' :
+        (authservice.users?.code_type==1? 'Responsable Atelier' : 'Responsable Financier') }} </p>
+      <p class="centered" style="color: #FFFFFF"> {{authservice.users?.email}} </p>
       <li class="mt">
-        <a class="active" routerLink="actuel/dashboard">
+        <a routerLink="/accueil"  href="javascript:;" class="active">
           <i class="fa fa-dashboard"></i>
-          <span>Tableau de bord</span>
+          <span>Accueil</span>
         </a>
-      </li>
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-line-chart"></i>
-          <span>Statistique</span>
-        </a>
-        <ul class="sub">
-          <li><a routerLink="stat">Temps de réparation moyen</a></li>
-          <li><a routerLink="stat">Chiffre d'affaire</a></li>
-          <li><a routerLink="stat">Bénéfice</a></li>
-        </ul>
       </li>
 
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-line-chart"></i>
-          <span>Client</span>
-        </a>
-        <ul class="sub">
-          <!-- debut menu client -->
-          <li><a routerLink="inscription-voiture">Inscription voiture</a></li>
-          <li><a routerLink="liste-voiture">Liste voiture </a></li>
-          <li><a routerLink="visite-encours">Visite Encours</a></li>
-          <li><a routerLink="stat">Historique de reparation</a></li>
-        </ul>
-      </li>
+      <div *ngIf="authservice.users?.code_type==0">
+        <!-- <li class="sub-menu">
+          <a href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Client</span>
+          </a>
+          <ul class="sub">
+            <li><a routerLink="inscription-voiture">Inscription voiture</a></li>
+            <li><a routerLink="liste-voiture">Liste voiture </a></li>
+            <li><a routerLink="visite-encours">Historique Visite Encours</a></li>
+          </ul> -->
 
+        <li class="sub-menu">
+          <a routerLink="inscription-voiture" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Inscription voiture</span>
+          </a>
+        </li>
 
-      <li class="sub-menu">
-        <a href="javascript:;">
-          <i class="fa fa-line-chart"></i>
-          <span>Responsable </span>
-        </a>
-        <ul class="sub">
-          <!-- debut menu responsable atelier -->
-          <li><a routerLink="demande-voiture">liste demande voiture</a></li>
-          <li><a routerLink="stat">Lister reparations</a></li>
-          <li><a routerLink="stat">Bon de sortit</a></li>
-          <!-- debut menu responsable atelier -->
-        </ul>
-      </li>
+        <li class="sub-menu">
+          <a routerLink="liste-voiture" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Liste Voiture</span>
+          </a>
+        </li>
+
+        <li class="sub-menu">
+          <a routerLink="historique-visite" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Historique Visite Encours</span>
+          </a>
+        </li>
+      </div>
+
+      <div *ngIf="authservice.users?.code_type==1">
+        <!-- <li class="sub-menu">
+          <a href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Responsable </span>
+          </a>
+          <ul class="sub">
+            <li><a routerLink="atelier-voiture">liste voiture</a></li>
+            <li><a routerLink="stat">Lister reparations</a></li>
+            <li><a routerLink="stat">Bon de sortit</a></li>
+          </ul>
+        </li> -->
+
+        <li class="sub-menu">
+          <a routerLink="/atelier-voiture" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Liste Demande voiture </span>
+          </a>
+        </li>
+      </div>
+
+      <div *ngIf="authservice.users?.code_type==2">
+
+      </div>
+
+      <div >
+        <li class="sub-menu">
+          <a routerLink="/finance-stat" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Stats</span>
+          </a>
+        </li>
+
+        <li class="sub-menu">
+          <a routerLink="/list-bon-de-sortie" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Bon de sortie</span>
+          </a>
+        </li>
+
+      </div>
 
 
       <li class="sub-menu">
@@ -67,7 +108,8 @@ lines (63 sloc) 2.43 KB
           <li><a routerLink="inscription" *ngIf="this.authservice.users==null">Inscription</a></li>
           <li><a routerLink="login" *ngIf="this.authservice.users==null">Login</a></li>
           <!-- <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li> -->
-          <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()" *ngIf="this.authservice.users!=null">Deconnexion</button></li>
+          <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()"
+              *ngIf="this.authservice.users!=null">Deconnexion</button></li>
         </ul>
       </li>
     </ul>
@@ -76,7 +118,7 @@ lines (63 sloc) 2.43 KB
 <div style="margin-bottom: 50px">lklkl</div>
 <div id="{{class}}">
   <div class="container-fluid" style="margin-left: 10px; margin-right: 10px">
-    <ngx-spinner  [type]="spinner_type" [bdColor]="spinner_background"></ngx-spinner>
+    <ngx-spinner [type]="spinner_type" [bdColor]="spinner_background"></ngx-spinner>
     <router-outlet></router-outlet>
   </div>
 

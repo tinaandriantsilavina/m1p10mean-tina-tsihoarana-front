@@ -28,7 +28,6 @@ export class AppComponent {
     this.sharedService.class$.subscribe(value => {
       this.class = value;
     });
-
     if (authservice.users == null) {
       this.class = ""
     } else {
@@ -68,7 +67,7 @@ export class AppComponent {
     // })
   }
   ngOnInit(): void {
-    console.log("APP COMPONENT io " + this.authservice.users)
+    console.log("APP COMPONENT io " , this.authservice.users)
     if (localStorage.getItem('users') != null) {
       // console.log("hjhksjdhkfjhk")
       // console.log(localStorage.getItem('users'))

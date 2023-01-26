@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
+import { Buffer } from 'buffer';
 @Injectable({
   providedIn: 'root'
 })
@@ -90,4 +90,16 @@ export class UploadfileService {
       }
     });
   }
+  bufferToImage(imageBuffer) {
+    let val = ""
+    try {
+      let base64Image = Buffer.from(imageBuffer['data']).toString('base64');
+      val = 'data:image/jpg;base64,' + base64Image;
+    } catch (error) {
+      // console.error("Erreur convert Buffer")
+    } finally {
+    }
+    return val;
+  }
+
 }

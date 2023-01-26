@@ -23,6 +23,13 @@ import { VisiteEncoursComponent } from './pages/visite/visite-encours/visite-enc
 import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
+import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
+import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-visite.component';
+import { AtelierReparationListComponent } from './pages/reparation/atelier-reparation-list/atelier-reparation-list.component';
+import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
+import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
+import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
+import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,14 @@ import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture
     VoitureDetailComponent,
     VoitureListComponent,
     ConnexionComponent,
-    VoitureDemandeComponent
+    VoitureDemandeComponent,
+    AtelierDetailVoitureComponent,
+    AtelierVisiteComponent,
+    AtelierReparationListComponent,
+    AccueilComponent,
+    VisiteHistoriqueComponent,
+    FinanceStatComponent,
+    BonSortieListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +65,7 @@ import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    ModalModule
+    ModalModule,
   ],
   exports: [
     NgxSpinnerModule,

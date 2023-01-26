@@ -1,7 +1,19 @@
-<div class="shadow" style="width: 18rem;" *ngFor="let l of list">
-    <img src="{{l['image']}}" class="card-img-top" alt="...">
+<div class="row">
+  <div class="cont_breadcrumbs_2">
+    <ul>
+      <li><img class="logo-breadcrumbs" src="assets/images/logo.png" ></li>
+      <li><a ><span class="fa fa-home"></span> Acueil</a></li>
+      <li><a >Liste voiture</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item-voiture shadow" *ngFor="let l of listevoiture">
+    <img [src]="this.uploadFileService.bufferToImage(l['image'])" class="card-img-top" alt="...">
+    <!-- <img src="../../../../assets/images/sprinter.jpg" class="card-img-top" alt="..."> -->
     <div class="card-body">
-      <h5 class="card-title"> {{l['nomvoiture']}} </h5>
+      <h5 class="card-title" style="color: rgb(0, 0, 0);"> {{l['marque']}} {{l['modele']}}   </h5>
       <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
     </div>
     <ul class="list-group list-group-flush">
@@ -9,16 +21,26 @@
       <li class="list-group-item">
         <div class="contenu">
           <div class="titre1">
-            Status: <span class="badge badge-success"> En cours</span>
+            Status:
+            <span
+              [ngClass]="{'badge badge-secondary': l['etat'] == 0 , 'badge badge-primary': l['etat'] == 1 , 'badge badge-success': l['etat'] == 2 }">
+              {{ l['etat'] == 0 ? 'Demande de visite' : (l['etat']== 1 ? 'En cours' : '' ) }}
+            </span>
           </div>
           <div class="titre2">
-            <a [routerLink]="['/detail-voiture',l['_id']]" type="button" class="badge badge-info">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-              Voir Plus 
-            </a>
+            <button *ngIf="l['etat']== 1" [routerLink]="['/visite-voiture',l['numero']]" type="button" class="btn btn-info btn-sm">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              Situation en cours
+            </button>
+
+            <button *ngIf="l['etat']== 2" (click)="deposervoiture(l['numero'])" type="button" class="btn btn-primary btn-sm">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              Deposer
+            </button>
+
           </div>
         </div>
       </li>
     </ul>
   </div>
-  
+</div>

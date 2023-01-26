@@ -1,0 +1,42 @@
+
+
+
+   .tabset .tab-panel {
+     display: none;
+   }
+   .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+   .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+   .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+   .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+   .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+   .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+     display: block;
+   }
+
+ .menu{
+   color : #fff;
+   text-decoration: none;
+   text-transform: none!important;
+   border: none!important;
+ }
+ .card-header {
+   border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+   font-weight: bold;
+ }
+.nav-tabs{
+  background: rgba(0,0,0,0.0)
+}
+ .tab-list {
+   border-bottom: none!important;
+   margin-bottom: -12px!important;
+ }
+.bg-vert {
+  background-color: #00a72a;
+  color: white;
+  margin : 5px;
+  padding : 4.2px 7px;
+}
+.center {
+  margin: 0 auto;
+  width: 90%;
+}

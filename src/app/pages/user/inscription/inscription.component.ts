@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,6 +29,7 @@ export class InscriptionComponent {
     private authservice: AuthService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
+    private sharedService : SharedService
     ) {
 
   }
@@ -48,7 +50,7 @@ export class InscriptionComponent {
       }
     );
   }
-  
+
   ngOnInit(): void {
     this.initForm();
   }
@@ -60,21 +62,25 @@ export class InscriptionComponent {
       this.authservice.inscription(this.formulaire.getRawValue()).subscribe(
         d => {
           let data = (d as {[key: string]: any})
-          // if(data['status'] ==200){
+          if(data['status'] ==200){
             console.log(data);
             this.router.navigate(['login'])
-            this.toastr.success("Inscription","inscription terminé avec success, vous pouvez se connecter")
-            // this.toastr.warning("Inscription","Echec de l'inscription")
-            this.spinner.hide()
-          // }
-          // else{
-          //   this.message="Mot de Passe ou User Incorrecte";
-          // }
-        },error => {
-          this.spinner.hide()
-          this.message = <any>error;
-          if(this.message != null){
+            let user = data['datas']['user']
+            localStorage.setItem('users',JSON.stringify(user))
+            localStorage.setItem('token',data['datas']["token"])
+            this.sharedService.changeClass("main-content");
+            this.sharedService.changeUser(user);
+            this.router.navigate(['liste-voiture'])
+            this.toastr.success("inscription terminé avec success, vous pouvez se connecter", "Success")
+          }else{
+            this.message="Echec de l'inscription";
+            this.toastr.warning(this.message,"Erreur inscription")
           }
+          this.spinner.hide()
+        },error => {
+          this.message="Erreur Connexion";
+          this.toastr.error(this.message,"Erreur")
+          this.spinner.hide()
         }
       );
     })

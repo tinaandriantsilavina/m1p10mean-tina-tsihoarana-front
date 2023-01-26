@@ -1,3 +1,5 @@
+import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
+import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,21 +10,35 @@ import { VisiteEncoursComponent } from './pages/visite/visite-encours/visite-enc
 import { ConnexionComponent } from './pages/user/connexion/connexion.component';
 import { InscriptionComponent } from './pages/user/inscription/inscription.component';
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
+import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
+import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
+import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
 
 const routes: Routes = [
+  { path :'accueil' , component : AccueilComponent},
+  { path :'' , component : AccueilComponent},
   { path: 'login', component:  ConnexionComponent},
   { path :'not-found' , component:NotfoundComponent},
   { path :'inscription-voiture' , component: VoitureInscriptionComponent},
   { path :'liste-voiture' , component: VoitureListComponent},
   { path :'detail-voiture/:idvoiture' , component: VoitureDetailComponent},
-  { path :'visite-encours' , component: VisiteEncoursComponent},
+  { path :'visite-voiture/:numero' , component: VisiteEncoursComponent},
+  { path :'historique-visite' , component: VisiteHistoriqueComponent},
   { path :'inscription' , component : InscriptionComponent},
+
+ 
 
 
   // responsable atelier
-  { path :'demande-voiture' , component: VoitureDemandeComponent},
+  { path :'atelier-voiture' , component: VoitureDemandeComponent},
+  { path :'atelier-detail-voiture/:numero' , component: AtelierDetailVoitureComponent},
 
 
+  // Finance
+  { path :'finance-stat' , component: FinanceStatComponent},
+
+
+  { path :'list-bon-de-sortie' , component: BonSortieListComponent},
   {path: '**', redirectTo:'/not-found'}
 
 ];

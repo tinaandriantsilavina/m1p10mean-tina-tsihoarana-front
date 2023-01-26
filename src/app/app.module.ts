@@ -29,6 +29,7 @@ import { AtelierReparationListComponent } from './pages/reparation/atelier-repar
 import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
 import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
+import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FinanceStatComponent } from './pages/financier/finance-stat/finance-sta
     AtelierReparationListComponent,
     AccueilComponent,
     VisiteHistoriqueComponent,
-    FinanceStatComponent
+    FinanceStatComponent,
+    BonSortieListComponent
   ],
   imports: [
     BrowserModule,

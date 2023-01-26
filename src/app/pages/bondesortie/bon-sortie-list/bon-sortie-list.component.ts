@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { BondesortieService } from 'src/app/services/bondesortie.service';
 import { ExportationService } from 'src/app/services/exportation.service';
 import { UploadfileService } from 'src/app/services/uploadfile.service';
-import { VisiteService } from 'src/app/services/visite.service';
 
 @Component({
-  selector: 'app-visite-historique',
-  templateUrl: './visite-historique.component.html',
-  styleUrls: ['./visite-historique.component.scss']
+  selector: 'app-bon-sortie-list',
+  templateUrl: './bon-sortie-list.component.html',
+  styleUrls: ['./bon-sortie-list.component.scss']
 })
-export class VisiteHistoriqueComponent {
+export class BonSortieListComponent implements OnInit {
 
   list = []
   message = "";
   constructor(
-    public visiteService: VisiteService,
+    public bondesortieService: BondesortieService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     public uploadFileService : UploadfileService,
@@ -24,17 +24,17 @@ export class VisiteHistoriqueComponent {
 
   ngOnInit(): void {
     this.getlist(0)
+    // this.exportationService.visite_list(this.list)
   }
   
   getlist(etat) {
     this.spinner.show()
-    return new Promise((resolve, reject) => {
-      this.visiteService.clientvisiteetat(etat).subscribe(
+    new Promise((resolve, reject) => {
+      this.bondesortieService.bondesortie_list(etat).subscribe(
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
             this.list = data['datas']
-            this.exportationService.visite_list(this.list)
           }
           else {
             this.message = data['message'];

@@ -70,7 +70,7 @@ lines (63 sloc) 2.43 KB
         </li> -->
 
         <li class="sub-menu">
-          <a routerLink="atelier-voiture">
+          <a routerLink="/atelier-voiture" href="javascript:;">
             <i class="fa fa-line-chart"></i>
             <span>Liste Demande voiture </span>
           </a>
@@ -78,17 +78,7 @@ lines (63 sloc) 2.43 KB
       </div>
 
       <div *ngIf="authservice.users?.code_type==2">
-        <li class="sub-menu">
-          <a routerLink="/bon-sortie" href="javascript:;">
-            <i class="fa fa-line-chart"></i>
-            <span>Bon de sortie</span>
-          </a>
-          <!-- <ul class="sub">
-            <li><a routerLink="stat">Temps de réparation moyen</a></li>
-            <li><a routerLink="stat">Chiffre d'affaire</a></li>
-            <li><a routerLink="stat">Bénéfice</a></li>
-          </ul> -->
-        </li>
+
       </div>
 
       <div >
@@ -100,7 +90,7 @@ lines (63 sloc) 2.43 KB
         </li>
 
         <li class="sub-menu">
-          <a routerLink="/finance-bon-sortie" href="javascript:;">
+          <a routerLink="/list-bon-de-sortie" href="javascript:;">
             <i class="fa fa-line-chart"></i>
             <span>Bon de sortie</span>
           </a>

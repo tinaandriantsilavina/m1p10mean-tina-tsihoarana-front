@@ -12,6 +12,7 @@ import { InscriptionComponent } from './pages/user/inscription/inscription.compo
 import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture-demande.component';
 import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
 import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
+import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
 
 const routes: Routes = [
   { path :'accueil' , component : AccueilComponent},
@@ -36,6 +37,8 @@ const routes: Routes = [
   // Finance
   { path :'finance-stat' , component: FinanceStatComponent},
 
+
+  { path :'list-bon-de-sortie' , component: BonSortieListComponent},
   {path: '**', redirectTo:'/not-found'}
 
 ];

@@ -19,18 +19,28 @@
           <td>
             <span
               [ngClass]="{'badge badge-pill badge-primary': l['etat'] == 0 , 'badge badge-pill badge-warning': l['etat'] == 1 , 'badge badge-pill badge-success': l['etat'] == 2 }">
-              {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Terminé non payé' : 'Terminé payé' ) }}
+              {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non ayé' ) }}
             </span>
           </td>
           <td>
-            <button type="button" class="btn btn-success btn-sm btn-valider"
+
+
+            <!-- <button type="button" class="btn btn-success btn-sm btn-valider"
               (click)="dialog_update_visite.showModal() ">
               <i class="fa fa-edit" aria-hidden="true"></i> Modifier
-            </button>
-
+            </button> -->
             <button type="button" class="btn btn-info btn-sm btn-valider" (click)="this.emitVisite.emit(l)">
               <i class="fa fa-wrench" aria-hidden="true"  ></i> Reparation
             </button>
+            <button *ngIf="l['etat']==0" type="button" class="btn btn-warning btn-sm btn-valider" (click)="this.emitVisite.emit(l) ; initformterminervisite(l) ; dialog_terminer_visite.showModal()">
+              <i class="fa fa-hourglass-end " aria-hidden="true"  ></i> Terminer
+            </button>
+
+             <button *ngIf="l['etat']>0" type="button" class="btn btn-secondary btn-sm btn-valider"
+              (click)="dialog_bon_sortie.showModal() ; this.emitVisite.emit(l) ; selectionVisite(l) ">
+              <i class="fa fa-edit" aria-hidden="true"></i> Bon de sortie
+            </button>
+
 
           </td>
         </tr>
@@ -72,4 +82,45 @@
   </dialog>
 </div>
 
+
+<div>
+  <dialog #dialog_terminer_visite>
+    <header>
+      <div class="title">Creation visite</div>
+      <span class="close-btn" (click)="dialog_terminer_visite.close()"> ✖ </span>
+    </header>
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
+      <div class="center">
+        <div class="form-group">
+          <label>Date fin Visite</label>
+          <input formControlName="date_fin" type="date" class="form-control">
+          <div *ngIf="submitted && f.date_fin.errors">
+            <small *ngIf="f.date_fin.errors.required" style="color: red">Champ Obligtoire</small>
+          </div>
+        </div>
+      </div>
+    <div class="center">
+      <button class="btn btn-success btn-sm" type="submit" (click)="dialog_terminer_visite.close() ; terminervisite()">Terminer Visite</button>
+      <span style="margin-right: 10px;"></span>
+      <button class="btn btn-danger btn-sm" (click)="dialog_terminer_visite.close()">Annuler</button>
+    </div>
+    </form>
+  </dialog>
+</div>
+
+
+<div>
+  <dialog #dialog_bon_sortie>
+    <header>
+      <div class="title">Creation de bon de sortie</div>
+      <span class="close-btn" (click)="dialog_bon_sortie.close()"> ✖ </span>
+    </header>
+    <p class="text-center"> Voulez-vous crée un bon de sortie pour cette Visite</p>
+    <div class="center">
+      <button class="btn btn-success btn-sm" type="submit" (click)="dialog_bon_sortie.close() ; creerbonsortie()">Creation bon de sortie</button>
+      <span style="margin-right: 10px;"></span>
+      <button class="btn btn-danger btn-sm" (click)="dialog_bon_sortie.close()">Annuler</button>
+    </div>
+  </dialog>
+</div>
 

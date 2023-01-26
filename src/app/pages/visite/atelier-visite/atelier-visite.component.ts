@@ -1,3 +1,4 @@
+import { BondesortieService } from './../../../services/bondesortie.service';
 import { ReparationService } from './../../../services/reparation.service';
 import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +24,7 @@ export class AtelierVisiteComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     public formBuilder: FormBuilder,
-    private reparationService:ReparationService
+    private bondesortieService: BondesortieService
   ) {
 
   }
@@ -38,6 +39,22 @@ export class AtelierVisiteComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.formulaire.controls;
   }
+
+
+  initformterminervisite(visite) {
+    this.visiteselectionner = visite
+    console.log(this.visiteselectionner)
+    this.formulaire = this.formBuilder.group(
+      {
+        date_fin: ["2022-01-01", [Validators.required]],
+      }
+    );
+  }
+
+  selectionVisite(v){
+    this.visiteselectionner = v
+  }
+
   initformupdatevisite(idvisite) {
     this.visiteselectionner = idvisite
     console.log(this.visiteselectionner)
@@ -85,6 +102,55 @@ export class AtelierVisiteComponent implements OnInit {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
             this.message = "Visite crée "
+            this.toastr.success(this.message, "Success")
+            this.getlistevisite()
+          }
+          else {
+            this.message = data['message'];
+            this.toastr.warning("Erreur", this.message)
+          }
+          this.spinner.hide()
+        }, error => {
+          this.spinner.hide()
+          this.message = "Echec de la connexion"
+          this.toastr.error(this.message, "Erreur")
+        }
+      );
+    })
+  }
+
+  terminervisite() {
+    new Promise((resolve, reject) => {
+      this.visiteService.terminervisite(this.visiteselectionner['_id'], this.formulaire.getRawValue()).subscribe(
+        d => {
+          let data = (d as { [key: string]: any })
+          if (data['status'] == 200) {
+            this.message = "Visite terminé"
+            this.toastr.success(this.message, "Success")
+            this.getlistevisite()
+          }
+          else {
+            this.message = data['message'];
+            this.toastr.warning("Erreur", this.message)
+          }
+          this.spinner.hide()
+        }, error => {
+          this.spinner.hide()
+          this.message = "Echec de la connexion"
+          this.toastr.error(this.message, "Erreur")
+        }
+      );
+    })
+  }
+
+  creerbonsortie() {
+    console.log("huhuh")
+    new Promise((resolve, reject) => {
+      this.bondesortieService.creerbonsortie(this.visiteselectionner['_id']).subscribe(
+        d => {
+          let data = (d as { [key: string]: any })
+          if (data['status'] == 200) {
+            this.message = "Bon de sortie crée "
             this.toastr.success(this.message, "Success")
             this.getlistevisite()
           }

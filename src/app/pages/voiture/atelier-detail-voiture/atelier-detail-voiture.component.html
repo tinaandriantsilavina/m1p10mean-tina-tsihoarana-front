@@ -2,7 +2,7 @@
   <div class="cont_breadcrumbs_2">
     <ul>
       <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
-      <li><a><span class="fa fa-home"></span> Accueil</a></li>
+      <li><a routerLink="/accueil" ><span class="fa fa-home"></span> Accueil</a></li>
       <li><a routerLink="/atelier-voiture">Liste Voitures</a></li>
       <li><a>Details Voitures</a></li>
       <li><a> {{numero}}</a></li>
@@ -11,10 +11,8 @@
   </div>
 </div>
 <div class="row" style="max-width:98%">
-  <div class="col-4">
+  <div class="col-5">
     <div class="item-voiture shadow" style="width: 100%;">
-      <!-- <img [src]="this.uploadFileService.bufferToImage(l['image'])" class="card-img-top" alt="..."> -->
-      <!-- <img src="../../../../assets/images/sprinter.jpg" class="card-img-top" alt="..."> -->
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Numero: {{numero}} </li>
         <li class="list-group-item">
@@ -32,7 +30,7 @@
     </div>
   </div>
 
-  <div class="col-8">
+  <div class="col-7">
     <div class="card tabset center" >
       <div class="card-header bg-vert">
         <ul class="nav nav-tabs tab-list" role="tablist">

@@ -21,7 +21,7 @@ export class ConnexionComponent {
 
   ngAfterViewInit(): void {
     if(this.authservice.users!=null){
-        this.router.navigate(['/actuel/dashboard']);
+        this.router.navigate(['/accueil']);
     }
   }
 
@@ -69,7 +69,7 @@ export class ConnexionComponent {
             localStorage.setItem('token',data['datas']["token"])
             this.sharedService.changeClass("main-content");
             this.sharedService.changeUser(user);
-            this.router.navigate(['liste-voiture'])
+            this.router.navigate(['accueil'])
           }else{
             this.message=data['message'];
             this.toastr.warning(this.message, "Erreur")

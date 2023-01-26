@@ -1,3 +1,4 @@
+import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path :'detail-voiture/:idvoiture' , component: VoitureDetailComponent},
   { path :'visite-encours' , component: VisiteEncoursComponent},
   { path :'inscription' , component : InscriptionComponent},
+
+  { path :'accueil' , component : AccueilComponent},
 
 
   // responsable atelier

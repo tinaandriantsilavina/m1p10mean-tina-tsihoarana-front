@@ -31,4 +31,14 @@ export class VisiteService {
     console.log();
     return this.http.post(base_url + `api/visites/atelier/voiture/${voiture}/create`, body ,  this.authService.option(true));
   }
+
+  terminervisite(visite,body){
+    console.log();
+    return this.http.post(base_url + `api/visites/atelier/terminer/${visite}`, body ,  this.authService.option(true));
+  }
+
+  creerbonsortie(visite){
+    console.log();
+    return this.http.post(base_url + `api/visites/atelier/terminer/${visite}`, null ,  this.authService.option(true));
+  }
 }

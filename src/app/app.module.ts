@@ -26,6 +26,7 @@ import { VoitureDemandeComponent } from './pages/voiture/voiture-demande/voiture
 import { AtelierDetailVoitureComponent } from './pages/voiture/atelier-detail-voiture/atelier-detail-voiture.component';
 import { AtelierVisiteComponent } from './pages/visite/atelier-visite/atelier-visite.component';
 import { AtelierReparationListComponent } from './pages/reparation/atelier-reparation-list/atelier-reparation-list.component';
+import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AtelierReparationListComponent } from './pages/reparation/atelier-repar
     VoitureDemandeComponent,
     AtelierDetailVoitureComponent,
     AtelierVisiteComponent,
-    AtelierReparationListComponent
+    AtelierReparationListComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

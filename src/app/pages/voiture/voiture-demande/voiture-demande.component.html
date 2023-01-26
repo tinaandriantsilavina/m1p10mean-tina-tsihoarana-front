@@ -17,12 +17,18 @@
         <thead>
           <tr class="bg-warning white">
             <th scope="col">Voiture</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Image</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let l of voiture_enattente">
+            <th scope="row"> {{l['marque']}} {{l['modele']}} </th>
             <th scope="row"> {{l['numero']}} </th>
+            <th scope="row"> <img class="image-voiture" [src]="this.uploadFileService.bufferToImage(l['image'])" alt="..."> </th>
+
             <td>
               <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
                 class="btn btn-success btn-sm">Creer une
@@ -43,12 +49,17 @@
         <thead>
           <tr class="bg-info white">
             <th scope="col">Voiture</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Image</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let l of voitureaccepter">
+            <th scope="row"> {{l['marque']}} {{l['modele']}} </th>
             <th scope="row"> {{l['numero']}} </th>
+            <th scope="row"> <img [src]="this.uploadFileService.bufferToImage(l['image'])" alt="..."> </th>
+
             <td>
               <!-- <button type="button" (click)="dialog.showModal() ; initForm(l['numero'])  "
                 class="btn btn-success btn-sm">Creer une

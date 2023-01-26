@@ -10,10 +10,10 @@
 
 <div class="container">
   <div class="item-voiture shadow" *ngFor="let l of listevoiture">
-    <!-- <img src="{{l['image']}}" class="card-img-top" alt="..."> -->
-    <img src="../../../../assets/images/sprinter.jpg" class="card-img-top" alt="...">
+    <img [src]="this.uploadFileService.bufferToImage(l['image'])" class="card-img-top" alt="...">
+    <!-- <img src="../../../../assets/images/sprinter.jpg" class="card-img-top" alt="..."> -->
     <div class="card-body">
-      <h5 class="card-title" style="color: rgb(0, 0, 0);"> {{l['nomvoiture']}} Sprinter </h5>
+      <h5 class="card-title" style="color: rgb(0, 0, 0);"> {{l['marque']}} {{l['modele']}}   </h5>
       <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
     </div>
     <ul class="list-group list-group-flush">

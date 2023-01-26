@@ -71,7 +71,6 @@ export class VoitureInscriptionComponent implements OnInit {
         form['image'] = image //Buffer.from(image, 'base64')
         this.enregistrervoiture(form)
         console.log(form)
-
         // this.toastr.warning("Demande du depot voiture effectuer avec success");
       } else {
         // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
@@ -84,12 +83,10 @@ export class VoitureInscriptionComponent implements OnInit {
 
 
   enregistrervoiture(body) {
-    let bod = {
-      numero: body['numero']
-    }
+
     this.spinner.show()
     return new Promise((resolve, reject) => {
-      this.voitureService.enregistrerVoiture(bod).subscribe(
+      this.voitureService.enregistrerVoiture(body).subscribe(
         d => {
           let data = (d as { [key: string]: any })
           if(data['status'] ==200){

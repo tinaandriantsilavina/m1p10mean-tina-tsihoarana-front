@@ -1,3 +1,4 @@
+import { UploadfileService } from 'src/app/services/uploadfile.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +15,8 @@ export class AtelierDetailVoitureComponent implements OnInit {
   visiteSelectionner:any = null
   constructor(
     private router: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    public uploadFileService: UploadfileService
   ) { }
 
   ngOnInit(): void {

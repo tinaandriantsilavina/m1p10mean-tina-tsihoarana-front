@@ -1,3 +1,4 @@
+import { UploadfileService } from 'src/app/services/uploadfile.service';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ModalService } from './../../../components/_modal/modal.service';
 import { VisiteService } from './../../../services/visite.service';
@@ -24,6 +25,7 @@ export class VoitureDemandeComponent {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
     public formBuilder:FormBuilder,
+    public uploadFileService : UploadfileService
   ){
 
   }

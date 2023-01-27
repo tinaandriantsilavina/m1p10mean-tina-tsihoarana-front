@@ -30,6 +30,8 @@ import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { VisiteHistoriqueComponent } from './pages/visite/visite-historique/visite-historique.component';
 import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
 import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
+import { DepensesComponent } from './pages/financier/depenses/depenses.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-
     AccueilComponent,
     VisiteHistoriqueComponent,
     FinanceStatComponent,
-    BonSortieListComponent
+    BonSortieListComponent,
+    DepensesComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

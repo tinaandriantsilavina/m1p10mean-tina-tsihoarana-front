@@ -72,11 +72,11 @@ export class UploadfileService {
   changegoToCreateTicketFH(val: any) {
     this.goToCreateTicketFH.next(val);
   }
-  async  encodeFileToBase64(file: any): Promise<string> {
+  async encodeFileToBase64(file: any): Promise<string> {
     const reader = new FileReader();
     let value: any
     return new Promise((resolve, reject) => {
-      if(file!=null){
+      if (file != null) {
         reader.readAsDataURL(file);
         reader.onload = function () {
           value = reader.result;
@@ -85,7 +85,7 @@ export class UploadfileService {
         reader.onerror = function (error) {
           resolve("");
         };
-      }else{
+      } else {
         resolve("");
       }
     });
@@ -100,6 +100,24 @@ export class UploadfileService {
     } finally {
     }
     return val;
+  }
+
+  async fileToBuffer(file) {
+    // const reader = new FileReader();
+    // reader.readAsArrayBuffer(file);
+    // reader.onload = () => {
+    //   const buffer = Buffer.from(reader.result);
+    //   // Utilisez le buffer ici
+    // };
+
+    if (file) {
+      file.arrayBuffer().then(buff => {
+        let x = new Uint8Array(buff); // x is your uInt8Array
+        // perform all required operations with x here.
+        console.log(x);
+      });
+      console.log("call finished");
+    }
   }
 
 }

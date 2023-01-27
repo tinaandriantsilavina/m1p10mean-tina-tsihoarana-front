@@ -2,7 +2,7 @@
   <div class="cont_breadcrumbs_2">
     <ul>
       <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
-      <li><a routerLink="/accueil" ><span class="fa fa-home"></span> Accueil</a></li>
+      <li><a routerLink="/accueil"><span class="fa fa-home"></span> Accueil</a></li>
       <li><a routerLink="/atelier-voiture">Liste Voitures</a></li>
       <li><a>Details Voitures</a></li>
       <li><a> {{numero}}</a></li>
@@ -13,14 +13,10 @@
 <div class="row" style="max-width:98%">
   <div class="col-5">
     <div class="item-voiture shadow" style="width: 100%;">
+      <img [src]="this.uploadFileService.bufferToImage(voiture['image'])" class="card-img-top" alt="...">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Numero: {{numero}} </li>
-        <li class="list-group-item">
-          <div class="contenu">
-            <div class="titre1"> User</div>
-            <div class="titre2"> hh </div>
-          </div>
-        </li>
+        <li class="list-group-item"> {{voiture['marque'] }} {{ voiture['modele'] }} </li>
+        <li class="list-group-item"> Numero: {{numero}} </li>
         <h5 class="card-title text-center" style="color: rgb(0, 0, 0); margin-top: 20px; margin-bottom: 10px;">Visites
         </h5>
         <li class="list-group-item">
@@ -31,7 +27,7 @@
   </div>
 
   <div class="col-7">
-    <div class="card tabset center" >
+    <div class="card tabset center">
       <div class="card-header bg-vert">
         <ul class="nav nav-tabs tab-list" role="tablist">
           <!-- <li class="nav-item" (click)="showTab(1);">
@@ -59,8 +55,8 @@
         <app-atelier-reparation-list [visiteselectionner]="visiteSelectionner"
           *ngIf="currentTab === 2 && visiteSelectionner!=null"> </app-atelier-reparation-list>
         <div *ngIf="visiteSelectionner==null">
-          <h6 class="text-center"> Veuillez selectionner une visite ...
-            <span class="spinner-border center-spinner" role="status"> </span>
+          <h6 class="text-center"> Veuillez selectionner Reparations Visite ...
+            <span class="spinner-grow text-secondary" role="status"></span>
           </h6>
         </div>
 

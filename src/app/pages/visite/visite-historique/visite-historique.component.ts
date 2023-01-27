@@ -23,18 +23,20 @@ export class VisiteHistoriqueComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getlist(0)
+    this.getlist()
   }
-  
-  getlist(etat) {
+  etat=0;
+  export(){
+    this.exportationService.visite_list(this.etat,this.list)
+  }
+  getlist() {
     this.spinner.show()
     return new Promise((resolve, reject) => {
-      this.visiteService.clientvisiteetat(etat).subscribe(
+      this.visiteService.clientvisiteetat(this.etat).subscribe(
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
             this.list = data['datas']
-            this.exportationService.visite_list(this.list)
           }
           else {
             this.message = data['message'];

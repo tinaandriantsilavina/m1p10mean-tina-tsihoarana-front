@@ -8,14 +8,29 @@
     </div>
 </div>
 <div class="row">
-    <div class="center-div shadow-lg p-3 mb-5 bg-white rounded contenu">
-        <div class="titre1">
 
+    <div class="shadow center-div ">
+
+        <div class="contenu">
+            <div class="titre1">
+                <div class="form-inline">
+                    <div class="form-group mb-2">
+                        <span> Etat : </span>
+                        <select [(ngModel)]="etat" class="form-control form-control-plaintext input-recherche">
+                            <option value="0"> Non Términé </option>
+                            <option value="1"> Términé </option>
+                        </select>
+                    </div>
+                    <button type="submit" (click)="getlist()" class="btn btn-success btn-sm input-recherche  mb-2">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="titre2">
+                <button type="button" (click)="export()" class="btn btn-success btn-sm">Export en excel</button>
+            </div>
         </div>
 
-        <div class="titre2">
-            <button type="button" class="btn btn-success btn-sm"  >Export en excel</button>
-        </div>
 
     </div>
 </div>

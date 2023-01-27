@@ -1,9 +1,9 @@
 <div class="row">
   <div class="cont_breadcrumbs_2">
     <ul>
-      <li><img class="logo-breadcrumbs" src="assets/images/logo.png" ></li>
-      <li><a ><span class="fa fa-home"></span> Acueil</a></li>
-      <li><a >Liste voiture</a></li>
+      <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
+      <li><a><span class="fa fa-home"></span> Acueil</a></li>
+      <li><a>Liste voiture</a></li>
     </ul>
   </div>
 </div>
@@ -11,10 +11,8 @@
 <div class="container">
   <div class="item-voiture shadow" *ngFor="let l of listevoiture">
     <img [src]="this.uploadFileService.bufferToImage(l['image'])" class="card-img-top" alt="...">
-    <!-- <img src="../../../../assets/images/sprinter.jpg" class="card-img-top" alt="..."> -->
     <div class="card-body">
-      <h5 class="card-title" style="color: rgb(0, 0, 0);"> {{l['marque']}} {{l['modele']}}   </h5>
-      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+      <h5 class="card-title" style="color: rgb(0, 0, 0);"> {{l['marque']}} {{l['modele']}} </h5>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Numero: {{l['numero']}} </li>
@@ -28,14 +26,27 @@
             </span>
           </div>
           <div class="titre2">
-            <button *ngIf="l['etat']== 1" [routerLink]="['/visite-voiture',l['numero']]" type="button" class="btn btn-info btn-sm">
+            <button *ngIf="l['etat']== 1" [routerLink]="['/visite-voiture',l['numero']]" type="button"
+              class="btn btn-info btn-sm btn-valider">
               <i class="fa fa-cog" aria-hidden="true"></i>
-              Situation en cours
+              Visite
             </button>
 
-            <button *ngIf="l['etat']== 2" (click)="deposervoiture(l['numero'])" type="button" class="btn btn-primary btn-sm">
+            <button type="button" class="btn btn-success btn-sm btn-valider" (click)="dialog_update_voiture.showModal() ; initFormUpdate(l) ">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              Modifier
+            </button>
+
+            <button *ngIf="l['etat']== 2" (click)="deposervoiture(l['numero'])" type="button"
+              class="btn btn-primary btn-sm btn-valider">
               <i class="fa fa-cog" aria-hidden="true"></i>
               Deposer
+            </button>
+
+            <button  (click)="recuperervoiture(l)" type="button"
+              class="btn btn-secondary btn-sm btn-valider">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              recuperer
             </button>
 
           </div>
@@ -43,4 +54,57 @@
       </li>
     </ul>
   </div>
+</div>
+
+
+
+<div>
+  <dialog #dialog_update_voiture>
+    <header>
+      <div class="title">Modification Voiture</div>
+      <span class="close-btn" (click)="dialog_update_voiture.close()"> ✖ </span>
+    </header>
+    <p class="text-center" style="color: red; font-weight: bold; ">{{message}}</p>
+    <div class="row center" style="padding: 20px;">
+      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Marque de la voiture</label>
+              <input formControlName="marque" type="text" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+              <div *ngIf="submitted && f.marque.errors">
+                <small *ngIf="f.marque.errors.required" style="color: red">Champ Obligtoire</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Modele de la voiture</label>
+              <input formControlName="modele" type="text" class="form-control" aria-describedby="emailHelp">
+              <div *ngIf="submitted && f.modele.errors">
+                <small *ngIf="f.modele.errors.required" style="color: red">Champ Obligtoire</small>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputEmail1">numero</label>
+              <input formControlName="numero" type="text" class="form-control" aria-describedby="emailHelp">
+              <div *ngIf="submitted && f.numero.errors">
+                <small *ngIf="f.numero.errors.required" style="color: red">Champ Obligtoire</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <app-image-upload></app-image-upload>
+          </div>
+        </div>
+        <div class="center">
+          <button class="btn btn-success btn-sm" type="submit"
+            (click)="dialog_update_voiture.close() ; valider()">Modifier</button>
+          <span style="margin-right: 10px;"></span>
+          <button class="btn btn-danger btn-sm" (click)="dialog_update_voiture.close()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  
+  </dialog>
 </div>

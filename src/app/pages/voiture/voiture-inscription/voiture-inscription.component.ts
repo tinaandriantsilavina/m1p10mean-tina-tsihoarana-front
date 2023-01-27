@@ -78,6 +78,7 @@ export class VoitureInscriptionComponent implements OnInit {
       }
     } else {
       this.message = "Veuillez remplir le formulaire correctement";
+      this.toastr.warning(this.message)
     }
   }
 

@@ -31,13 +31,14 @@ export class ExportationService {
   }
 
 
-  async visite_list(tab) {
+  async visite_list(eta,tab) {
+    let etat = eta ==0 ? 'Non terminé' :"Terminé"
     let index = 4;
     let monnaieform = '_("Ar"* #,##0.00_);_("Ar"* (#,##0.00);_("Ar"* "-"??_);_(@_)';
     let prform = '_(" "* #,##0.00_)"%";_(" "* (#6,##0.00)"%";_(" "* "-"??_)"%";_(@_)';
     let numberform = '_(" "* #,##0.00_);_(" "* (#,##0.00);_(" "* "-"??_);_(@_)';
     const workbook = new Excel.Workbook();
-    const worksheet = workbook.addWorksheet("SB");
+    const worksheet = workbook.addWorksheet("Visite");
 
     const imageBuffer = await axios.get('../../assets/images/logo.png', { responseType: 'arraybuffer' });
     const imageId2 = workbook.addImage({
@@ -52,7 +53,7 @@ export class ExportationService {
       { key: 'C', width: 20 }
     ];
     this.sheet(worksheet, 'A1', 'Liste Visite', 'left', true, false, true)
-    this.sheet(worksheet, 'A2', 'Status', 'left', true, false, true)
+    this.sheet(worksheet, 'A2', `Etat: ${etat}`, 'left', true, false, true)
     index++
     this.sheet(worksheet, 'A' + index, 'Visite', 'left', true, false, false, '#ffffff', '#0088af')
     this.sheet(worksheet, 'B' + index, 'Reparation', 'left', true, false, false, '#ffffff', '#0088af')

@@ -34,10 +34,23 @@
   //   border-radius: .5em;
   //   padding: 10px;
   // }
+dialog{
+  width:600px;
+}
 
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .btn-valider{
+    font-size: 11px;
+    margin:5px;
+  }
+  
 
-
-  .center{
-    margin: 0 auto;
-    width: 10px;
+  .btn-valider{
+    margin: 2px;
   }

@@ -1,3 +1,4 @@
+import { DepensesComponent } from './pages/financier/depenses/depenses.component';
 import { FinanceStatComponent } from './pages/financier/finance-stat/finance-stat.component';
 import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path :'historique-visite' , component: VisiteHistoriqueComponent},
   { path :'inscription' , component : InscriptionComponent},
 
- 
+
 
 
   // responsable atelier
@@ -36,6 +37,7 @@ const routes: Routes = [
 
   // Finance
   { path :'finance-stat' , component: FinanceStatComponent},
+  { path :'finance-depense' , component: DepensesComponent},
 
 
   { path :'list-bon-de-sortie' , component: BonSortieListComponent},

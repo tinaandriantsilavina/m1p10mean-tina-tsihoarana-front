@@ -56,15 +56,24 @@ export class FinanceService {
     return this.http.get(base_url + `api/statistiques/financier/chiffre_affaire?debut=${debut}&fin=${fin}`,  this.authService.option(true));
   }
 
-  stat_reparation_moyenne(debut, fin){
+  
+  stat_chiffre_affaire_mois_annee(mois, annee){
+    console.log();
+    return this.http.get(base_url + `api/statistiques/financier/chiffre_affaire/mois?mois=${mois}&annee=${annee}`,  this.authService.option(true));
+  }
+
+  stat_chiffre_affaire_annee(annee){
+    console.log();
+    return this.http.get(base_url + `api/statistiques/financier/chiffre_affaire/data/${annee}`,  this.authService.option(true));
+  }
+
+
+
+  stat_reparation_moyenne(){
     console.log();
     return this.http.get(base_url + `api/statistiques/financier/reparation_moyenne`,  this.authService.option(true));
   }
 
-  stat_chiffre_affaire_annee(mois, annee){
-    console.log();
-    return this.http.get(base_url + `api/statistiques/financier/chiffre_affaire/mois?mois=${mois}&annee=${annee}`,  this.authService.option(true));
-  }
 
 
   stat_benefice(mois, annee){

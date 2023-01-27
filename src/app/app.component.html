@@ -1,7 +1,3 @@
-lines (63 sloc) 2.43 KB
-
-<!-- <aside> -->
-<!-- <aside  *ngIf="this.authservice.users!=null"> -->
 <aside [ngClass]=" this.authservice.users!=null ? '' : 'display_none'">
   <div id="sidebar" class="nav-collapse ">
 
@@ -16,24 +12,13 @@ lines (63 sloc) 2.43 KB
         (authservice.users?.code_type==1? 'Responsable Atelier' : 'Responsable Financier') }} </p>
       <p class="centered" style="color: #FFFFFF"> {{authservice.users?.email}} </p>
       <li class="mt">
-        <a routerLink="/accueil"  href="javascript:;" class="active">
+        <a routerLink="/accueil" href="javascript:;" class="active">
           <i class="fa fa-dashboard"></i>
           <span>Accueil</span>
         </a>
       </li>
 
       <div *ngIf="authservice.users?.code_type==0">
-        <!-- <li class="sub-menu">
-          <a href="javascript:;">
-            <i class="fa fa-line-chart"></i>
-            <span>Client</span>
-          </a>
-          <ul class="sub">
-            <li><a routerLink="inscription-voiture">Inscription voiture</a></li>
-            <li><a routerLink="liste-voiture">Liste voiture </a></li>
-            <li><a routerLink="visite-encours">Historique Visite Encours</a></li>
-          </ul> -->
-
         <li class="sub-menu">
           <a routerLink="inscription-voiture" href="javascript:;">
             <i class="fa fa-line-chart"></i>
@@ -57,18 +42,6 @@ lines (63 sloc) 2.43 KB
       </div>
 
       <div *ngIf="authservice.users?.code_type==1">
-        <!-- <li class="sub-menu">
-          <a href="javascript:;">
-            <i class="fa fa-line-chart"></i>
-            <span>Responsable </span>
-          </a>
-          <ul class="sub">
-            <li><a routerLink="atelier-voiture">liste voiture</a></li>
-            <li><a routerLink="stat">Lister reparations</a></li>
-            <li><a routerLink="stat">Bon de sortit</a></li>
-          </ul>
-        </li> -->
-
         <li class="sub-menu">
           <a routerLink="/atelier-voiture" href="javascript:;">
             <i class="fa fa-line-chart"></i>
@@ -78,21 +51,10 @@ lines (63 sloc) 2.43 KB
       </div>
 
       <div *ngIf="authservice.users?.code_type==2">
-
-      </div>
-
-      <div >
         <li class="sub-menu">
           <a routerLink="/finance-stat" href="javascript:;">
             <i class="fa fa-line-chart"></i>
             <span>Stats</span>
-          </a>
-        </li>
-
-        <li class="sub-menu">
-          <a routerLink="/list-bon-de-sortie" href="javascript:;">
-            <i class="fa fa-line-chart"></i>
-            <span>Bon de sortie</span>
           </a>
         </li>
 
@@ -102,8 +64,15 @@ lines (63 sloc) 2.43 KB
             <span>Depense</span>
           </a>
         </li>
-
       </div>
+
+        <li class="sub-menu">
+          <a routerLink="/list-bon-de-sortie" href="javascript:;">
+            <i class="fa fa-line-chart"></i>
+            <span>Bon de sortie</span>
+          </a>
+        </li>
+   
 
 
       <li class="sub-menu">
@@ -114,7 +83,6 @@ lines (63 sloc) 2.43 KB
         <ul class="sub">
           <li><a routerLink="inscription" *ngIf="this.authservice.users==null">Inscription</a></li>
           <li><a routerLink="login" *ngIf="this.authservice.users==null">Login</a></li>
-          <!-- <li><a routerLink="connexion/loginform" *ngIf="this.authservice.users==null" >Connexion</a></li> -->
           <li style="margin-top: 10px"><button style="width: 100%" class="button btn-danger" (click)="deconnexion()"
               *ngIf="this.authservice.users!=null">Deconnexion</button></li>
         </ul>
@@ -128,20 +96,4 @@ lines (63 sloc) 2.43 KB
     <ngx-spinner [type]="spinner_type" [bdColor]="spinner_background"></ngx-spinner>
     <router-outlet></router-outlet>
   </div>
-
-  <!-- <div>
-    <h1>Home</h1>
-    <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
-    <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
-  </div>
-
-  <jw-modal id="custom-modal-1">
-    <h1>A Custom Modal!</h1>
-    <button (click)="closeModal('custom-modal-1');">Close</button>
-  </jw-modal>
-
-  <jw-modal id="custom-modal-2">
-    <h1 style="height:1000px">A Tall Custom Modal!</h1>
-    <button (click)="closeModal('custom-modal-2');">Close</button>
-  </jw-modal> -->
 </div>

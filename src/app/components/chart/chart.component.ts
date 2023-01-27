@@ -22,18 +22,40 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
 
     for(let i=0; i<this.data.length; i++){
-      this.backgroundColor.push(this.getRandomColor())
-      this.borderColor.push(this.getRandomColor())
+      let color =  this.random_rgba()
+      this.backgroundColor.push(color.bg)
+      this.borderColor.push(color.bd)
     }
     console.log(this.data)
+    console.log(this.backgroundColor)
+    console.log(this.borderColor)
     this.chartInit()
-    console.log(this.random_rgba())
   }
 
   random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    // let bd= 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',1'+ ')';
+    // let bg = 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',0.4'+ ')';
+    let color ='rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) ;
+    let bd= color + ',1'+ ')'
+    let bg = color + ',0.4'+ ')'
+    return {bd,bg}
   }
+
+  // random_rgba_bg() {
+  //   var o = Math.round, r = Math.random, s = 255;
+  //   return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',0.4'+ ')';
+  // }
+
+  // random_rgba_bd() {
+  //   var o = Math.round, r = Math.random, s = 255;
+  //   return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',1'+ ')';
+  // }
+
+  // random_rgba() {
+  //   var o = Math.round, r = Math.random, s = 255;
+  //   return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+  // }
   getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -43,7 +65,7 @@ export class ChartComponent implements OnInit {
     return color;
   }
   chartInit() {
-    var myChart = new Chart("myChart", {
+    var myChart = new Chart(this.idcanvas, {
       type: this.type,
       data: {
         labels: this.labels,

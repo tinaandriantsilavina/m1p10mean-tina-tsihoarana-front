@@ -1,10 +1,204 @@
-<div class="row" >
-  <div class="col-md">
+<div class="row">
+  <div class="cont_breadcrumbs_2">
+    <ul>
+      <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
+      <li><a routerLink="/accueil"><span class="fa fa-home"></span> Accueil</a></li>
+      <li><a>Statistique</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="shadow center">
+      <div class="form-inline">
+        <h6 class="text-titre bg-bleu">Chiffre d'affaires Année</h6>
+        <div class="form-group mb-2">
+          <span> Année : </span>
+          <select [(ngModel)]="ca_annee2" class="form-control form-control-plaintext input-recherche">
+            <option value="{{l}}" *ngFor="let l of annee"> {{l}} </option>
+          </select>
+        </div>
+        <button type="submit" (click)="chiffreAffaireAnnee()" class="btn btn-success btn-sm input-recherche  mb-2">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md">
+
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Mois</th>
+              <th scope="col">Chiffre d'affaires</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let l of data_ca_annee">
+              <th scope="row"> {{l['mois']}} </th>
+              <td>{{ l['chiffre_affaire']}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div id="divChart" class="chart center shadow-lg p-3 mb-5 bg-white rounded">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md">
+      <div class="shadow center">
+        <div class="form-inline">
+          <h6 class="text-titre bg-bleu">Chiffre d'affaires</h6>
+          <div class="form-group mb-2">
+            <span> Debut : </span>
+            <input [(ngModel)]="ca_date_debut" type="date" class="form-control form-control-plaintext input-recherche">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <span> Fin : </span>
+            <input [(ngModel)]="ca_date_fin" type="date" class="form-control form-control-plaintext input-recherche">
+          </div>
+          <button type="submit" (click)="chiffreAffaireDate()" class="btn btn-success btn-sm input-recherche  mb-2">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <table class="table table-hover table-sm">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"> Date debut </th>
+              <td> {{ca_date_debut}} </td>
+            </tr>
+
+            <tr>
+              <th scope="row"> Date Fin </th>
+              <td> {{ca_date_fin}} </td>
+            </tr>
+
+            <tr>
+              <th scope="row"> Chiffre Affaire </th>
+              <td> {{data_ca_date?.chiffre_affaire}} </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+
+    <div class="col-md">
+      <div class="shadow center">
+        <div class="form-inline">
+          <h6 class="text-titre bg-bleu">Chiffre d'affaires</h6>
+          <div class="form-group mb-2">
+            <span> Mois : </span>
+            <select [(ngModel)]="ca_mois" class="form-control form-control-plaintext input-recherche">
+              <option value="{{l.value}}" *ngFor="let l of mois"> {{l.mois}} </option>
+            </select>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <span> Annee : </span>
+            <select [(ngModel)]="ca_annee" class="form-control form-control-plaintext input-recherche">
+              <option value="{{l}}" *ngFor="let l of annee"> {{l}} </option>
+            </select>
+          </div>
+          <button type="submit" (click)="chiffreAffaireMoisAnnee()"
+            class="btn btn-success btn-sm input-recherche  mb-2">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <table class="table table-hover table-sm">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"> Mois </th>
+              <td> {{data_ca_mois_annee?.mois}} </td>
+            </tr>
+
+            <tr>
+              <th scope="row"> Annee </th>
+              <td> {{data_ca_mois_annee?.annee}} </td>
+            </tr>
+
+            <tr>
+              <th scope="row"> Chiffre Affaire </th>
+              <td> {{data_ca_mois_annee?.chiffre_affaire}} </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
 
   </div>
 
-  <div class="col-md">
-      <app-chart></app-chart>
+
+
+
+
+
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md">
+      <div class="shadow center">
+        <div class="form-inline">
+          <h6 class="text-titre bg-bleu">Reparation Moyenne</h6>
+        </div>
+      </div>
+
+
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <table class="table table-hover table-sm">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"> Heure </th>
+              <td> {{data_reparation_moyenne}} hh </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="col-md">
+      -
+    </div>
+
+
   </div>
+
 
 </div>

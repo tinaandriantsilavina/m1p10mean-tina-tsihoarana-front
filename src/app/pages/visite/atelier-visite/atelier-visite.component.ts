@@ -103,13 +103,14 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Visite crée "
             this.toastr.success(this.message, "Success")
-            this.getlistevisite()
+         
           }
           else {
             this.message = data['message'];
             this.toastr.warning("Erreur", this.message)
           }
           this.spinner.hide()
+          this.getlistevisite()
         }, error => {
           this.spinner.hide()
           this.message = "Echec de la connexion"
@@ -127,13 +128,14 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Visite terminé"
             this.toastr.success(this.message, "Success")
-            this.getlistevisite()
+           
           }
           else {
             this.message = data['message'];
             this.toastr.warning("Erreur", this.message)
           }
           this.spinner.hide()
+          this.getlistevisite()
         }, error => {
           this.spinner.hide()
           this.message = "Echec de la connexion"
@@ -152,13 +154,14 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Bon de sortie crée "
             this.toastr.success(this.message, "Success")
-            this.getlistevisite()
+            
           }
           else {
             this.message = data['message'];
             this.toastr.warning("Erreur", this.message)
           }
           this.spinner.hide()
+          this.getlistevisite()
         }, error => {
           this.spinner.hide()
           this.message = "Echec de la connexion"

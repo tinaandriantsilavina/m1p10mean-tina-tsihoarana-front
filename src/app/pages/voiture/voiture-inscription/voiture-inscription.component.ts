@@ -74,7 +74,7 @@ export class VoitureInscriptionComponent implements OnInit {
         // this.toastr.warning("Demande du depot voiture effectuer avec success");
       } else {
         // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
-        this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
+        this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser de " + this.maxsize / 1000 + " ko")
       }
     } else {
       this.message = "Veuillez remplir le formulaire correctement";

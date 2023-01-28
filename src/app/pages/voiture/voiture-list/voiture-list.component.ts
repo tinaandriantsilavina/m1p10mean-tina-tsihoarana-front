@@ -111,7 +111,7 @@ export class VoitureListComponent {
           // this.toastr.warning("Demande du depot voiture effectuer avec success");
         } else {
           // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
-          this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
+          this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser de " + this.maxsize / 1000 + " ko")
         }
       }
  
@@ -121,22 +121,22 @@ export class VoitureListComponent {
     }
   }
 
-  updatevoiture(form) {
+  async updatevoiture(form) {
 
     this.spinner.show()
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       this.voitureService.updatevoiture(this.voitureSelection?.numero, form).subscribe(
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            this.toastr.success("Modofcation voiture terminé", "Success")
-            this.getlistevoiture()
+            this.toastr.success("Modifcation voiture terminé", "Success")
           }
           else {
             this.message = data['message'];
             this.toastr.warning("Erreur", this.message)
           }
           this.spinner.hide()
+          this.getlistevoiture()
         }, error => {
           this.spinner.hide()
           this.message = "Echec de la connexion"
@@ -144,6 +144,7 @@ export class VoitureListComponent {
         }
       );
     })
+
   }
 
 
@@ -159,13 +160,13 @@ export class VoitureListComponent {
             if (data['status'] == 200) {
               console.log(data);
               this.toastr.success("Voiture recuperer", "Success")
-              this.getlistevoiture()
             }
             else {
               this.message = data['message'];
               this.toastr.warning("Erreur", this.message)
             }
             this.spinner.hide()
+            this.getlistevoiture()
           }, error => {
             this.spinner.hide()
             this.message = "Echec de la connexion"
@@ -191,14 +192,13 @@ export class VoitureListComponent {
           if (data['status'] == 200) {
             this.message = "Depot voiture " + numero + " terminé"
             this.toastr.warning(this.message, "Success")
-            this.getlistevoiture()
-
           }
           else {
             this.message = data['message'];
             this.toastr.warning(this.message, "Erreur")
           }
           this.spinner.hide()
+          this.getlistevoiture()
         }, error => {
           this.spinner.hide()
           this.message = "Echec de la connexion"

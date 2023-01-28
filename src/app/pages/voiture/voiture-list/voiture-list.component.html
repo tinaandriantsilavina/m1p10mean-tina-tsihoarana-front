@@ -84,14 +84,6 @@
                 <small *ngIf="f.modele.errors.required" style="color: red">Champ Obligtoire</small>
               </div>
             </div>
-  
-            <div class="form-group">
-              <label for="exampleInputEmail1">numero</label>
-              <input formControlName="numero" type="text" class="form-control" aria-describedby="emailHelp">
-              <div *ngIf="submitted && f.numero.errors">
-                <small *ngIf="f.numero.errors.required" style="color: red">Champ Obligtoire</small>
-              </div>
-            </div>
           </div>
           <div class="col">
             <app-image-upload></app-image-upload>

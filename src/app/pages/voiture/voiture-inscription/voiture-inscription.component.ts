@@ -17,7 +17,7 @@ export class VoitureInscriptionComponent implements OnInit {
   formulaire: FormGroup;
   message = "";
   testdata: any;
-  maxsize = 1;
+  maxsize = 90000;
 
   @ViewChild(ImageUploadComponent, { static: false }) image: ImageUploadComponent;
   @ViewChild('modalcontent', { static: true }) modalcontent: TemplateRef<any>;
@@ -63,7 +63,7 @@ export class VoitureInscriptionComponent implements OnInit {
   async valider() {
     if (this.formulaire.valid && this.image.image != null) {
       console.log(this.image.image)
-      if (this.image.image.size > this.maxsize) {
+      if (this.image.image.size < this.maxsize) {
         this.message = " "
         let image = await this.uploadService.encodeFileToBase64(this.image.image);
         let form = {}

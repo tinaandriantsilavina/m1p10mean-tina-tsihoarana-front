@@ -19,7 +19,7 @@ export class VoitureListComponent {
   formulaire: FormGroup;
   voitureSelection: any;
   @ViewChild(ImageUploadComponent, { static: false }) image: ImageUploadComponent;
-  maxsize = 1
+  maxsize = 50000
 
   constructor(
     public voitureService: VoitureService,
@@ -30,7 +30,7 @@ export class VoitureListComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getlistvoiturejson()
+    // this.getlistvoiturejson()
     this.getlistevoiture()
   }
   getlistvoiturejson() {
@@ -89,44 +89,46 @@ export class VoitureListComponent {
     this.formulaire = this.formBuilder.group(
       {
         marque: [this.voitureSelection?.marque, [Validators.required]],
-        modele: [this.voitureSelection?.modele, [Validators.required]],
-        numero: [this.voitureSelection?.numero, [Validators.required]]
+        modele: [this.voitureSelection?.modele, [Validators.required]]
       }
     );
   }
 
 
   async valider() {
-    if (this.formulaire.valid && this.image.image != null) {
+    if (this.formulaire.valid) {
       console.log(this.image.image)
-      if (this.image.image.size > this.maxsize) {
-        this.message = " "
-        let image = await this.uploadFileService.encodeFileToBase64(this.image.image);
-        let form = {}
-        form = this.formulaire.getRawValue()
-        form['image'] = image //Buffer.from(image, 'base64')
-        this.updatevoiture()
-        console.log(form)
-        // this.toastr.warning("Demande du depot voiture effectuer avec success");
-      } else {
-        // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
-        this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
+      if(this.image.image == null){
+        this.updatevoiture(this.formulaire.getRawValue())
+      }else{
+        if (this.image.image.size < this.maxsize) {
+          this.message = " "
+          let image = await this.uploadFileService.encodeFileToBase64(this.image.image);
+          let form = {}
+          form = this.formulaire.getRawValue()
+          form['image'] = image //Buffer.from(image, 'base64')
+          this.updatevoiture(form)
+          // this.toastr.warning("Demande du depot voiture effectuer avec success");
+        } else {
+          // this.message = "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko";
+          this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser" + this.maxsize / 1000 + " ko")
+        }
       }
+ 
     } else {
       this.message = "Veuillez remplir le formulaire correctement";
       this.toastr.warning(this.message)
     }
   }
 
-  updatevoiture() {
+  updatevoiture(form) {
 
     this.spinner.show()
     return new Promise((resolve, reject) => {
-      this.voitureService.updatevoiture(this.voitureSelection?.numero, this.formulaire.getRawValue()).subscribe(
+      this.voitureService.updatevoiture(this.voitureSelection?.numero, form).subscribe(
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            console.log(data);
             this.toastr.success("Modofcation voiture terminé", "Success")
             this.getlistevoiture()
           }

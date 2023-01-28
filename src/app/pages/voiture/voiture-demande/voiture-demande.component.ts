@@ -132,16 +132,17 @@ export class VoitureDemandeComponent {
           d => {
             let data = (d as { [key: string]: any })
             if(data['status'] ==200){
-              this.message ="voiture terminé"
-              this.toastr.warning(this.message, "Success")
-              this.getlistdemande()
-              this.getlistevoitureetat(1)
+              this.message ="voiture accepter"
+              this.toastr.success(this.message, "Success")
+              
             }
             else{
               this.message=data['message'];
               this.toastr.warning(this.message,"Erreur")
             }
             this.spinner.hide()
+            this.getlistevoitureetat(1)
+            this.getlistdemande()
           }, error => {
             this.spinner.hide()
             this.message= "Echec de la connexion"

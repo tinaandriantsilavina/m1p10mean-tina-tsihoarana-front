@@ -222,7 +222,7 @@ export class FinanceStatComponent {
       this.myChart.destroy()
     }
     this.myChart = new Chart("myChart", {
-      type: 'radar',
+      type: 'line',
       data: {
         labels: this.data_chart_ca_annee.label,
         datasets: [{

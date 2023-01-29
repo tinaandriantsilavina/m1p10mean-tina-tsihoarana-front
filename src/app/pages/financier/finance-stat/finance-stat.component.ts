@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { FinanceService } from 'src/app/services/finance.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { Chart, registerables, ChartType } from 'chart.js';
+import { UtilService } from 'src/app/services/util.service';
 Chart.register(...registerables);
 
 @Component({
@@ -64,6 +65,7 @@ export class FinanceStatComponent {
   data_reparation_moyenne=0
 
   ngOnInit() {
+    console.log(this.util.monney('5555555555'))
     this.ca_annee = 2022;
     this.ca_mois = 1;
     this.ca_annee2 = 2023
@@ -84,7 +86,8 @@ export class FinanceStatComponent {
     public sharedService: SharedService,
     public spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    public financeService: FinanceService
+    public financeService: FinanceService,
+    public util : UtilService
   ) {
 
   }

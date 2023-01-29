@@ -24,6 +24,10 @@ export class VisiteService {
     return this.http.get(base_url + `api/visites/client?etat=${etat}`,  this.authService.option(true));
   }
 
+  clientvisiteAll(){
+    return this.http.get(base_url + `api/visites/client`,  this.authService.option(true));
+  }
+
   clientvisite_voiture(numero){
     console.log();
     return this.http.get(base_url + `api/visites/client/voiture/${numero}`,  this.authService.option(true));
@@ -31,6 +35,10 @@ export class VisiteService {
 
   ateliervisite(numero){
     return this.http.get(base_url + `api/visites/atelier/voiture/${numero}`,  this.authService.option(true));
+  }
+
+  ateliervisitebyid(id){
+    return this.http.get(base_url + `api/visites/atelier/${id}`,  this.authService.option(true));
   }
 
 

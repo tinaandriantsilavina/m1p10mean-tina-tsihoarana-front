@@ -17,11 +17,13 @@
                     <div class="form-group mb-2">
                         <span> Etat : </span>
                         <select [(ngModel)]="etat" class="form-control form-control-plaintext input-recherche">
+                            <option value="-1"> Tous </option>
                             <option value="0"> Non Términé </option>
                             <option value="1"> Términé </option>
+                            <option value="2"> Payé </option>
                         </select>
                     </div>
-                    <button type="submit" (click)="getlist()" class="btn btn-success btn-sm input-recherche  mb-2">
+                    <button type="submit" (click)="getVisite()" class="btn btn-success btn-sm input-recherche  mb-2">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>

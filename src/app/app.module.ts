@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -32,7 +32,10 @@ import { FinanceStatComponent } from './pages/financier/finance-stat/finance-sta
 import { BonSortieListComponent } from './pages/bondesortie/bon-sortie-list/bon-sortie-list.component';
 import { DepensesComponent } from './pages/financier/depenses/depenses.component';
 import { ChartComponent } from './components/chart/chart.component';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { FooterComponent } from './components/footer/footer.component';
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +59,8 @@ import { ChartComponent } from './components/chart/chart.component';
     FinanceStatComponent,
     BonSortieListComponent,
     DepensesComponent,
-    ChartComponent
+    ChartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,8 @@ import { ChartComponent } from './components/chart/chart.component';
     NgxSpinnerModule,
   ],
   providers: [
-    ToastrService
+    ToastrService,
+    { provide: LOCALE_ID, useValue: "fr-FR" }
   ],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

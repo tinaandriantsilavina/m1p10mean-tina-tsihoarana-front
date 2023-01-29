@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { UtilService } from 'src/app/services/util.service';
 import { VisiteService } from 'src/app/services/visite.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class VisiteEncoursComponent implements OnInit {
     private visiteService: VisiteService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private route : Router
+    private route : Router,
+    public util : UtilService
   ){
 
   }

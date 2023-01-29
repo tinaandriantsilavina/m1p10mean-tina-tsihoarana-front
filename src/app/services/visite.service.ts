@@ -38,7 +38,11 @@ export class VisiteService {
   }
 
   ateliervisitebyid(id){
-    return this.http.get(base_url + `api/visites/atelier/${id}`,  this.authService.option(true));
+    let user = 'client'
+    if(this.authService.users.code_type==0) user ='client/id'
+    if(this.authService.users.code_type==1) user ='atelier'
+    if(this.authService.users.code_type==2) user ='financier'
+    return this.http.get(base_url + `api/visites/${user}/${id}`,  this.authService.option(true));
   }
 
 

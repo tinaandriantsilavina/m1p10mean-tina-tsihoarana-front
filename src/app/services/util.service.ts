@@ -7,14 +7,14 @@ import { Injectable } from '@angular/core';
 export class UtilService {
 
   constructor() { }
-  monney(value:string)
+  public monney(value:string)
   {
     //e.g. transform a string
     // return value.split('').map((x,i)=>i%2?x:'*').join('');
     //or
     let val= value
     if(value!=null){
-      val = formatCurrency(+value,'en-GB',"Ariary")
+      val = formatCurrency(+value,'fr-FR'," Ariary ")
     }
     return val;
   }

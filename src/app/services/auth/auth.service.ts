@@ -20,7 +20,7 @@ export class AuthService {
     if(localStorage.getItem('users')!=null ){
         this.users=JSON.parse(localStorage.getItem('users') || '{}');
       }
-    console.log("Constructor  Am auth TOKEN "+tok)
+    // console.log("Constructor  Am auth TOKEN "+tok)
   }
   getUsersByToken(token : any) {
     let body={

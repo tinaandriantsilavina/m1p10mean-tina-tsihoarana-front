@@ -88,17 +88,21 @@
           <tbody>
             <tr>
               <th scope="row"> Date debut </th>
-              <td> {{ca_date_debut}} </td>
+              <td> {{ca_date_debut!=null ? ( ca_date_debut | date: 'dd MMMM yyyy') : ca_date_debut }} </td>
             </tr>
 
             <tr>
               <th scope="row"> Date Fin </th>
-              <td> {{ca_date_fin}} </td>
+              <td> 
+                {{ca_date_fin!=null ? ( ca_date_fin | date: 'dd MMMM yyyy') : ca_date_fin }}
+              </td>
             </tr>
 
             <tr>
               <th scope="row"> Chiffre Affaire </th>
-              <td> {{data_ca_date?.chiffre_affaire}} </td>
+              <td> {{util.monney('78787878')}} 
+                
+              </td>
             </tr>
 
           </tbody>

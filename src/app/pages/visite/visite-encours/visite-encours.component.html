@@ -15,10 +15,10 @@
     <div class="tab" *ngFor="let l of list ; let i=index">
       <input type="checkbox" id="chck{{i}}">
       <label class="tab-label" for="chck{{i}}">
-        Visite le {{l['date_debut'] | date: 'dd/MM/yyyy hh:mm'}}
+        Visite le {{l['date_debut']!=null ? ( l['date_debut'] | date: 'dd MMMM yyyy') : l['date_debut'] }}
         <span
           [ngClass]="{'badge badge-pill badge-primary': l['etat'] == 0 , 'badge badge-pill badge-warning': l['etat'] == 1 , 'badge badge-pill badge-success': l['etat'] == 2 }">
-          {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non ayé' ) }}
+          {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non payé' ) }}
         </span>
       </label>
       <div class="tab-content">
@@ -35,7 +35,7 @@
             <tr *ngFor="let rep of l['reparations'] " >
               <th scope="row">  {{rep['piece']}}  </th>
               <td>  {{rep['duree']}}  </td>
-              <td>  {{rep['prix']}}  </td>
+              <td>  {{util.monney(rep['prix'])}}  </td>
               <td>
 
                 <span

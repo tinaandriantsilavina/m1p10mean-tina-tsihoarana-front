@@ -34,7 +34,7 @@
 }
 
 
-$midnight: #017585;
+$midnight: #af1a1a;
 $clouds: #ecf0f1;
 // General
 body {
@@ -137,4 +137,17 @@ input:checked {
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.visite-reparation-list{
+  margin-left:30px;
+  background-color: #cd000028;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+}
+.bd-paye{
+  font-weight: bold;
+  color: #ffffff;
+
 }

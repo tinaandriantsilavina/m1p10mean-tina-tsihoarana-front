@@ -1,63 +1,93 @@
 <div class="row">
-    <div class="cont_breadcrumbs_2">
-        <ul>
-            <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
-            <li><a><span class="fa fa-home"></span> Acueil</a></li>
-            <li><a>Bon de sortie</a></li>
-        </ul>
-    </div>
+  <div class="cont_breadcrumbs_2">
+    <ul>
+      <li><img class="logo-breadcrumbs" src="assets/images/logo.png"></li>
+      <li><a><span class="fa fa-home"></span> Acueil</a></li>
+      <li><a>Bon de sortie</a></li>
+    </ul>
+  </div>
 </div>
 
 <div class="row">
-    <div class="center-div shadow-lg p-3 mb-5 bg-white rounded contenu">
-        <div class="titre1">
-
-        </div>
-
-        <div class="titre2">
-            <button type="button" class="btn btn-success btn-sm"  >Export en excel</button>
-        </div>
+  <div class="center-div shadow-lg p-3 mb-5 bg-white rounded contenu">
+    <div class="titre1">
 
     </div>
+
+    <div class="titre2">
+      <button type="button" class="btn btn-success btn-sm">Export en excel</button>
+    </div>
+
+  </div>
 </div>
 
 <div class="row center">
   <div class="tabs ">
-    <div class="tab" *ngFor="let l of list ; let i=index">
+    <div class="tab" *ngFor="let bd of list ; let i=index">
       <input type="checkbox" id="chck{{i}}">
       <label class="tab-label" for="chck{{i}}">
-        Bon de sortie: {{l['prix']}} Ariary
+        Bon de sortie: {{ util.monney(bd['prix']) }}
         <span
-          [ngClass]="{'badge badge-pill badge-danger': l['etat'] == 0 , 'badge badge-pill badge-success': l['etat'] == 1 }">
-          {{ l['etat'] == 0 ? 'Non Payé' : 'Payé'  }}
+          [ngClass]="{'badge badge-pill badge-danger': bd['etat'] == 0 , 'badge badge-pill badge-success': bd['etat'] == 1 }">
+          {{ bd['etat'] == 0 ? 'Non Payé' : 'Payé' }}
         </span>
+
+        <span class="bd-paye" *ngIf="bd['etat'] == 1 " >
+          Payé le le {{ bd['date_paye']!=null ? ( bd['date_paye']| date: 'dd MMMM yyyy')
+          : bd['date_paye'] }}
+        </span>
+
       </label>
       <div class="tab-content">
-        <!-- <table class="table table-striped table-hover table-sm">
+        <table class="table-visite table table-striped table-hover table-sm">
           <thead>
             <tr>
-              <th scope="col">Piece</th>
-              <th scope="col">Duree</th>
-              <th scope="col">Prix</th>
+              <th scope="col">Date Debut Visite</th>
+              <th scope="col">Date fin Visite</th>
+              <th scope="col">Date Recuperation</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let rep of l['reparations'] " >
-              <th scope="row">  {{rep['piece']}}  </th>
-              <td>  {{rep['duree']}}  </td>
-              <td>  {{rep['prix']}}  </td>
-              <td>
-
-                <span
-                [ngClass]="{'badge badge-pill badge-primary': rep['avancement'] == 0 , 'badge badge-pill badge-warning': rep['avancement'] == 1 , 'badge badge-pill badge-success': rep['avancement'] == 2 }">
-                {{ rep['avancement'] == 0 ? 'En cours' : (rep['avancement']== 1 ? 'Non payé' : 'Terminé ' ) }}
-              </span>
-
+            <tr>
+              <td scope="row">
+                {{ bd['visite_detail']['date_debut']!=null ? ( bd['visite_detail']['date_debut']| date: 'dd MMMM yyyy')
+                : bd['visite_detail']['date_debut'] }}
               </td>
+
+              <td scope="row">
+                {{ bd['visite_detail']['date_fin']!=null ? ( bd['visite_detail']['date_fin']| date: 'dd MMMM yyyy') :
+                bd['visite_detail']['date_fin'] }}
+              </td>
+
+              <td scope="row">
+                {{ bd['visite_detail']['date_recup']!=null ? ( bd['visite_detail']['date_recup']| date: 'dd MMMM yyyy')
+                : bd['visite_detail']['date_recup'] }}
+              </td>
+
+              <td>
+                <span
+                  [ngClass]="{'badge badge-pill badge-primary': bd['visite_detail']['etat'] == 0 , 'badge badge-pill badge-warning': bd['visite_detail']['etat'] == 1 , 'badge badge-pill badge-success': bd['visite_detail']['etat'] == 2 }">
+                  {{ bd['visite_detail']['etat'] == 0 ? 'En cours' : (bd['visite_detail']['etat']== 1 ? 'Non payé' :
+                  'Terminé non payé' ) }}
+                </span>
+              </td>
+
             </tr>
           </tbody>
-        </table> -->
+        </table>
+        <div>
+          <li *ngFor="let rep of bd['visite_detail']['reparations']  ; let i=index"  class="visite-reparation-list">
+            Pièce : <span class="value"> {{rep.piece}}</span> ,
+            Durée : <span class="value">{{rep['duree']}}</span> ,
+            Prix: <span class="value">{{rep['prix']}} </span>,
+            <span
+              [ngClass]="{'badge badge-pill badge-primary': rep['avancement'] == 0 , 'badge badge-pill badge-warning': rep['avancement'] == 1 , 'badge badge-pill badge-success': rep['avancement'] == 2 }">
+              {{ rep['avancement'] == 0 ? 'En cours' : (rep['avancement']== 1 ? 'Non payé' : 'Terminé'
+              ) }}
+            </span>
+          </li>
+        </div>
       </div>
     </div>
   </div>

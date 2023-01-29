@@ -48,7 +48,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let l of list ; let i=index">
-                    <th scope="row"> {{l['date_debut'] | date: 'dd/MM/yyyy hh:mm'}} </th>
+                    <th scope="row"> 
+                        {{ l['date_debut']!=null ? (  l['date_debut']| date: 'dd MMMM yyyy') : l['date_debut'] }} 
+                    </th>
                     <td>
                         <li *ngFor="let rep of l['reparations'] " class="list-reparation">
                             Pièce : <span class="value"> {{rep['piece']}}</span> ,
@@ -64,7 +66,7 @@
                     <td>
                         <span
                             [ngClass]="{'badge badge-pill badge-primary': l['etat'] == 0 , 'badge badge-pill badge-warning': l['etat'] == 1 , 'badge badge-pill badge-success': l['etat'] == 2 }">
-                            {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non ayé' ) }}
+                            {{ l['etat'] == 0 ? 'En cours' : (l['etat']== 1 ? 'Non payé' : 'Terminé non payé' ) }}
                         </span>
                     </td>
                 </tr>

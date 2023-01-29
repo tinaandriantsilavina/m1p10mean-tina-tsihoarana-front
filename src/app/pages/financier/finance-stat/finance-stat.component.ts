@@ -212,14 +212,6 @@ export class FinanceStatComponent {
 
 
 
-
-
-
-
-
-
-
-
   chartInit() {
     if (this.myChart) {
       this.myChart.destroy()

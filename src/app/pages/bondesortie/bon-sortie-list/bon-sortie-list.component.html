@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="titre2">
-      <button type="button" class="btn btn-success btn-sm">Export en excel</button>
+      <button type="button" (click)="export()" class="btn btn-success btn-sm">Export en excel</button>
     </div>
   </div>
 </div>
@@ -147,7 +147,7 @@
           </div>
 
           <label> Reference  </label>
-          <input formControlName="ref" type="date" class="form-control">
+          <input formControlName="ref" type="text" class="form-control">
           <div *ngIf="submitted && f.ref.errors">
             <small *ngIf="f.ref.errors.required" style="color: red">Champ Obligtoire</small>
           </div>

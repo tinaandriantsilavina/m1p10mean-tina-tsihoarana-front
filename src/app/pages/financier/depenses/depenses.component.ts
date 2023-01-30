@@ -46,6 +46,9 @@ export class DepensesComponent implements OnInit {
 
   ngOnInit() {
     this.initForm()
+    this.anneeselection ="2023";
+    this.moisselection ="0"
+
     this.depenselist()
   }
   selectionUpdate(depense) {
@@ -104,13 +107,13 @@ export class DepensesComponent implements OnInit {
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            this.depenselist()
             this.initForm()
           } else {
             this.message = "Echec de insertion";
             this.toastr.warning(this.message, "Erreur inscription")
           }
           this.spinner.hide()
+          this.depenselist()
         }, error => {
           this.message = "Erreur Connexion";
           this.toastr.error(this.message, "Erreur")
@@ -128,13 +131,13 @@ export class DepensesComponent implements OnInit {
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            this.depenselist()
             this.initForm()
           } else {
             this.message = data['message'];
             this.toastr.warning(this.message, "Erreur inscription")
           }
           this.spinner.hide()
+          this.depenselist()
         }, error => {
           this.message = "Erreur Connexion";
           this.toastr.error(this.message, "Erreur")
@@ -153,12 +156,13 @@ export class DepensesComponent implements OnInit {
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            this.depenselist()
+            this.toastr.success("Modification depense terminé", "Erreur ")
           } else {
             this.message = data['message'];
-            this.toastr.warning(this.message, "Erreur inscription")
+            this.toastr.warning(this.message, "Erreur")
           }
           this.spinner.hide()
+          this.depenselist()
         }, error => {
           this.message = "Erreur Connexion"
           this.toastr.error(this.message, "Erreur")

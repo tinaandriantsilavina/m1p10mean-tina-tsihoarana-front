@@ -76,6 +76,14 @@ export class BonSortieListComponent implements OnInit {
   async getBondeSortie() {
     let val = await this.getListeBonSortie(this.etat)
     this.list = val;
+    console.log(this.list)
+  }
+  async export(){
+    if(this.list.length>0){
+      this.exportationService.bonsortie_list(this.etat,this.list)
+    }else{
+      this.toastr.info("La liste est vide","Info")
+    }
   }
   async getListeBonSortie(etat) {
     let val = new Array();;
@@ -191,27 +199,33 @@ export class BonSortieListComponent implements OnInit {
 
   payerbonsortie() {
     if (this.bondesortieselectionner != null) {
-      new Promise((resolve, reject) => {
-        this.bondesortieService.payerbonsortie(this.bondesortieselectionner['_id'], this.formulaire.getRawValue()).subscribe(
-          d => {
-            let data = (d as { [key: string]: any })
-            if (data['status'] == 200) {
-              this.message = "Bon de sortie crée "
-              this.toastr.success(this.message, "Success")
+      if(this.formulaire.valid){
+        new Promise((resolve, reject) => {
+          this.bondesortieService.payerbonsortie(this.bondesortieselectionner['_id'], this.formulaire.getRawValue()).subscribe(
+            d => {
+              let data = (d as { [key: string]: any })
+              if (data['status'] == 200) {
+                this.message = "Payement effectué"
+                this.toastr.success(this.message, "Success")
+              }
+              else {
+                this.message = data['message'];
+                this.toastr.warning("Erreur", this.message)
+              }
+              this.spinner.hide()
+              this.envoieMail()
+              this.getBondeSortie()
+            }, error => {
+              this.spinner.hide()
+              this.message = "Echec de la connexion"
+              this.toastr.error(this.message, "Erreur")
             }
-            else {
-              this.message = data['message'];
-              this.toastr.warning("Erreur", this.message)
-            }
-            this.spinner.hide()
-            this.getBondeSortie()
-          }, error => {
-            this.spinner.hide()
-            this.message = "Echec de la connexion"
-            this.toastr.error(this.message, "Erreur")
-          }
-        );
-      })
+          );
+        })
+      }else {
+        this.toastr.warning("Veuillez remplir correctement les champs", "Erreur Champs")
+      }
+
     } else {
       this.toastr.error("Veuilez selectionner un bon de sortie pour puvoir payé", "Erreur")
     }
@@ -223,7 +237,7 @@ export class BonSortieListComponent implements OnInit {
         d => {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
-            this.toastr.success("Mail Envoyé", "Success")
+            this.toastr.success("Mail Envoyé", "Mail Envoyé")
           }
           else {
             this.message = data['message'];

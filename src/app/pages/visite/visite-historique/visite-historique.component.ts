@@ -27,8 +27,13 @@ export class VisiteHistoriqueComponent {
   }
   etat = 0;
   export() {
-    this.exportationService.visite_list(this.etat, this.list)
+    if (this.list.length > 0) {
+      this.exportationService.visite_list(this.etat, this.list)
+    } else {
+      this.toastr.info("La liste est vide", "Info")
+    }
   }
+
   getVisite() {
     if (this.etat == -1) {
       this.getlistAll()

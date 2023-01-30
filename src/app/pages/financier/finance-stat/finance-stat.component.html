@@ -153,7 +153,7 @@
 
             <tr>
               <th scope="row"> Chiffre Affaire </th>
-              <td> {{data_ca_mois_annee?.chiffre_affaire}} </td>
+              <td> {{  util.monney(data_ca_mois_annee?.chiffre_affaire)  }} </td>
             </tr>
 
           </tbody>
@@ -187,7 +187,7 @@
           <tbody>
             <tr>
               <th scope="row"> Heure </th>
-              <td> {{data_reparation_moyenne}} hh </td>
+              <td> {{data_reparation_moyenne ['reparation_moyenne'] }} hh </td>
             </tr>
           </tbody>
         </table>

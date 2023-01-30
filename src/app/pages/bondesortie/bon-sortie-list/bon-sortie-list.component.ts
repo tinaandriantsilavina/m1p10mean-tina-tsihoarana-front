@@ -191,7 +191,7 @@ export class BonSortieListComponent implements OnInit {
         date_paye: ["2023-05-01", [Validators.required]],
         email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         name: ["Hasina", [Validators.required]],
-        ref: [this.getRef(10000,99999), [Validators.required]],
+        ref: [this.bondesortieselectionner['_id']],
       }
     );
   }

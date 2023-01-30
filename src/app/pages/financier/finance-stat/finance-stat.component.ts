@@ -75,6 +75,8 @@ export class FinanceStatComponent {
     this.chiffreAffaireAnnee()
     this.chiffreAffaireDate()
     this.chiffreAffaireMoisAnnee()
+
+    this.getreparationmoyenne()
   }
   selectionUpdate(depense) {
     this.isupdate = true
@@ -190,6 +192,7 @@ export class FinanceStatComponent {
         data => {
           if (data['status'] == 200) {
             this.data_reparation_moyenne = data['datas']
+            console.log(this.data_reparation_moyenne)
           }
           else {
             // this.spinner.hide();

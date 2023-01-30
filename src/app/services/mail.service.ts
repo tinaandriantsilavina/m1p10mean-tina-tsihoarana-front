@@ -1,12 +1,12 @@
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth/auth.service';
 import { Injectable } from '@angular/core';
 import { base_url } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BondesortieService {
+export class MailService {
 
   private url:any;
   constructor(
@@ -16,9 +16,9 @@ export class BondesortieService {
     this.url = base_url
    }
 
-  creerbonsortie(visite){
+  mail_payement(body){
     console.log();
-    return this.http.post(base_url + `api/bondesorties/atelier/visite/${visite}/create`, {} ,  this.authService.option(true));
+    return this.http.post(base_url + `api/mail/financier/send`, body,  this.authService.option(true));
   }
 
   payerbonsortie(id,body){
@@ -37,5 +37,4 @@ export class BondesortieService {
     }
     return requete
   }
-
 }

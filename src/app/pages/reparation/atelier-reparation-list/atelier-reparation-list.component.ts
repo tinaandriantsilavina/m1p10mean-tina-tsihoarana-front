@@ -1,3 +1,4 @@
+import { UtilService } from './../../../services/util.service';
 import { ReparationService } from './../../../services/reparation.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -25,7 +26,8 @@ export class AtelierReparationListComponent {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     public formBuilder: FormBuilder,
-    private reparationService:ReparationService
+    private reparationService:ReparationService,
+    public util: UtilService
   ) {
 
   }
@@ -45,7 +47,7 @@ export class AtelierReparationListComponent {
     this.isCreateReparation = true
     this.isUpdateReparation = false;
     this.reparationselectionner = id
-    console.log(this.reparationselectionner)
+    // console.log(this.reparationselectionner)
     this.formulaire = this.formBuilder.group(
       {
         piece: ["pneu", [Validators.required]],
@@ -56,11 +58,11 @@ export class AtelierReparationListComponent {
     );
   }
   initFormUpdate(rep){
-    console.log(rep)
+    // console.log(rep)
     this.isUpdateReparation =true
     this.isCreateReparation =false
     this.reparationselectionner = rep['_id']
-    console.log(this.reparationselectionner)
+    // console.log(this.reparationselectionner)
     this.formulaire = this.formBuilder.group(
       {
         piece: [rep['piece'], [Validators.required]],
@@ -77,16 +79,17 @@ export class AtelierReparationListComponent {
           d => {
             let data = (d as { [key: string]: any })
             if (data['status'] == 200) {
-              this.getlistereparation()
               this.message = "Reparation crée "
             this.toastr.success(this.message, "Success")
             this.isCreateReparation = false
+            this.submitted =false
             }
             else {
               this.message = data['message'];
               this.toastr.warning( this.message,"Erreur")
             }
             this.spinner.hide()
+            this.getlistereparation()
           }, error => {
             this.spinner.hide()
             this.message = "Echec de la connexion"
@@ -111,16 +114,16 @@ export class AtelierReparationListComponent {
           d => {
             let data = (d as { [key: string]: any })
             if (data['status'] == 200) {
-              this.getlistereparation()
               this.message = "Reparation Supprimer "
             this.toastr.success(this.message, "Success")
-
+            this.submitted =false
             }
             else {
               this.message = data['message'];
               this.toastr.warning( this.message,"Erreur")
             }
             this.spinner.hide()
+            this.getlistereparation()
           }, error => {
             this.spinner.hide()
             this.message = "Echec de la connexion"
@@ -141,16 +144,17 @@ export class AtelierReparationListComponent {
           d => {
             let data = (d as { [key: string]: any })
             if (data['status'] == 200) {
-              this.getlistereparation()
               this.message = "Modification terminé"
             this.toastr.success(this.message, "Success")
             this.isUpdateReparation = false
+            this.submitted =false
             }
             else {
               this.message = data['message'];
               this.toastr.warning( this.message,"Erreur")
             }
             this.spinner.hide()
+            this.getlistereparation()
           }, error => {
             this.spinner.hide()
             this.message = "Echec de la connexion"

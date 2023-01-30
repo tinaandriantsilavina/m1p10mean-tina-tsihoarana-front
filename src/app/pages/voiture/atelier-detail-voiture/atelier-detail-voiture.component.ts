@@ -35,7 +35,7 @@ export class AtelierDetailVoitureComponent implements OnInit {
     this.visiteSelectionner =null
     this.spinner.show()
     setTimeout(() => {
-      console.log("open:: " , event)
+      // console.log("open:: " , event)
       this.visiteSelectionner = event
       this.spinner.hide()
     }, 200);
@@ -62,7 +62,6 @@ export class AtelierDetailVoitureComponent implements OnInit {
         data => {
           if (data['status'] == 200) {
             this.voiture = data['datas']
-            console.log(data)
           }
           else {
             // this.spinner.hide();

@@ -1,3 +1,6 @@
+import { MailService } from './../../../services/mail.service';
+import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
+import { AuthService } from './../../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -46,8 +49,11 @@ export class BonSortieListComponent implements OnInit {
     }
   ]
   list;
-  etat = 1; // 0: non payé, 1: payé 
+  etat = 1; // 0: non payé, 1: payé
   message = "";
+  formulaire: FormGroup;
+  submitted = false;
+  bondesortieselectionner: any;
   constructor(
     public bondesortieService: BondesortieService,
     private spinner: NgxSpinnerService,
@@ -56,16 +62,29 @@ export class BonSortieListComponent implements OnInit {
     public exportationService: ExportationService,
     private visiteService: VisiteService,
     public http: HttpClient,
-    public util: UtilService
+    public util: UtilService,
+    public authService: AuthService,
+    public formBuilder: FormBuilder,
+    private mailService: MailService
   ) { }
 
   async ngOnInit() {
-    let val = await this.getListeBonSortie(this.etat)
-    this.list = val;
-    console.log(this.list)
+    this.etat = -1
+    this.getBondeSortie()
   }
 
-
+  async getBondeSortie() {
+    let val = await this.getListeBonSortie(this.etat)
+    this.list = val;
+    // console.log(this.list)
+  }
+  async export(){
+    if(this.list.length>0){
+      this.exportationService.bonsortie_list(this.etat,this.list)
+    }else{
+      this.toastr.info("La liste est vide","Info")
+    }
+  }
   async getListeBonSortie(etat) {
     let val = new Array();;
     try {
@@ -152,4 +171,86 @@ export class BonSortieListComponent implements OnInit {
       );
     })
   }
+  onSubmit(): void {
+    this.submitted = true; // ijerena ftsn we ef nanindry an ilay boutton ve izy
+  }
+
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.formulaire.controls;
+  }
+  getRef(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  initForm(bd) {
+    this.bondesortieselectionner = bd
+    this.formulaire = this.formBuilder.group(
+      {
+        date_paye: ["2023-05-01", [Validators.required]],
+        email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        name: ["Hasina", [Validators.required]],
+        ref: [this.getRef(10000,99999), [Validators.required]],
+      }
+    );
+  }
+
+  payerbonsortie() {
+    if (this.bondesortieselectionner != null) {
+      if(this.formulaire.valid){
+        new Promise((resolve, reject) => {
+          this.bondesortieService.payerbonsortie(this.bondesortieselectionner['_id'], this.formulaire.getRawValue()).subscribe(
+            d => {
+              let data = (d as { [key: string]: any })
+              if (data['status'] == 200) {
+                this.message = "Payement effectué"
+                this.toastr.success(this.message, "Success")
+              }
+              else {
+                this.message = data['message'];
+                this.toastr.warning("Erreur", this.message)
+              }
+              this.spinner.hide()
+              this.envoieMail()
+              this.getBondeSortie()
+            }, error => {
+              this.spinner.hide()
+              this.message = "Echec de la connexion"
+              this.toastr.error(this.message, "Erreur")
+            }
+          );
+        })
+      }else {
+        this.toastr.warning("Veuillez remplir correctement les champs", "Erreur Champs")
+      }
+
+    } else {
+      this.toastr.error("Veuilez selectionner un bon de sortie pour puvoir payé", "Erreur")
+    }
+  }
+
+  envoieMail() {
+    new Promise((resolve, reject) => {
+      this.mailService.mail_payement(this.formulaire.getRawValue()).subscribe(
+        d => {
+          let data = (d as { [key: string]: any })
+          if (data['status'] == 200) {
+            this.toastr.success("Mail Envoyé", "Mail Envoyé")
+          }
+          else {
+            this.message = data['message'];
+            this.toastr.warning("Envoie Mail erreur", "Erreur")
+          }
+          this.spinner.hide()
+        }, error => {
+          this.spinner.hide()
+          this.message = "Echec de la connexion"
+          this.toastr.error(this.message, "Erreur")
+        }
+      );
+    })
+  }
+
+
 }

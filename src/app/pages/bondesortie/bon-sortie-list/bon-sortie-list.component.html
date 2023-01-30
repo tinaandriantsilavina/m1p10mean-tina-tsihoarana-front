@@ -9,22 +9,32 @@
 </div>
 
 <div class="row">
-  <div class="center-div shadow-lg p-3 mb-5 bg-white rounded contenu">
+  <div class="contenu shadow">
     <div class="titre1">
-
+      <div class="form-inline">
+        <div class="form-group mb-2">
+          <span> Etat : </span>
+          <select [(ngModel)]="etat" class="form-control form-control-plaintext input-recherche">
+            <option value="-1"> Tous </option>
+            <option value="0"> Non Payé </option>
+            <option value="1"> Payé </option>
+          </select>
+        </div>
+        <button type="submit" (click)="getBondeSortie()" class="btn btn-success btn-sm input-recherche  mb-2">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
-
     <div class="titre2">
-      <button type="button" class="btn btn-success btn-sm">Export en excel</button>
+      <button type="button" (click)="export()" class="btn btn-success btn-sm">Export en excel</button>
     </div>
-
   </div>
 </div>
 
 <div class="row center">
   <div class="tabs ">
     <div class="tab" *ngFor="let bd of list ; let i=index">
-      <input type="checkbox" id="chck{{i}}">
+      <input class="input-check" type="checkbox" id="chck{{i}}">
       <label class="tab-label" for="chck{{i}}">
         Bon de sortie: {{ util.monney(bd['prix']) }}
         <span
@@ -32,10 +42,16 @@
           {{ bd['etat'] == 0 ? 'Non Payé' : 'Payé' }}
         </span>
 
-        <span class="bd-paye" *ngIf="bd['etat'] == 1 " >
+        <span class="bd-paye" *ngIf="bd['etat'] == 1 ">
           Payé le le {{ bd['date_paye']!=null ? ( bd['date_paye']| date: 'dd MMMM yyyy')
           : bd['date_paye'] }}
         </span>
+
+
+        <button (click)=" initForm(bd); dialog_payement.showModal()  " class="btn btn-light btn-sm"
+          *ngIf="bd['etat'] == 0 && authService.users?.code_type==2">
+          Payement
+        </button>
 
       </label>
       <div class="tab-content">
@@ -77,10 +93,10 @@
           </tbody>
         </table>
         <div>
-          <li *ngFor="let rep of bd['visite_detail']['reparations']  ; let i=index"  class="visite-reparation-list">
+          <li *ngFor="let rep of bd['visite_detail']['reparations']  ; let i=index" class="visite-reparation-list">
             Pièce : <span class="value"> {{rep.piece}}</span> ,
             Durée : <span class="value">{{rep['duree']}}</span> ,
-            Prix: <span class="value">{{rep['prix']}} </span>,
+            Prix: <span class="value">{{util.monney(rep['prix'])}} </span>,
             <span
               [ngClass]="{'badge badge-pill badge-primary': rep['avancement'] == 0 , 'badge badge-pill badge-warning': rep['avancement'] == 1 , 'badge badge-pill badge-success': rep['avancement'] == 2 }">
               {{ rep['avancement'] == 0 ? 'En cours' : (rep['avancement']== 1 ? 'Non payé' : 'Terminé'
@@ -91,4 +107,56 @@
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+<div>
+  <dialog #dialog_payement>
+    <header>
+      <div class="title">Payement du bon de sortie :
+        {{ util.monney(bondesortieselectionner?.prix) }}
+      </div>
+      <span class="close-btn" (click)="dialog_payement.close()"> ✖ </span>
+    </header>
+    <span class="center">
+      voulez-vous effectuer payement du bon de sortie
+    </span>
+    <div class="center">
+      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
+        <div class="form-group">
+          <label>Date Payement </label>
+          <input formControlName="date_paye" type="date" class="form-control">
+          <div *ngIf="submitted && f.date_paye.errors">
+            <small *ngIf="f.date_paye.errors.required" style="color: red">Champ Obligtoire</small>
+          </div>
+
+
+          <label> Email Client </label>
+          <input formControlName="email" type="text" class="form-control">
+          <div *ngIf="submitted && f.email.errors">
+            <small *ngIf="f.email.errors.required" style="color: red">Champ Obligtoire</small>
+            <small *ngIf="f.email.errors.pattern" style="color: red">Format EMail Invalide </small>
+          </div>
+
+          <label>Nom Client </label>
+          <input formControlName="name" type="text" class="form-control">
+          <div *ngIf="submitted && f.name.errors">
+            <small *ngIf="f.name.errors.required" style="color: red">Champ Obligtoire</small>
+          </div>
+
+          <label> Reference  </label>
+          <input formControlName="ref" type="text" class="form-control">
+          <div *ngIf="submitted && f.ref.errors">
+            <small *ngIf="f.ref.errors.required" style="color: red">Champ Obligtoire</small>
+          </div>
+        </div>
+        <button class="btn btn-success btn-sm" type="submit"
+          (click)="dialog_payement.close() ; payerbonsortie()">Payer</button>
+        <span style="margin-right: 10px;"></span>
+        <button class="btn btn-danger btn-sm" (click)="dialog_payement.close()">Annuler</button>
+      </form>
+    </div>
+  </dialog>
 </div>

@@ -43,10 +43,10 @@ export class AtelierVisiteComponent implements OnInit {
 
   initformterminervisite(visite) {
     this.visiteselectionner = visite
-    console.log(this.visiteselectionner)
+    // console.log(this.visiteselectionner)
     this.formulaire = this.formBuilder.group(
       {
-        date_fin: ["2022-01-01", [Validators.required]],
+        date_fin: ["2023-02-01", [Validators.required]],
       }
     );
   }
@@ -57,7 +57,7 @@ export class AtelierVisiteComponent implements OnInit {
 
   initformupdatevisite(idvisite) {
     this.visiteselectionner = idvisite
-    console.log(this.visiteselectionner)
+    // console.log(this.visiteselectionner)
     this.formulaire = this.formBuilder.group(
       {
         piece: ["pneu", [Validators.required]],
@@ -103,7 +103,7 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Visite crée "
             this.toastr.success(this.message, "Success")
-         
+            this.submitted =false
           }
           else {
             this.message = data['message'];
@@ -128,7 +128,7 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Visite terminé"
             this.toastr.success(this.message, "Success")
-           
+            this.submitted =false
           }
           else {
             this.message = data['message'];
@@ -146,7 +146,7 @@ export class AtelierVisiteComponent implements OnInit {
   }
 
   creerbonsortie() {
-    console.log("huhuh")
+    // console.log("huhuh")
     new Promise((resolve, reject) => {
       this.bondesortieService.creerbonsortie(this.visiteselectionner['_id']).subscribe(
         d => {
@@ -154,7 +154,7 @@ export class AtelierVisiteComponent implements OnInit {
           if (data['status'] == 200) {
             this.message = "Bon de sortie crée "
             this.toastr.success(this.message, "Success")
-            
+            this.submitted =false
           }
           else {
             this.message = data['message'];

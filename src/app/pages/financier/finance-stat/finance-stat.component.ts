@@ -61,16 +61,15 @@ export class FinanceStatComponent {
 
 
 
-  // Varable reparation moyenne 
+  // Varable reparation moyenne
   data_reparation_moyenne=0
 
   ngOnInit() {
-    console.log(this.util.monney('5555555555'))
-    this.ca_annee = 2022;
+    this.ca_annee = 2023;
     this.ca_mois = 1;
     this.ca_annee2 = 2023
-    this.ca_date_debut = "2022-01-01";
-    this.ca_date_fin = "2022-08-01";
+    this.ca_date_debut = "2023-01-01";
+    this.ca_date_fin = "2023-08-01";
 
 
     this.chiffreAffaireAnnee()
@@ -120,7 +119,7 @@ export class FinanceStatComponent {
 
 
 
-  
+
 
 
 

@@ -12,12 +12,12 @@ export class SharedService {
   user$ = this.user.asObservable();
 
   changeClass(value: any) {
-    console.log("Class: ",value)
+    // console.log("Class: ",value)
     this.class.next(value);
   }
 
   changeUser(value: any) {
-    console.log("user: ",value)
+    // console.log("user: ",value)
     this.user.next(value);
   }
 }

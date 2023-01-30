@@ -45,7 +45,7 @@ export class InscriptionComponent {
     this.formulaire = this.formBuilder.group(
       {
         name:["Baba", [Validators.required]],
-        email:["baba@a.com", [Validators.required]],
+        email:["baba@garage.com", [Validators.required]],
         password:["12345", [Validators.required]]
       }
     );

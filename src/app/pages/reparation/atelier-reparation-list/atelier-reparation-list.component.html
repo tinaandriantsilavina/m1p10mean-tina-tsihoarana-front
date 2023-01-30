@@ -18,8 +18,8 @@
       <tbody>
         <tr *ngFor="let l of list">
           <td>{{l['piece']}} </td>
-          <td>{{l['prix']}} </td>
-          <td>{{l['duree']}} </td>
+          <td>{{  util.monney(l['prix'])  }} </td>
+          <td>{{l['duree']}} heure(s) </td>
           <td>
             <span
               [ngClass]="{'badge badge-pill badge-primary': l['avancement'] == 0 , 'badge badge-pill badge-warning': l['avancement'] == 1 , 'badge badge-pill badge-success': l['avancement'] == 2 }">

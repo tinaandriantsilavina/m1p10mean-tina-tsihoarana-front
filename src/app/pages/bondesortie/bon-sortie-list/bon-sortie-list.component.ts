@@ -76,7 +76,7 @@ export class BonSortieListComponent implements OnInit {
   async getBondeSortie() {
     let val = await this.getListeBonSortie(this.etat)
     this.list = val;
-    console.log(this.list)
+    // console.log(this.list)
   }
   async export(){
     if(this.list.length>0){
@@ -186,10 +186,9 @@ export class BonSortieListComponent implements OnInit {
   }
   initForm(bd) {
     this.bondesortieselectionner = bd
-    console.log('hhjkjkj')
     this.formulaire = this.formBuilder.group(
       {
-        date_paye: ["", [Validators.required]],
+        date_paye: ["2023-05-01", [Validators.required]],
         email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         name: ["Hasina", [Validators.required]],
         ref: [this.getRef(10000,99999), [Validators.required]],

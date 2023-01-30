@@ -57,7 +57,7 @@
     <div class="col-md">
       <h4 class="shadow-lg p-3 mb-5 bg-white rounded text-center">Liste dépenses</h4>
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="form-recherche">
+        <!-- <div class="form-recherche">
           <div class="row center">
             <select [(ngModel)]="moisselection" class="form-control col-sm input-recherche ">
               <option value="{{l.value}}" *ngFor="let l of mois"> {{l.mois}} </option>
@@ -68,7 +68,7 @@
             <button type="submit" (click)="depensemois()"
               class="btn btn-success btn-sm input-recherche">Recherche</button>
           </div>
-        </div>
+        </div> -->
         <table class="table table-hover table-sm">
           <thead>
             <tr>
@@ -81,7 +81,7 @@
           <tbody>
             <tr *ngFor="let l of list">
               <th scope="row"> {{l['type'] }} </th>
-              <td>{{l['prix'] }}</td>
+              <td>{{  util.monney(l['prix']) }}</td>
               <td>
                 {{ l['date']!=null ? ( l['date'] | date: 'dd MMMM yyyy') : l['date'] }}
               </td>

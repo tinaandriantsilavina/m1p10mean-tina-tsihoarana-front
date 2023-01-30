@@ -43,7 +43,7 @@
           <tbody>
             <tr *ngFor="let l of data_ca_annee">
               <th scope="row"> {{l['mois']}} </th>
-              <td>{{ l['chiffre_affaire']}}</td>
+              <td>{{ util.monney(l['chiffre_affaire'])}}</td>
             </tr>
           </tbody>
         </table>
@@ -93,15 +93,15 @@
 
             <tr>
               <th scope="row"> Date Fin </th>
-              <td> 
+              <td>
                 {{ca_date_fin!=null ? ( ca_date_fin | date: 'dd MMMM yyyy') : ca_date_fin }}
               </td>
             </tr>
 
             <tr>
               <th scope="row"> Chiffre Affaire </th>
-              <td> {{util.monney('78787878')}} 
-                
+              <td> {{util.monney('78787878')}}
+
               </td>
             </tr>
 

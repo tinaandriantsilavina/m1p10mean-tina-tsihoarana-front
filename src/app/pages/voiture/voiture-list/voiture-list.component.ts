@@ -97,7 +97,7 @@ export class VoitureListComponent {
 
   async valider() {
     if (this.formulaire.valid) {
-      console.log(this.image.image)
+      // console.log(this.image.image)
       if(this.image.image == null){
         this.updatevoiture(this.formulaire.getRawValue())
       }else{
@@ -114,7 +114,7 @@ export class VoitureListComponent {
           this.toastr.warning("Taille max", "la taille de l'image ne doit pas dépasser de " + this.maxsize / 1000 + " ko")
         }
       }
- 
+
     } else {
       this.message = "Veuillez remplir le formulaire correctement";
       this.toastr.warning(this.message)
@@ -130,6 +130,8 @@ export class VoitureListComponent {
           let data = (d as { [key: string]: any })
           if (data['status'] == 200) {
             this.toastr.success("Modifcation voiture terminé", "Success")
+            this.submitted = false
+            this.message =""
           }
           else {
             this.message = data['message'];
@@ -158,8 +160,10 @@ export class VoitureListComponent {
           d => {
             let data = (d as { [key: string]: any })
             if (data['status'] == 200) {
-              console.log(data);
+              // console.log(data);
               this.toastr.success("Voiture recuperer", "Success")
+              this.submitted = false
+              this.message =""
             }
             else {
               this.message = data['message'];
@@ -192,6 +196,8 @@ export class VoitureListComponent {
           if (data['status'] == 200) {
             this.message = "Depot voiture " + numero + " terminé"
             this.toastr.warning(this.message, "Success")
+            this.submitted = false
+            this.message =""
           }
           else {
             this.message = data['message'];

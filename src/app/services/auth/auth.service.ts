@@ -79,18 +79,18 @@ export class AuthService {
   }
 
   inscription(body){
-    console.log(body);
+    // console.log(body);
     return this.http.post(base_url + 'api/users', body);
   }
   connexion(body: any){
-    console.log(body);
+    // console.log(body);
     return this.http.post(base_url + 'api/auth', body);
   }
   deconnexion(){
     let body={
       "int1":this.users.idusers
     }
-    console.log(body)
+    // console.log(body)
     return this.http.post(base_url + 'deconnexion', body);
   }
 }

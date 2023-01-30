@@ -63,7 +63,7 @@ export class ConnexionComponent {
         d => {
           let data = (d as {[key: string]: any})
           if(data['status'] ==200){
-            console.log(data);
+            // console.log(data);
             let user = data['datas']['user']
             localStorage.setItem('users',JSON.stringify(user))
             localStorage.setItem('token',data['datas']["token"])

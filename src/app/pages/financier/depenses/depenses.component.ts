@@ -1,3 +1,4 @@
+import { UtilService } from './../../../services/util.service';
 import { FinanceService } from './../../../services/finance.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -62,7 +63,8 @@ export class DepensesComponent implements OnInit {
     public sharedService: SharedService,
     public spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    public financeService: FinanceService
+    public financeService: FinanceService,
+    public util : UtilService
   ) {
 
   }
@@ -114,6 +116,7 @@ export class DepensesComponent implements OnInit {
           }
           this.spinner.hide()
           this.depenselist()
+          this.submitted =false
         }, error => {
           this.message = "Erreur Connexion";
           this.toastr.error(this.message, "Erreur")
@@ -138,6 +141,7 @@ export class DepensesComponent implements OnInit {
           }
           this.spinner.hide()
           this.depenselist()
+          this.submitted =false
         }, error => {
           this.message = "Erreur Connexion";
           this.toastr.error(this.message, "Erreur")
@@ -149,7 +153,7 @@ export class DepensesComponent implements OnInit {
 
 
   depenseupdate() {
-    console.log(this.depenseSelectionner)
+    // console.log(this.depenseSelectionner)
     this.spinner.show()
     return new Promise((resolve, reject) => {
       this.financeService.depenseupdate(this.depenseSelectionner['_id'], this.formulaire.getRawValue()).subscribe(
@@ -163,6 +167,7 @@ export class DepensesComponent implements OnInit {
           }
           this.spinner.hide()
           this.depenselist()
+          this.submitted =false
         }, error => {
           this.message = "Erreur Connexion"
           this.toastr.error(this.message, "Erreur")
@@ -180,7 +185,7 @@ export class DepensesComponent implements OnInit {
         data => {
           if (data['status'] == 200) {
             this.list = data['datas']
-            console.log(data)
+            // console.log(data)
           }
           else {
             // this.spinner.hide();
@@ -209,7 +214,7 @@ export class DepensesComponent implements OnInit {
           data => {
             if (data['status'] == 200) {
               this.list = data['datas']
-              console.log(data)
+              // console.log(data)
             }
             else {
               // this.spinner.hide();

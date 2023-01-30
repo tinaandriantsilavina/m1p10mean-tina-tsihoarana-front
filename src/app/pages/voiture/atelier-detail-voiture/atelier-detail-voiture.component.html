@@ -10,7 +10,7 @@
     </ul>
   </div>
 </div>
-<div class="row" style="max-width:98%">
+<div class="row" style="max-width:98%" *ngIf="voiture" >
   <div class="col-5">
     <div class="item-voiture shadow" style="width: 100%;">
       <img [src]="this.uploadFileService.bufferToImage(voiture['image'])" class="card-img-top" alt="...">
@@ -59,7 +59,6 @@
             <span class="spinner-grow text-secondary" role="status"></span>
           </h6>
         </div>
-
       </div>
     </div>
   </div>

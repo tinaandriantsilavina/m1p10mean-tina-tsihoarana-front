@@ -145,12 +145,6 @@
           <div *ngIf="submitted && f.name.errors">
             <small *ngIf="f.name.errors.required" style="color: red">Champ Obligtoire</small>
           </div>
-
-          <label> Reference  </label>
-          <input formControlName="ref" type="text" class="form-control">
-          <div *ngIf="submitted && f.ref.errors">
-            <small *ngIf="f.ref.errors.required" style="color: red">Champ Obligtoire</small>
-          </div>
         </div>
         <button class="btn btn-success btn-sm" type="submit"
           (click)="dialog_payement.close() ; payerbonsortie()">Payer</button>

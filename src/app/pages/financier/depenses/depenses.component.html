@@ -15,7 +15,7 @@
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
         <form [formGroup]="formulaire" (ngSubmit)="onSubmit()" *ngIf="this.formulaire">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
+            <label for="exampleInputEmail1">Depense</label>
             <input formControlName="type" type="text" class="form-control" id="exampleInputEmail1"
               aria-describedby="emailHelp">
             <div *ngIf="submitted && f.type.errors">
@@ -84,7 +84,7 @@
               <th scope="row"> {{l['type'] }} </th>
               <td>{{l['prix'] }}</td>
               <td>
-                {{ l['date']!=null ? (  l['date'] | date: 'dd MMMM yyyy') : l['date'] }} 
+                {{ l['date']!=null ? (  l['date'] | date: 'dd MMMM yyyy') : l['date'] }}
               </td>
               <td>
                 <button type="button" class="btn btn-success btn-sm btn-valider" (click)="selectionUpdate(l)"><i

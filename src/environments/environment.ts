@@ -7,7 +7,8 @@ export const environment = {
 };
 
 
-export const base_url = 'http://localhost:3900/';
+// export const base_url = 'http://localhost:3900/';
+export const base_url = 'https://garage-30tz.onrender.com/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1,7 +1,7 @@
 
 .center-div {
     margin: 0 auto;
-    
+
   }
 
   .table-visite{
@@ -15,6 +15,14 @@
 .value{
     font-weight: bold;
     color: rgb(0, 118, 43);
+}
+
+.shadow{
+  box-shadow: 5px 5px 20px rgba(204, 204, 204, 0.849);
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .contenu {
@@ -51,7 +59,7 @@ h2 {
   margin: 0 0 .5em;
   font-weight: normal;
 }
-input {
+.input-check {
   position: absolute;
   opacity: 0;
   z-index: -1;
@@ -144,7 +152,8 @@ input:checked {
   background-color: #cd000028;
   padding: 5px;
   border-radius: 5px;
-  box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+  box-shadow: -2px 0px 10px -6px rgba(0,0,0,0.3);
+  margin: 8px;
 }
 .bd-paye{
   font-weight: bold;

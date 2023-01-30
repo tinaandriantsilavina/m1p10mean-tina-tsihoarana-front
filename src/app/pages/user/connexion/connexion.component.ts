@@ -48,7 +48,7 @@ export class ConnexionComponent {
   initForm(){
     this.formulaire = this.formBuilder.group(
       {
-        email:["a@a.com", [Validators.required]],
+        email:["client01@garage.com", [Validators.required]],
         password:["12345", [Validators.required]]
       }
     ); //methode retourn objet de type FormGroup
